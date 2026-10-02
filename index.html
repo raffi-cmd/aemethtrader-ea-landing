@@ -3,15 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AEMETH TRADER — Institutional MT5 Expert Advisor</title>
+  <title>AEMETH TRADER — Katalog Robot EA MT5 Otomatis & Teruji</title>
   
-  <!-- SEO & Meta -->
-  <meta name="description" content="AEMETH MT5 EA. Fully Autopilot 24/5 Tanpa Emosi. Win Rate 90.16%, Profit Factor 5.91, Zero Martingale." />
+  <!-- SEO & Social Meta -->
+  <meta name="description" content="Katalog resmi Robot EA MT5 AEMETH TRADER. Sistem trading otomatis teruji dengan filter modal mulai dari Rp 100rb ($10). File murni .ex5 langsung download." />
   
-  <!-- Fonts: Plus Jakarta Sans & Space Grotesk & Bebas Neue / Syne for bold condensed display -->
+  <!-- Google Fonts: Plus Jakarta Sans & JetBrains Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&display=swap" rel="stylesheet">
   
   <!-- Tailwind CSS v3 via CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -21,18 +21,22 @@
       theme: {
         extend: {
           fontFamily: {
-            sans: ['"Plus Jakarta Sans"', '"Inter"', 'sans-serif'],
-            condensed: ['"Bebas Neue"', '"Syne"', 'sans-serif'],
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
             mono: ['"JetBrains Mono"', 'monospace'],
-            serifLogo: ['"Times New Roman"', 'serif'],
           },
           colors: {
-            bgDark: '#0B0C10',
-            cardDark: '#12141C',
-            cardBorder: '#1E2230',
-            cardHover: '#181C28',
-            emeraldAccent: '#10B981',
-            blueAccent: '#3B82F6',
+            brandDark: '#0F172A',     // Slate-900 Dark Mode Base
+            brandDarker: '#0A0F1D',   // Deep Contrast Background
+            brandCard: '#1E293B',     // Slate-800 Card Base
+            brandBorder: '#334155',   // Slate-700 Border
+            brandGreen: '#10B981',    // Emerald-500
+            brandGreenLight: '#34D399',// Emerald-400
+            brandBlue: '#3B82F6',     // Blue-500
+          },
+          boxShadow: {
+            'glow-green': '0 0 25px -5px rgba(16, 185, 129, 0.25)',
+            'glow-blue': '0 0 25px -5px rgba(59, 130, 246, 0.25)',
+            'glass': '0 8px 32px 0 rgba(0, 0, 0, 0.37)',
           }
         }
       }
@@ -40,148 +44,575 @@
   </script>
 
   <style>
-    /* Exact Aesthetics matching the UI Image */
     body {
-      background-color: #0B0C10;
-      color: #E2E8F0;
+      background-color: #0F172A;
+      color: #F1F5F9;
       font-feature-settings: "cv02", "cv03", "cv04", "cv11";
-      overflow-x: hidden;
     }
 
-    /* Ambient Hero Spotlight */
-    .hero-spotlight {
-      background: radial-gradient(circle 600px at 70% 30%, rgba(255, 255, 255, 0.08), rgba(59, 130, 246, 0.05), transparent 70%);
+    /* Ambient Spotlight Background */
+    .bg-grid-ambient {
+      background-size: 32px 32px;
+      background-image: 
+        linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
     }
 
-    /* Metallic Gloss Card for the bottom Banner */
-    .metallic-shine {
-      background: linear-gradient(135deg, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0.03) 40%, rgba(255,255,255,0.12) 100%), #12141C;
+    .hero-glow {
+      background: radial-gradient(circle 700px at 50% 0%, rgba(16, 185, 129, 0.12), rgba(59, 130, 246, 0.08), transparent 75%);
     }
 
-    /* Smooth 1px border glow */
-    .border-glow {
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      transition: all 0.3s ease;
+    /* Smooth Transition for Card Filtering */
+    .product-card {
+      transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
     }
-    .border-glow:hover {
-      border-color: rgba(255, 255, 255, 0.22);
-    }
-
-    /* Condensed Huge Title */
-    .hero-giant-text {
-      font-family: 'Bebas Neue', 'Plus Jakarta Sans', sans-serif;
-      letter-spacing: 0.03em;
-      line-height: 0.88;
+    .product-card.hide-card {
+      display: none;
+      opacity: 0;
+      transform: scale(0.95);
     }
   </style>
 </head>
-<body class="antialiased selection:bg-white selection:text-black">
+<body class="bg-brandDark antialiased selection:bg-emerald-500 selection:text-black">
 
   <!-- ========================================================================= -->
-  <!-- 1. NAVIGATION BAR (EXACT "AV" MINIMALIST TOP NAV) -->
+  <!-- 1. HEADER & TOP BAR -->
   <!-- ========================================================================= -->
-  <header class="w-full pt-6 pb-4 px-6 sm:px-12 max-w-7xl mx-auto flex items-center justify-between z-50">
-    
-    <!-- Left: Elegant Monogram Logo ("AT" for Aemeth Trader) -->
-    <a href="#" class="flex items-center space-x-2 group">
-      <span class="font-serif text-3xl font-light tracking-tighter text-white group-hover:opacity-80 transition-opacity">
-        AT
-      </span>
-      <span class="text-[9px] font-mono tracking-[0.3em] uppercase text-zinc-400 ml-1 hidden sm:inline-block">
-        AEMETH TRADER
-      </span>
-    </a>
-
-    <!-- Center/Right: Sleek Navigation Links -->
-    <nav class="hidden md:flex items-center space-x-10 text-[11px] font-mono tracking-[0.2em] text-zinc-400 uppercase">
-      <a href="#featured" class="hover:text-white transition-colors">PERFORMANCE</a>
-      <a href="#capabilities" class="hover:text-white transition-colors">CAPABILITIES</a>
-      <a href="#process" class="hover:text-white transition-colors">PROCESS</a>
-      <a href="#pricing" class="hover:text-white transition-colors">PRICING</a>
-    </nav>
-
-    <!-- Far Right: Frosted Pill Button ("GET EA ACCESS ↗") -->
-    <div>
-      <a href="#pricing" class="inline-flex items-center px-6 py-2.5 bg-white text-black font-semibold text-xs rounded-full hover:bg-zinc-200 transition-all shadow-sm group">
-        <span>GET EA ACCESS</span>
-        <span class="ml-1.5 text-sm group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform">↗</span>
+  <header class="sticky top-0 z-50 bg-slate-900/90 backdrop-blur-md border-b border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      
+      <!-- Brand Logo -->
+      <a href="#" class="flex items-center space-x-3 group">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-emerald-500 to-blue-600 flex items-center justify-center text-white font-extrabold text-xl shadow-glow-green group-hover:scale-105 transition-transform">
+          A
+        </div>
+        <div class="flex flex-col">
+          <span class="font-black text-lg tracking-wider text-white uppercase group-hover:text-emerald-400 transition-colors">
+            AEMETH <span class="text-emerald-400">TRADER</span>
+          </span>
+          <span class="text-[9px] font-mono text-slate-400 tracking-[0.2em] uppercase">
+            MT5 QUANT ALGO LAB
+          </span>
+        </div>
       </a>
-    </div>
 
+      <!-- Verified Status Badge -->
+      <div class="flex items-center space-x-4">
+        <div class="inline-flex items-center px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-mono font-medium shadow-sm">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 mr-2 animate-pulse"></span>
+          <span>Status EA: <strong>Active & Verified</strong></span>
+        </div>
+
+        <a href="#katalog" class="hidden sm:inline-flex items-center px-4 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 text-xs font-semibold tracking-wider transition-all">
+          <span>Lihat Katalog</span>
+          <svg class="w-4 h-4 ml-1.5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+          </svg>
+        </a>
+      </div>
+
+    </div>
   </header>
 
-  <main class="max-w-7xl mx-auto px-6 sm:px-12 pb-24">
+  <main class="bg-grid-ambient hero-glow">
 
     <!-- ========================================================================= -->
-    <!-- 2. HERO SECTION (EXACT ASYMMETRICAL EDITORIAL LAYOUT + PROMINENT SUBJECT) -->
+    <!-- 2. HERO SECTION -->
     <!-- ========================================================================= -->
-    <section class="relative pt-8 pb-16 hero-spotlight">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+    <section class="relative pt-12 pb-16 md:pt-20 md:pb-24 overflow-hidden border-b border-slate-800/80">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         
-        <!-- Left: Huge Condensed Typography & Copy -->
-        <div class="lg:col-span-7 z-10">
-          
-          <div class="text-[11px] font-mono tracking-[0.25em] text-zinc-400 uppercase mb-4">
-            ALGORITHMIC EXPERIENCES THAT PERFORM
+        <!-- Pre-title Pill -->
+        <div class="inline-flex items-center space-x-2 px-4 py-1.5 bg-slate-800/90 border border-slate-700 rounded-full text-xs font-mono text-slate-300 mb-6 shadow-sm">
+          <span class="text-emerald-400">⚡</span>
+          <span>INSTITUTIONAL GRADE METATRADER 5 ALGORITHMS</span>
+        </div>
+
+        <!-- Main Headline -->
+        <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-[1.15] mb-6">
+          Sistem Trading MT5<br/>
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-300 to-blue-400">
+            Otomatis & Teruji
+          </span>
+        </h1>
+
+        <p class="text-slate-300 text-base sm:text-lg leading-relaxed max-w-2xl mx-auto font-light mb-10">
+          Koleksi Robot Expert Advisor (EA) MetaTrader 5 dengan algoritma presisi tinggi, manajemen risiko terukur, dan bebas intervensi emosi. Siap dijalankan 24/5 pada akun Reguler maupun Cent.
+        </p>
+
+        <!-- Live Metrics Strip -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-3xl mx-auto text-left font-mono">
+          <div class="bg-slate-800/70 backdrop-blur-sm border border-slate-700/80 p-4 rounded-xl">
+            <div class="text-[11px] text-slate-400 uppercase">Eksekusi</div>
+            <div class="text-lg font-bold text-emerald-400 mt-0.5">24/5 Non-Stop</div>
           </div>
+          <div class="bg-slate-800/70 backdrop-blur-sm border border-slate-700/80 p-4 rounded-xl">
+            <div class="text-[11px] text-slate-400 uppercase">Strategi</div>
+            <div class="text-lg font-bold text-white mt-0.5">Non-Martingale</div>
+          </div>
+          <div class="bg-slate-800/70 backdrop-blur-sm border border-slate-700/80 p-4 rounded-xl">
+            <div class="text-[11px] text-slate-400 uppercase">Platform</div>
+            <div class="text-lg font-bold text-blue-400 mt-0.5">MetaTrader 5</div>
+          </div>
+          <div class="bg-slate-800/70 backdrop-blur-sm border border-slate-700/80 p-4 rounded-xl">
+            <div class="text-[11px] text-slate-400 uppercase">Pengiriman</div>
+            <div class="text-lg font-bold text-emerald-400 mt-0.5">Instant Email</div>
+          </div>
+        </div>
 
-          <h1 class="hero-giant-text text-7xl sm:text-8xl md:text-9xl font-bold text-white uppercase mb-6">
-            QUANTUM<br/>
-            TRADER
-          </h1>
+      </div>
+    </section>
 
-          <p class="text-zinc-400 text-sm sm:text-base leading-relaxed max-w-lg mb-8 font-light">
-            Fully autopilot MT5 Expert Advisor (EA) 24/5 tanpa emosi. Menggabungkan arsitektur kuantitatif C++, perlindungan modal ketat, dan eksekusi sub-milidetik.
+    <!-- ========================================================================= -->
+    <!-- 3. FILTER MODAL TRADING SECTION (INTERACTIVE JAVASCRIPT) -->
+    <!-- ========================================================================= -->
+    <section id="katalog" class="py-12 md:py-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <!-- Section Title -->
+        <div class="text-center max-w-2xl mx-auto mb-10">
+          <span class="text-xs font-mono uppercase tracking-[0.25em] text-emerald-400 font-bold">SMART CAPITAL FILTER</span>
+          <h2 class="text-2xl sm:text-3xl font-bold text-white mt-1">
+            Pilih Robot EA Sesuai Modal Trading Anda
+          </h2>
+          <p class="text-slate-400 text-xs sm:text-sm mt-2">
+            Klik tombol filter di bawah untuk memfilter rekomendasi robot EA berdasarkan batas modal minimal Anda.
           </p>
+        </div>
 
-          <!-- Dual Buttons (Solid White Pill + Download Outline) -->
-          <div class="flex flex-wrap items-center gap-4 mb-8">
-            <a href="#pricing" class="inline-flex items-center px-7 py-3 bg-white text-black font-bold text-xs uppercase tracking-wider rounded-lg hover:bg-zinc-200 transition-all group">
-              <span>GET EA ACCESS</span>
-              <span class="ml-2 text-sm group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform">↗</span>
-            </a>
+        <!-- Interactive Filter Buttons Container -->
+        <div class="flex flex-wrap items-center justify-center gap-2.5 sm:gap-3 mb-12">
+          
+          <!-- Filter: Semua EA -->
+          <button 
+            onclick="filterEACatalog('all', this)"
+            class="filter-btn active-filter px-5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold font-mono tracking-wide transition-all duration-200 bg-emerald-500 text-slate-950 shadow-glow-green border border-emerald-400">
+            Semua EA (<span id="count-all">4</span>)
+          </button>
 
-            <a href="#process" class="inline-flex items-center px-6 py-3 bg-transparent hover:bg-white/5 border border-zinc-700 text-zinc-300 font-medium text-xs uppercase tracking-wider rounded-lg transition-all">
-              <span class="mr-2">DOWNLOAD SETUP GUIDE</span>
-              <span>↓</span>
-            </a>
-          </div>
+          <!-- Filter: Modal <= 100rb ($10) -->
+          <button 
+            onclick="filterEACatalog('100k', this)"
+            class="filter-btn px-5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold font-mono tracking-wide transition-all duration-200 bg-slate-800/80 hover:bg-slate-700 text-slate-300 border border-slate-700 hover:border-slate-500">
+            Modal ≤ 100 rb ($10)
+          </button>
+
+          <!-- Filter: Modal <= 500rb ($50) -->
+          <button 
+            onclick="filterEACatalog('500k', this)"
+            class="filter-btn px-5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold font-mono tracking-wide transition-all duration-200 bg-slate-800/80 hover:bg-slate-700 text-slate-300 border border-slate-700 hover:border-slate-500">
+            Modal ≤ 500 rb ($50)
+          </button>
+
+          <!-- Filter: Modal <= 1 Jt ($100) -->
+          <button 
+            onclick="filterEACatalog('1m', this)"
+            class="filter-btn px-5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold font-mono tracking-wide transition-all duration-200 bg-slate-800/80 hover:bg-slate-700 text-slate-300 border border-slate-700 hover:border-slate-500">
+            Modal ≤ 1 Jt ($100)
+          </button>
 
         </div>
 
-        <!-- Right: Sleek Visual / Character Portrait with Halo Sparkles & Badge -->
-        <div class="lg:col-span-5 relative flex justify-center lg:justify-end">
+        <!-- ========================================================================= -->
+        <!-- 4. PRODUCT CARDS GRID (KATALOG EA) -->
+        <!-- ========================================================================= -->
+        <div id="catalog-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
           
-          <div class="relative w-full max-w-md aspect-[4/5] rounded-3xl overflow-hidden bg-gradient-to-t from-black via-cardDark to-zinc-900 border border-zinc-800/80 p-6 flex flex-col justify-between shadow-2xl">
+          <!-- ===================================================================== -->
+          <!-- KARTU 1: AEMETH QUANTUM SCALPER (RANK #1 - MODAL 100K) -->
+          <!-- ===================================================================== -->
+          <div class="product-card bg-slate-800/80 backdrop-blur-md rounded-2xl border border-slate-700 hover:border-emerald-500/60 p-6 flex flex-col justify-between shadow-lg hover:shadow-glow-green transition-all relative overflow-hidden group"
+               data-capital="100k">
             
-            <!-- Glowing Orbit Accent -->
-            <div class="absolute inset-0 bg-radial from-blue-500/10 via-transparent to-transparent pointer-events-none"></div>
-            
-            <!-- Subtle Top Sparkle ✨ -->
-            <div class="flex justify-between items-start z-10">
-              <span class="text-zinc-600 font-mono text-[10px] uppercase tracking-widest">// ALGO_CORE_v3.8</span>
-              <span class="text-white text-xl animate-pulse">✦</span>
+            <!-- Glow Accent Top Border -->
+            <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-amber-400 via-emerald-400 to-teal-400"></div>
+
+            <div>
+              <!-- Rank Badge & Tag -->
+              <div class="flex items-center justify-between mb-4">
+                <span class="inline-flex items-center px-3 py-1 rounded-full bg-amber-400/15 border border-amber-400/30 text-amber-300 text-xs font-bold font-mono">
+                  🏆 Rank #1 Best Seller
+                </span>
+                <span class="text-[11px] font-mono text-emerald-400 bg-emerald-950/60 border border-emerald-500/30 px-2 py-0.5 rounded">
+                  Win Rate 92.4%
+                </span>
+              </div>
+
+              <!-- EA Name & Description -->
+              <h3 class="text-xl font-bold text-white tracking-tight group-hover:text-emerald-400 transition-colors">
+                AEMETH Quantum Scalper v3.8
+              </h3>
+              <p class="text-slate-300 text-xs leading-relaxed mt-2 font-light">
+                Spesialis eksekusi cepat pada volatilitas tinggi XAUUSD (Gold). Menggunakan momentum order imbalance mikrodetik tanpa martingale.
+              </p>
+
+              <!-- Modal Minimal Badge (Highlighted) -->
+              <div class="mt-4 p-3 bg-slate-900/90 rounded-xl border border-slate-700/80 flex items-center justify-between">
+                <span class="text-xs text-slate-400 font-mono">Modal Minimal:</span>
+                <span class="text-xs font-mono font-bold text-emerald-400 bg-emerald-500/10 px-2.5 py-1 rounded border border-emerald-500/30">
+                  Rp 100.000 / $10 (Cent/Standard)
+                </span>
+              </div>
+
+              <!-- Technical Specifications Pills -->
+              <div class="grid grid-cols-2 gap-2 mt-3 text-[11px] font-mono text-slate-400">
+                <div class="bg-slate-900/50 p-2 rounded border border-slate-800">
+                  Pair: <strong class="text-slate-200">XAUUSD / Gold</strong>
+                </div>
+                <div class="bg-slate-900/50 p-2 rounded border border-slate-800">
+                  Timeframe: <strong class="text-slate-200">M5</strong>
+                </div>
+              </div>
+
+              <!-- Price & Double Strikethrough Discount Display -->
+              <div class="mt-6 pt-4 border-t border-slate-700/70">
+                <div class="flex items-baseline space-x-2 text-xs">
+                  <span class="text-slate-400 line-through"><s>Rp 1.000.000</s></span>
+                  <span class="text-rose-400 font-semibold font-mono text-[11px] bg-rose-950/50 px-1.5 py-0.5 rounded border border-rose-800/40">
+                    Diskon 30% + 20%
+                  </span>
+                </div>
+                <div class="text-3xl font-extrabold font-mono text-emerald-400 tracking-tight mt-1">
+                  Rp 500.000
+                </div>
+                <div class="text-[11px] font-mono text-slate-400">
+                  atau <strong>$35 USD</strong> (Lifetime License)
+                </div>
+              </div>
+
+              <!-- Instant Pure File Delivery Note -->
+              <div class="mt-4 flex items-center space-x-1.5 text-[11px] font-mono text-slate-300 bg-slate-900/70 p-2 rounded-lg border border-slate-800">
+                <span class="text-emerald-400">⚡</span>
+                <span><strong>File Murni (.ex5)</strong> - Langsung diunduh tanpa perlu Unzip</span>
+              </div>
             </div>
 
-            <!-- Sleek Holographic/Trading Visual Centerpiece -->
-            <div class="my-auto z-10 py-6 text-center">
-              <div class="w-24 h-24 mx-auto rounded-full bg-gradient-to-tr from-emerald-500/20 via-blue-500/20 to-white/10 border border-white/20 flex items-center justify-center mb-4 shadow-lg backdrop-blur-sm">
-                <svg class="w-12 h-12 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
+            <!-- CTA Action Buttons -->
+            <div class="mt-6 space-y-2">
+              <!-- 
+                ===================================================================================
+                LINK CHECKOUT MAYAR / TRIPAY (INDONESIA - QRIS / BANK TRANSFER):
+                Ganti link href="#" di bawah dengan tautan checkout Mayar produk ini.
+                ===================================================================================
+              -->
+              <a href="https://mayar.link/checkout-aemeth-quantum" target="_blank" rel="noopener noreferrer" class="w-full py-3 px-4 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs uppercase tracking-wider flex items-center justify-center rounded-xl shadow-glow-green transition-all group/btn">
+                <svg class="w-4 h-4 mr-2 shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M4 4a2 2 0 00-2 2v4a2 2 0 002 2V6h10a2 2 0 00-2-2H4zm2 6a2 2 0 012-2h8a2 2 0 012 2v4a2 2 0 01-2 2H8a2 2 0 01-2-2v-4zm6 4a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/>
                 </svg>
-              </div>
-              <div class="text-2xl font-bold text-white tracking-tight">MT5 AUTOPILOT</div>
-              <div class="text-xs font-mono text-emerald-400 mt-1">● RUNNING 24/5 LIVE ON MT5</div>
+                <span>Beli via QRIS / Bank Transfer</span>
+              </a>
+
+              <!-- 
+                ===================================================================================
+                LINK CHECKOUT GUMROAD / WHOP (GLOBAL - PAYPAL / CREDIT CARD):
+                Ganti link href="#" di bawah dengan tautan checkout Gumroad produk ini.
+                ===================================================================================
+              -->
+              <a href="https://gumroad.com/l/aemeth-quantum-ea" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 px-4 bg-blue-600 hover:bg-blue-500 text-white font-semibold text-xs uppercase tracking-wider flex items-center justify-center rounded-xl shadow-glow-blue transition-all">
+                <svg class="w-3.5 h-3.5 mr-2 shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM4.332 8.027a6.012 6.012 0 011.912-2.706C6.512 5.73 6.974 6 7.5 6A1.5 1.5 0 019 7.5V8a2 2 0 004 0 2 2 0 011.523-1.943A5.977 5.977 0 0116 10c0 .34-.028.675-.083 1H15a2 2 0 00-2 2v2.197A5.973 5.973 0 0110 16v-2a2 2 0 00-2-2 2 2 0 01-2-2 2 2 0 00-1.668-1.973z" clip-rule="evenodd"/>
+                </svg>
+                <span>Buy via PayPal / Credit Card</span>
+              </a>
             </div>
 
-            <!-- Bottom Floating Arc Badge (Like "AVAILABLE FOR FREELANCE PROJECTS ↗") -->
-            <div class="z-10 bg-zinc-950/80 backdrop-blur-md border border-zinc-800 rounded-2xl p-4 flex items-center justify-between">
-              <div>
-                <span class="block text-[9px] font-mono text-zinc-500 uppercase tracking-widest">PROP FIRM READY</span>
-                <span class="text-xs font-bold text-white uppercase tracking-wider">FTMO & FUNDED PASSED</span>
+          </div>
+
+          <!-- ===================================================================== -->
+          <!-- KARTU 2: AEMETH TREND PULSE (RANK #2 - MODAL 500K) -->
+          <!-- ===================================================================== -->
+          <div class="product-card bg-slate-800/80 backdrop-blur-md rounded-2xl border border-slate-700 hover:border-blue-500/60 p-6 flex flex-col justify-between shadow-lg hover:shadow-glow-blue transition-all relative overflow-hidden group"
+               data-capital="500k">
+            
+            <!-- Glow Accent Top Border -->
+            <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-400 to-indigo-500"></div>
+
+            <div>
+              <!-- Rank Badge & Tag -->
+              <div class="flex items-center justify-between mb-4">
+                <span class="inline-flex items-center px-3 py-1 rounded-full bg-slate-400/15 border border-slate-400/30 text-slate-200 text-xs font-bold font-mono">
+                  🥈 Rank #2 High Winrate
+                </span>
+                <span class="text-[11px] font-mono text-blue-400 bg-blue-950/60 border border-blue-500/30 px-2 py-0.5 rounded">
+                  Win Rate 89.8%
+                </span>
               </div>
-              <a href="#pricing" class="w-9 h-9 rounded-full bg-white text-black flex items-center justify-center hover:scale-110 transition-transform">
-                <span class="text-sm font-bold">↗</span>
+
+              <!-- EA Name & Description -->
+              <h3 class="text-xl font-bold text-white tracking-tight group-hover:text-blue-400 transition-colors">
+                AEMETH Trend Pulse Pro
+              </h3>
+              <p class="text-slate-300 text-xs leading-relaxed mt-2 font-light">
+                Mengikuti gelombang tren multi-timeframe EURUSD dan GBPUSD. Dilengkapi filter berita ekonomi otomatis dan dynamic trailing stop.
+              </p>
+
+              <!-- Modal Minimal Badge (Highlighted) -->
+              <div class="mt-4 p-3 bg-slate-900/90 rounded-xl border border-slate-700/80 flex items-center justify-between">
+                <span class="text-xs text-slate-400 font-mono">Modal Minimal:</span>
+                <span class="text-xs font-mono font-bold text-blue-400 bg-blue-500/10 px-2.5 py-1 rounded border border-blue-500/30">
+                  Rp 500.000 / $50
+                </span>
+              </div>
+
+              <!-- Technical Specifications Pills -->
+              <div class="grid grid-cols-2 gap-2 mt-3 text-[11px] font-mono text-slate-400">
+                <div class="bg-slate-900/50 p-2 rounded border border-slate-800">
+                  Pair: <strong class="text-slate-200">EURUSD, GBPUSD</strong>
+                </div>
+                <div class="bg-slate-900/50 p-2 rounded border border-slate-800">
+                  Timeframe: <strong class="text-slate-200">M15</strong>
+                </div>
+              </div>
+
+              <!-- Price & Double Strikethrough Discount Display -->
+              <div class="mt-6 pt-4 border-t border-slate-700/70">
+                <div class="flex items-baseline space-x-2 text-xs">
+                  <span class="text-slate-400 line-through"><s>Rp 1.200.000</s></span>
+                  <span class="text-rose-400 font-semibold font-mono text-[11px] bg-rose-950/50 px-1.5 py-0.5 rounded border border-rose-800/40">
+                    Diskon 35% + 15%
+                  </span>
+                </div>
+                <div class="text-3xl font-extrabold font-mono text-emerald-400 tracking-tight mt-1">
+                  Rp 650.000
+                </div>
+                <div class="text-[11px] font-mono text-slate-400">
+                  atau <strong>$45 USD</strong> (Lifetime License)
+                </div>
+              </div>
+
+              <!-- Instant Pure File Delivery Note -->
+              <div class="mt-4 flex items-center space-x-1.5 text-[11px] font-mono text-slate-300 bg-slate-900/70 p-2 rounded-lg border border-slate-800">
+                <span class="text-emerald-400">⚡</span>
+                <span><strong>File Murni (.ex5)</strong> - Langsung diunduh tanpa perlu Unzip</span>
+              </div>
+            </div>
+
+            <!-- CTA Action Buttons -->
+            <div class="mt-6 space-y-2">
+              <!-- 
+                ===================================================================================
+                LINK CHECKOUT MAYAR / TRIPAY (INDONESIA - QRIS / BANK TRANSFER):
+                Ganti link href="#" di bawah dengan tautan checkout Mayar produk ini.
+                ===================================================================================
+              -->
+              <a href="https://mayar.link/checkout-aemeth-trend" target="_blank" rel="noopener noreferrer" class="w-full py-3 px-4 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs uppercase tracking-wider flex items-center justify-center rounded-xl shadow-glow-green transition-all group/btn">
+                <svg class="w-4 h-4 mr-2 shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M4 4a2 2 0 00-2 2v4a2 2 0 002 2V6h10a2 2 0 00-2-2H4zm2 6a2 2 0 012-2h8a2 2 0 012 2v4a2 2 0 01-2 2H8a2 2 0 01-2-2v-4zm6 4a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/>
+                </svg>
+                <span>Beli via QRIS / Bank Transfer</span>
+              </a>
+
+              <!-- 
+                ===================================================================================
+                LINK CHECKOUT GUMROAD / WHOP (GLOBAL - PAYPAL / CREDIT CARD):
+                Ganti link href="#" di bawah dengan tautan checkout Gumroad produk ini.
+                ===================================================================================
+              -->
+              <a href="https://gumroad.com/l/aemeth-trend-ea" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 px-4 bg-blue-600 hover:bg-blue-500 text-white font-semibold text-xs uppercase tracking-wider flex items-center justify-center rounded-xl shadow-glow-blue transition-all">
+                <svg class="w-3.5 h-3.5 mr-2 shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM4.332 8.027a6.012 6.012 0 011.912-2.706C6.512 5.73 6.974 6 7.5 6A1.5 1.5 0 019 7.5V8a2 2 0 004 0 2 2 0 011.523-1.943A5.977 5.977 0 0116 10c0 .34-.028.675-.083 1H15a2 2 0 00-2 2v2.197A5.973 5.973 0 0110 16v-2a2 2 0 00-2-2 2 2 0 01-2-2 2 2 0 00-1.668-1.973z" clip-rule="evenodd"/>
+                </svg>
+                <span>Buy via PayPal / Credit Card</span>
+              </a>
+            </div>
+
+          </div>
+
+          <!-- ===================================================================== -->
+          <!-- KARTU 3: AEMETH PROP SHIELD (RANK #3 - MODAL 1 JUTA / $100) -->
+          <!-- ===================================================================== -->
+          <div class="product-card bg-slate-800/80 backdrop-blur-md rounded-2xl border border-slate-700 hover:border-emerald-500/60 p-6 flex flex-col justify-between shadow-lg hover:shadow-glow-green transition-all relative overflow-hidden group"
+               data-capital="1m">
+            
+            <!-- Glow Accent Top Border -->
+            <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-emerald-500 to-cyan-400"></div>
+
+            <div>
+              <!-- Rank Badge & Tag -->
+              <div class="flex items-center justify-between mb-4">
+                <span class="inline-flex items-center px-3 py-1 rounded-full bg-amber-700/20 border border-amber-600/30 text-amber-200 text-xs font-bold font-mono">
+                  🥉 Rank #3 Low Risk & Prop
+                </span>
+                <span class="text-[11px] font-mono text-emerald-400 bg-emerald-950/60 border border-emerald-500/30 px-2 py-0.5 rounded">
+                  Max DD 2.8%
+                </span>
+              </div>
+
+              <!-- EA Name & Description -->
+              <h3 class="text-xl font-bold text-white tracking-tight group-hover:text-emerald-400 transition-colors">
+                AEMETH Prop Shield Ultra
+              </h3>
+              <p class="text-slate-300 text-xs leading-relaxed mt-2 font-light">
+                Dirancang khusus untuk lulus challenge Prop Firm (FTMO, FundedNext) dengan proteksi ketat Daily Drawdown Guard dan zero violation.
+              </p>
+
+              <!-- Modal Minimal Badge (Highlighted) -->
+              <div class="mt-4 p-3 bg-slate-900/90 rounded-xl border border-slate-700/80 flex items-center justify-between">
+                <span class="text-xs text-slate-400 font-mono">Modal Minimal:</span>
+                <span class="text-xs font-mono font-bold text-emerald-400 bg-emerald-500/10 px-2.5 py-1 rounded border border-emerald-500/30">
+                  Rp 1.000.000 / $100+
+                </span>
+              </div>
+
+              <!-- Technical Specifications Pills -->
+              <div class="grid grid-cols-2 gap-2 mt-3 text-[11px] font-mono text-slate-400">
+                <div class="bg-slate-900/50 p-2 rounded border border-slate-800">
+                  Pair: <strong class="text-slate-200">XAUUSD, US30</strong>
+                </div>
+                <div class="bg-slate-900/50 p-2 rounded border border-slate-800">
+                  Timeframe: <strong class="text-slate-200">M15</strong>
+                </div>
+              </div>
+
+              <!-- Price & Double Strikethrough Discount Display -->
+              <div class="mt-6 pt-4 border-t border-slate-700/70">
+                <div class="flex items-baseline space-x-2 text-xs">
+                  <span class="text-slate-400 line-through"><s>Rp 1.500.000</s></span>
+                  <span class="text-rose-400 font-semibold font-mono text-[11px] bg-rose-950/50 px-1.5 py-0.5 rounded border border-rose-800/40">
+                    Diskon 40% + 20%
+                  </span>
+                </div>
+                <div class="text-3xl font-extrabold font-mono text-emerald-400 tracking-tight mt-1">
+                  Rp 799.000
+                </div>
+                <div class="text-[11px] font-mono text-slate-400">
+                  atau <strong>$55 USD</strong> (Lifetime License)
+                </div>
+              </div>
+
+              <!-- Instant Pure File Delivery Note -->
+              <div class="mt-4 flex items-center space-x-1.5 text-[11px] font-mono text-slate-300 bg-slate-900/70 p-2 rounded-lg border border-slate-800">
+                <span class="text-emerald-400">⚡</span>
+                <span><strong>File Murni (.ex5)</strong> - Langsung diunduh tanpa perlu Unzip</span>
+              </div>
+            </div>
+
+            <!-- CTA Action Buttons -->
+            <div class="mt-6 space-y-2">
+              <!-- 
+                ===================================================================================
+                LINK CHECKOUT MAYAR / TRIPAY (INDONESIA - QRIS / BANK TRANSFER):
+                Ganti link href="#" di bawah dengan tautan checkout Mayar produk ini.
+                ===================================================================================
+              -->
+              <a href="https://mayar.link/checkout-aemeth-prop" target="_blank" rel="noopener noreferrer" class="w-full py-3 px-4 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs uppercase tracking-wider flex items-center justify-center rounded-xl shadow-glow-green transition-all group/btn">
+                <svg class="w-4 h-4 mr-2 shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M4 4a2 2 0 00-2 2v4a2 2 0 002 2V6h10a2 2 0 00-2-2H4zm2 6a2 2 0 012-2h8a2 2 0 012 2v4a2 2 0 01-2 2H8a2 2 0 01-2-2v-4zm6 4a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/>
+                </svg>
+                <span>Beli via QRIS / Bank Transfer</span>
+              </a>
+
+              <!-- 
+                ===================================================================================
+                LINK CHECKOUT GUMROAD / WHOP (GLOBAL - PAYPAL / CREDIT CARD):
+                Ganti link href="#" di bawah dengan tautan checkout Gumroad produk ini.
+                ===================================================================================
+              -->
+              <a href="https://gumroad.com/l/aemeth-prop-ea" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 px-4 bg-blue-600 hover:bg-blue-500 text-white font-semibold text-xs uppercase tracking-wider flex items-center justify-center rounded-xl shadow-glow-blue transition-all">
+                <svg class="w-3.5 h-3.5 mr-2 shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM4.332 8.027a6.012 6.012 0 011.912-2.706C6.512 5.73 6.974 6 7.5 6A1.5 1.5 0 019 7.5V8a2 2 0 004 0 2 2 0 011.523-1.943A5.977 5.977 0 0116 10c0 .34-.028.675-.083 1H15a2 2 0 00-2 2v2.197A5.973 5.973 0 0110 16v-2a2 2 0 00-2-2 2 2 0 01-2-2 2 2 0 00-1.668-1.973z" clip-rule="evenodd"/>
+                </svg>
+                <span>Buy via PayPal / Credit Card</span>
+              </a>
+            </div>
+
+          </div>
+
+          <!-- ===================================================================== -->
+          <!-- KARTU 4: AEMETH MICRO CENT (RANK #4 - MODAL 100K) -->
+          <!-- ===================================================================== -->
+          <div class="product-card bg-slate-800/80 backdrop-blur-md rounded-2xl border border-slate-700 hover:border-emerald-500/60 p-6 flex flex-col justify-between shadow-lg hover:shadow-glow-green transition-all relative overflow-hidden group"
+               data-capital="100k">
+            
+            <!-- Glow Accent Top Border -->
+            <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-teal-400 to-emerald-500"></div>
+
+            <div>
+              <!-- Rank Badge & Tag -->
+              <div class="flex items-center justify-between mb-4">
+                <span class="inline-flex items-center px-3 py-1 rounded-full bg-teal-500/15 border border-teal-500/30 text-teal-300 text-xs font-bold font-mono">
+                  ⚡ Rank #4 Micro Booster
+                </span>
+                <span class="text-[11px] font-mono text-teal-400 bg-teal-950/60 border border-teal-500/30 px-2 py-0.5 rounded">
+                  Compound 24/5
+                </span>
+              </div>
+
+              <!-- EA Name & Description -->
+              <h3 class="text-xl font-bold text-white tracking-tight group-hover:text-emerald-400 transition-colors">
+                AEMETH Micro Cent Engine
+              </h3>
+              <p class="text-slate-300 text-xs leading-relaxed mt-2 font-light">
+                Cocok untuk akun Cent pemula yang ingin belajar autopilot dengan risiko terkecil. Menghasilkan profit harian stabil & aman.
+              </p>
+
+              <!-- Modal Minimal Badge (Highlighted) -->
+              <div class="mt-4 p-3 bg-slate-900/90 rounded-xl border border-slate-700/80 flex items-center justify-between">
+                <span class="text-xs text-slate-400 font-mono">Modal Minimal:</span>
+                <span class="text-xs font-mono font-bold text-emerald-400 bg-emerald-500/10 px-2.5 py-1 rounded border border-emerald-500/30">
+                  Rp 100.000 / $10 (Cent Account)
+                </span>
+              </div>
+
+              <!-- Technical Specifications Pills -->
+              <div class="grid grid-cols-2 gap-2 mt-3 text-[11px] font-mono text-slate-400">
+                <div class="bg-slate-900/50 p-2 rounded border border-slate-800">
+                  Pair: <strong class="text-slate-200">EURUSD, USDJPY</strong>
+                </div>
+                <div class="bg-slate-900/50 p-2 rounded border border-slate-800">
+                  Timeframe: <strong class="text-slate-200">M5 / M15</strong>
+                </div>
+              </div>
+
+              <!-- Price & Double Strikethrough Discount Display -->
+              <div class="mt-6 pt-4 border-t border-slate-700/70">
+                <div class="flex items-baseline space-x-2 text-xs">
+                  <span class="text-slate-400 line-through"><s>Rp 800.000</s></span>
+                  <span class="text-rose-400 font-semibold font-mono text-[11px] bg-rose-950/50 px-1.5 py-0.5 rounded border border-rose-800/40">
+                    Diskon 30% + 20%
+                  </span>
+                </div>
+                <div class="text-3xl font-extrabold font-mono text-emerald-400 tracking-tight mt-1">
+                  Rp 400.000
+                </div>
+                <div class="text-[11px] font-mono text-slate-400">
+                  atau <strong>$28 USD</strong> (Lifetime License)
+                </div>
+              </div>
+
+              <!-- Instant Pure File Delivery Note -->
+              <div class="mt-4 flex items-center space-x-1.5 text-[11px] font-mono text-slate-300 bg-slate-900/70 p-2 rounded-lg border border-slate-800">
+                <span class="text-emerald-400">⚡</span>
+                <span><strong>File Murni (.ex5)</strong> - Langsung diunduh tanpa perlu Unzip</span>
+              </div>
+            </div>
+
+            <!-- CTA Action Buttons -->
+            <div class="mt-6 space-y-2">
+              <!-- 
+                ===================================================================================
+                LINK CHECKOUT MAYAR / TRIPAY (INDONESIA - QRIS / BANK TRANSFER):
+                Ganti link href="#" di bawah dengan tautan checkout Mayar produk ini.
+                ===================================================================================
+              -->
+              <a href="https://mayar.link/checkout-aemeth-micro" target="_blank" rel="noopener noreferrer" class="w-full py-3 px-4 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs uppercase tracking-wider flex items-center justify-center rounded-xl shadow-glow-green transition-all group/btn">
+                <svg class="w-4 h-4 mr-2 shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M4 4a2 2 0 00-2 2v4a2 2 0 002 2V6h10a2 2 0 00-2-2H4zm2 6a2 2 0 012-2h8a2 2 0 012 2v4a2 2 0 01-2 2H8a2 2 0 01-2-2v-4zm6 4a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/>
+                </svg>
+                <span>Beli via QRIS / Bank Transfer</span>
+              </a>
+
+              <!-- 
+                ===================================================================================
+                LINK CHECKOUT GUMROAD / WHOP (GLOBAL - PAYPAL / CREDIT CARD):
+                Ganti link href="#" di bawah dengan tautan checkout Gumroad produk ini.
+                ===================================================================================
+              -->
+              <a href="https://gumroad.com/l/aemeth-micro-ea" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 px-4 bg-blue-600 hover:bg-blue-500 text-white font-semibold text-xs uppercase tracking-wider flex items-center justify-center rounded-xl shadow-glow-blue transition-all">
+                <svg class="w-3.5 h-3.5 mr-2 shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM4.332 8.027a6.012 6.012 0 011.912-2.706C6.512 5.73 6.974 6 7.5 6A1.5 1.5 0 019 7.5V8a2 2 0 004 0 2 2 0 011.523-1.943A5.977 5.977 0 0116 10c0 .34-.028.675-.083 1H15a2 2 0 00-2 2v2.197A5.973 5.973 0 0110 16v-2a2 2 0 00-2-2 2 2 0 01-2-2 2 2 0 00-1.668-1.973z" clip-rule="evenodd"/>
+                </svg>
+                <span>Buy via PayPal / Credit Card</span>
               </a>
             </div>
 
@@ -193,423 +624,107 @@
     </section>
 
     <!-- ========================================================================= -->
-    <!-- 3. FOUR STATS COUNTER BAR (EXACT 4-COLUMN ROUNDED CARD IN THE IMAGE) -->
+    <!-- 5. BROKER & COMPATIBILITY ECOSYSTEM -->
     <!-- ========================================================================= -->
-    <section class="my-10">
-      <div class="bg-cardDark rounded-2xl border border-zinc-800/90 p-8 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-        
-        <!-- Stat 1: Profit Factor -->
-        <div class="flex flex-col items-center">
-          <div class="text-zinc-400 mb-2 text-lg">✦</div>
-          <div class="text-4xl sm:text-5xl font-bold font-sans text-white tracking-tight">5.91</div>
-          <div class="text-[10px] font-mono uppercase tracking-[0.2em] text-zinc-400 mt-1">PROFIT FACTOR</div>
-        </div>
-
-        <!-- Stat 2: Win Rate -->
-        <div class="flex flex-col items-center">
-          <div class="text-zinc-400 mb-2 text-lg">👥</div>
-          <div class="text-4xl sm:text-5xl font-bold font-sans text-white tracking-tight">90.16%</div>
-          <div class="text-[10px] font-mono uppercase tracking-[0.2em] text-zinc-400 mt-1">WIN RATE ACCURACY</div>
-        </div>
-
-        <!-- Stat 3: Max Drawdown -->
-        <div class="flex flex-col items-center">
-          <div class="text-zinc-400 mb-2 text-lg">🏆</div>
-          <div class="text-4xl sm:text-5xl font-bold font-sans text-white tracking-tight">4.02%</div>
-          <div class="text-[10px] font-mono uppercase tracking-[0.2em] text-zinc-400 mt-1">MAX DRAWDOWN</div>
-        </div>
-
-        <!-- Stat 4: Runtime -->
-        <div class="flex flex-col items-center">
-          <div class="text-zinc-400 mb-2 text-lg">🌐</div>
-          <div class="text-4xl sm:text-5xl font-bold font-sans text-white tracking-tight">24/5</div>
-          <div class="text-[10px] font-mono uppercase tracking-[0.2em] text-zinc-400 mt-1">FULLY AUTOPILOT</div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ========================================================================= -->
-    <!-- 4. FEATURED WORK / 3 CARDS (EXACT FEATURED WORK 3-COLUMN SHOWCASE) -->
-    <!-- ========================================================================= -->
-    <section id="featured" class="my-16">
-      
-      <!-- Section Header -->
-      <div class="flex items-center justify-between mb-8">
-        <h2 class="text-xs font-mono uppercase tracking-[0.25em] text-zinc-300 font-bold">
-          FEATURED EA CONFIGURATIONS
-        </h2>
-        <a href="#pricing" class="text-xs font-mono uppercase tracking-wider text-zinc-400 hover:text-white flex items-center transition-colors">
-          <span>EXPLORE ALL PRESETS</span>
-          <span class="ml-1">→</span>
-        </a>
-      </div>
-
-      <!-- 3 Cards Layout -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        
-        <!-- Card 1: XAUUSD Gold Engine (Finance Dashboard Style) -->
-        <div class="bg-cardDark rounded-2xl border border-zinc-800/80 p-6 flex flex-col justify-between h-96 group hover:border-zinc-600 transition-all">
-          <!-- Top Mini Dashboard Simulation -->
-          <div class="bg-zinc-950 p-4 rounded-xl border border-zinc-800/80 mb-6">
-            <div class="flex justify-between items-center text-[10px] font-mono text-zinc-500 mb-1">
-              <span>XAUUSD SCALPER</span>
-              <span class="text-emerald-400">+$24,860.50</span>
-            </div>
-            <!-- Mini bar chart -->
-            <div class="flex items-end space-x-1.5 h-16 pt-3">
-              <div class="w-full bg-zinc-800 h-[30%] rounded-xs"></div>
-              <div class="w-full bg-zinc-700 h-[50%] rounded-xs"></div>
-              <div class="w-full bg-zinc-800 h-[40%] rounded-xs"></div>
-              <div class="w-full bg-emerald-500/60 h-[85%] rounded-xs"></div>
-              <div class="w-full bg-emerald-400 h-[100%] rounded-xs"></div>
-            </div>
-          </div>
-
-          <div class="flex items-end justify-between">
-            <div>
-              <h3 class="text-xl font-bold text-white mb-1">Gold Momentum Engine</h3>
-              <p class="text-xs text-zinc-400 font-mono">XAUUSD PAIR • M5 SCALPING</p>
-            </div>
-            <div class="w-10 h-10 rounded-full bg-zinc-900 border border-zinc-700 flex items-center justify-center text-white group-hover:bg-white group-hover:text-black transition-all">
-              ↗
-            </div>
-          </div>
-        </div>
-
-        <!-- Card 2: Trend Rider (Elevate Your Brand Style with Metallic Orb) -->
-        <div class="bg-cardDark rounded-2xl border border-zinc-800/80 p-6 flex flex-col justify-between h-96 group hover:border-zinc-600 transition-all">
-          <div class="bg-zinc-950 p-4 rounded-xl border border-zinc-800/80 mb-6 flex items-center justify-center h-32 relative overflow-hidden">
-            <!-- 3D Metallic Graphic simulation -->
-            <div class="w-20 h-20 rounded-full bg-gradient-to-tr from-zinc-700 via-zinc-200 to-zinc-900 shadow-inner flex items-center justify-center">
-              <div class="w-12 h-12 rounded-full bg-black"></div>
-            </div>
-          </div>
-
-          <div class="flex items-end justify-between">
-            <div>
-              <h3 class="text-xl font-bold text-white mb-1">EURUSD Trend Rider</h3>
-              <p class="text-xs text-zinc-400 font-mono">SWING & INTRADAY • HIGH ACCURACY</p>
-            </div>
-            <div class="w-10 h-10 rounded-full bg-zinc-900 border border-zinc-700 flex items-center justify-center text-white group-hover:bg-white group-hover:text-black transition-all">
-              ↗
-            </div>
-          </div>
-        </div>
-
-        <!-- Card 3: Prop Firm Companion (Mobile App Style) -->
-        <div class="bg-cardDark rounded-2xl border border-zinc-800/80 p-6 flex flex-col justify-between h-96 group hover:border-zinc-600 transition-all">
-          <div class="bg-zinc-950 p-4 rounded-xl border border-zinc-800/80 mb-6 flex items-center justify-between">
-            <div class="text-left font-mono text-xs">
-              <div class="text-zinc-500 text-[10px]">EVALUATION STATUS</div>
-              <div class="text-white font-bold">PHASE 1 PASSED</div>
-            </div>
-            <div class="w-12 h-12 rounded-full border-2 border-emerald-400 flex items-center justify-center font-mono text-xs font-bold text-white">
-              72%
-            </div>
-          </div>
-
-          <div class="flex items-end justify-between">
-            <div>
-              <h3 class="text-xl font-bold text-white mb-1">Prop Firm Shield Pass</h3>
-              <p class="text-xs text-zinc-400 font-mono">FTMO & FUNDED COMPLIANT</p>
-            </div>
-            <div class="w-10 h-10 rounded-full bg-zinc-900 border border-zinc-700 flex items-center justify-center text-white group-hover:bg-white group-hover:text-black transition-all">
-              ↗
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-    </section>
-
-    <!-- ========================================================================= -->
-    <!-- 5. TWO-COLUMN SPLIT: CORE CAPABILITIES vs TOOLS/COMPATIBILITY -->
-    <!-- ========================================================================= -->
-    <section id="capabilities" class="my-16 grid grid-cols-1 lg:grid-cols-12 gap-8">
-      
-      <!-- Left: Core Capabilities (6 Items Grid with Line Icons) -->
-      <div class="lg:col-span-7">
-        <h2 class="text-xs font-mono uppercase tracking-[0.25em] text-zinc-300 font-bold mb-6">
-          CORE CAPABILITIES
-        </h2>
-
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-          
-          <!-- Cap 1: Smart Risk Management -->
-          <div class="bg-cardDark p-6 rounded-xl border border-zinc-800/80">
-            <div class="text-white text-xl mb-3">🛡️</div>
-            <h3 class="text-sm font-bold uppercase text-white mb-2">Smart Risk Management</h3>
-            <p class="text-xs text-zinc-400 leading-relaxed">
-              Auto lot calculation based on account balance, fixed hard stop-loss, and daily drawdown cut-off.
-            </p>
-          </div>
-
-          <!-- Cap 2: Low Latency Execution -->
-          <div class="bg-cardDark p-6 rounded-xl border border-zinc-800/80">
-            <div class="text-white text-xl mb-3">⚡</div>
-            <h3 class="text-sm font-bold uppercase text-white mb-2">Low Latency Execution</h3>
-            <p class="text-xs text-zinc-400 leading-relaxed">
-              C++ native code routing direct to MT5 engine for sub-millisecond fill without slippage.
-            </p>
-          </div>
-
-          <!-- Cap 3: Zero Martingale -->
-          <div class="bg-cardDark p-6 rounded-xl border border-zinc-800/80">
-            <div class="text-white text-xl mb-3">💎</div>
-            <h3 class="text-sm font-bold uppercase text-white mb-2">Zero Martingale & Grid</h3>
-            <p class="text-xs text-zinc-400 leading-relaxed">
-              Strict single-order and mathematical price-action entries. No dangerous lot doubling.
-            </p>
-          </div>
-
-          <!-- Cap 4: News Volatility Filter -->
-          <div class="bg-cardDark p-6 rounded-xl border border-zinc-800/80">
-            <div class="text-white text-xl mb-3">📰</div>
-            <h3 class="text-sm font-bold uppercase text-white mb-2">News Volatility Filter</h3>
-            <p class="text-xs text-zinc-400 leading-relaxed">
-              Auto pause before and after high impact economic news (NFP, CPI, FOMC rate releases).
-            </p>
-          </div>
-
-          <!-- Cap 5: Prop Firm Ready -->
-          <div class="bg-cardDark p-6 rounded-xl border border-zinc-800/80">
-            <div class="text-white text-xl mb-3">🎯</div>
-            <h3 class="text-sm font-bold uppercase text-white mb-2">Prop Firm Shield</h3>
-            <p class="text-xs text-zinc-400 leading-relaxed">
-              Guaranteed compliance with daily loss limits and maximum drawdown caps of FTMO & Funded accounts.
-            </p>
-          </div>
-
-          <!-- Cap 6: Multi-Asset Support -->
-          <div class="bg-cardDark p-6 rounded-xl border border-zinc-800/80">
-            <div class="text-white text-xl mb-3">🌐</div>
-            <h3 class="text-sm font-bold uppercase text-white mb-2">Multi-Asset Precision</h3>
-            <p class="text-xs text-zinc-400 leading-relaxed">
-              Calibrated presets ready for Gold (XAUUSD), major forex pairs, and US stock indices.
-            </p>
-          </div>
-
+    <section class="py-12 bg-slate-900/60 border-y border-slate-800">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <span class="text-xs font-mono uppercase tracking-[0.2em] text-slate-400 font-semibold block mb-6">
+          KOMPATIBILITAS BROKER & VPS 24/7
+        </span>
+        <div class="flex flex-wrap items-center justify-center gap-4 sm:gap-8 font-mono text-xs text-slate-300 font-bold">
+          <div class="px-4 py-2 bg-slate-800/80 rounded-lg border border-slate-700">MetaTrader 5 (Build 4000+)</div>
+          <div class="px-4 py-2 bg-slate-800/80 rounded-lg border border-slate-700">IC Markets ECN</div>
+          <div class="px-4 py-2 bg-slate-800/80 rounded-lg border border-slate-700">Exness Raw Spread</div>
+          <div class="px-4 py-2 bg-slate-800/80 rounded-lg border border-slate-700">RoboForex Pro/Cent</div>
+          <div class="px-4 py-2 bg-slate-800/80 rounded-lg border border-slate-700">FTMO & FundedNext</div>
         </div>
       </div>
-
-      <!-- Right: Tools & Technologies / Certifications -->
-      <div class="lg:col-span-5 flex flex-col justify-between space-y-6">
-        
-        <!-- Top: Supported Brokers & Platforms -->
-        <div>
-          <h2 class="text-xs font-mono uppercase tracking-[0.25em] text-zinc-300 font-bold mb-6">
-            BROKER & VPS ECOSYSTEM
-          </h2>
-
-          <div class="bg-cardDark p-6 rounded-xl border border-zinc-800/80 grid grid-cols-2 gap-4 font-mono text-xs">
-            <div class="flex items-center space-x-3 p-3 bg-zinc-950/60 rounded border border-zinc-800">
-              <span class="text-white font-bold">MT5</span>
-              <span class="text-zinc-400 text-[11px]">MetaTrader 5</span>
-            </div>
-            <div class="flex items-center space-x-3 p-3 bg-zinc-950/60 rounded border border-zinc-800">
-              <span class="text-emerald-400 font-bold">IC</span>
-              <span class="text-zinc-400 text-[11px]">IC Markets</span>
-            </div>
-            <div class="flex items-center space-x-3 p-3 bg-zinc-950/60 rounded border border-zinc-800">
-              <span class="text-blue-400 font-bold">EX</span>
-              <span class="text-zinc-400 text-[11px]">Exness Raw</span>
-            </div>
-            <div class="flex items-center space-x-3 p-3 bg-zinc-950/60 rounded border border-zinc-800">
-              <span class="text-yellow-400 font-bold">FT</span>
-              <span class="text-zinc-400 text-[11px]">FTMO Prop</span>
-            </div>
-            <div class="flex items-center space-x-3 p-3 bg-zinc-950/60 rounded border border-zinc-800">
-              <span class="text-purple-400 font-bold">FN</span>
-              <span class="text-zinc-400 text-[11px]">FundedNext</span>
-            </div>
-            <div class="flex items-center space-x-3 p-3 bg-zinc-950/60 rounded border border-zinc-800">
-              <span class="text-white font-bold">VPS</span>
-              <span class="text-zinc-400 text-[11px]">Windows 24/7</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Bottom: Certifications / Verification -->
-        <div>
-          <h2 class="text-xs font-mono uppercase tracking-[0.25em] text-zinc-300 font-bold mb-4">
-            VERIFICATION & AUDIT
-          </h2>
-          <div class="bg-cardDark p-6 rounded-xl border border-zinc-800/80 space-y-4">
-            <div class="flex items-center space-x-4">
-              <div class="w-8 h-8 rounded bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold text-xs">
-                ✓
-              </div>
-              <div>
-                <div class="text-xs font-bold text-white">Myfxbook Verified Real Account</div>
-                <div class="text-[11px] text-zinc-500">Track Record Audited • 2024–2026</div>
-              </div>
-            </div>
-            <div class="flex items-center space-x-4">
-              <div class="w-8 h-8 rounded bg-blue-500/20 text-blue-400 flex items-center justify-center font-bold text-xs">
-                ★
-              </div>
-              <div>
-                <div class="text-xs font-bold text-white">Prop Firm Evaluation Certified</div>
-                <div class="text-[11px] text-zinc-500">Zero Rule Violation Guarantee</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-    </section>
-
-    <!-- ========================================================================= -->
-    <!-- 6. FIVE-STEP PROCESS (EXACT "MY DESIGN PROCESS" 5-STEP HORIZONTAL FLOW) -->
-    <!-- ========================================================================= -->
-    <section id="process" class="my-16">
-      
-      <h2 class="text-xs font-mono uppercase tracking-[0.25em] text-zinc-300 font-bold mb-6">
-        SETUP & EXECUTION PROCESS
-      </h2>
-
-      <div class="bg-cardDark rounded-2xl border border-zinc-800/80 p-8 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6">
-        
-        <!-- Step 1 -->
-        <div>
-          <div class="text-xs font-mono font-bold text-white mb-1">01 DISCOVER</div>
-          <p class="text-[11px] text-zinc-400 mb-4">Pilih modal & pair trading yang diinginkan.</p>
-          <div class="text-zinc-500 text-lg">🔍</div>
-        </div>
-
-        <!-- Step 2 -->
-        <div>
-          <div class="text-xs font-mono font-bold text-white mb-1">02 DOWNLOAD</div>
-          <p class="text-[11px] text-zinc-400 mb-4">Terima file .ex5 instan ke email Anda.</p>
-          <div class="text-zinc-500 text-lg">⚙️</div>
-        </div>
-
-        <!-- Step 3 -->
-        <div>
-          <div class="text-xs font-mono font-bold text-white mb-1">03 LOAD PRESET</div>
-          <p class="text-[11px] text-zinc-400 mb-4">Load file .set 1-klik di MetaTrader 5.</p>
-          <div class="text-zinc-500 text-lg">📄</div>
-        </div>
-
-        <!-- Step 4 -->
-        <div>
-          <div class="text-xs font-mono font-bold text-white mb-1">04 ACTIVATE</div>
-          <p class="text-[11px] text-zinc-400 mb-4">Aktifkan tombol Algo Trading di MT5.</p>
-          <div class="text-zinc-500 text-lg">&lt;/&gt;</div>
-        </div>
-
-        <!-- Step 5 -->
-        <div>
-          <div class="text-xs font-mono font-bold text-white mb-1">05 AUTOPILOT</div>
-          <p class="text-[11px] text-zinc-400 mb-4">EA berjalan 24/5 otomatis tanpa emosi.</p>
-          <div class="text-zinc-500 text-lg">🚀</div>
-        </div>
-
-      </div>
-
-    </section>
-
-    <!-- ========================================================================= -->
-    <!-- 7. BOTTOM BANNER & PAYMENT CHECKOUT (EXACT METALLIC SHINE "LET'S CREATE") -->
-    <!-- ========================================================================= -->
-    <section id="pricing" class="my-16">
-      
-      <div class="metallic-shine rounded-3xl border border-zinc-700/60 p-8 sm:p-12 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center shadow-2xl">
-        
-        <!-- Left: Huge Metallic Typography Header -->
-        <div class="lg:col-span-5">
-          <h2 class="text-3xl sm:text-4xl md:text-5xl font-black text-white uppercase tracking-tight leading-none mb-2">
-            LET'S TRADE<br/>
-            SOMETHING<br/>
-            EXTRAORDINARY ✦
-          </h2>
-          <p class="text-xs font-mono text-zinc-400 mt-3">
-            AEMETH MT5 EA v3.8 — LIFETIME LICENSE
-          </p>
-          <div class="mt-4 text-2xl font-mono font-bold text-white">
-            Rp 799.000 <span class="text-xs text-zinc-400 font-normal">/ $49 USD (Worldwide)</span>
-          </div>
-        </div>
-
-        <!-- Center: The Two Crucial Payment CTA Buttons -->
-        <div class="lg:col-span-4 space-y-3">
-          <p class="text-xs text-zinc-300 mb-2 font-medium">
-            Pilih metode pembayaran instan Anda:
-          </p>
-
-          <!-- 
-            ===================================================================================
-            LINK CHECKOUT PEMBAYARAN INDONESIA (MAYAR / TRIPAY / QRIS / VA):
-            Ganti link href="#" di bawah dengan link checkout MAYAR atau TRIPAY Anda.
-            Sistem Mayar/Tripay akan otomatis mengirimkan file EA & lisensi ke email pembeli.
-            ===================================================================================
-          -->
-          <a href="https://mayar.link/checkout-aemeth-ea" target="_blank" rel="noopener noreferrer" class="w-full py-3.5 px-5 bg-emerald-500 hover:bg-emerald-400 text-black font-bold text-xs uppercase tracking-wider flex items-center justify-between rounded-xl transition-all shadow-md group">
-            <span>Beli via QRIS / Bank Transfer (Otomatis)</span>
-            <span class="group-hover:translate-x-1 transition-transform">↗</span>
-          </a>
-
-          <!-- 
-            ===================================================================================
-            LINK CHECKOUT PEMBAYARAN GLOBAL (WHOP / GUMROAD / PAYPAL / CRYPTO):
-            Ganti link href="#" di bawah dengan link checkout WHOP / GUMROAD Anda
-            agar pembeli global langsung menerima file instan via email.
-            ===================================================================================
-          -->
-          <a href="https://whop.com/checkout/aemeth-trader-ea" target="_blank" rel="noopener noreferrer" class="w-full py-3.5 px-5 bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs uppercase tracking-wider flex items-center justify-between rounded-xl transition-all shadow-md group">
-            <span>Buy Worldwide — PayPal / Crypto</span>
-            <span class="group-hover:translate-x-1 transition-transform">↗</span>
-          </a>
-        </div>
-
-        <!-- Right: Instant Access Badge & Direct Contact Info -->
-        <div class="lg:col-span-3 lg:border-l border-zinc-800 lg:pl-8 space-y-3 text-xs font-mono text-zinc-400">
-          
-          <!-- Mandatory Instant Access Badge -->
-          <div class="p-3 bg-zinc-950/80 border border-zinc-800 rounded-lg text-emerald-400 text-[11px] leading-relaxed">
-            ⚡ <strong>Instant Access:</strong> File EA & Lisensi akan otomatis dikirim ke email Anda 1 detik setelah pembayaran berhasil.
-          </div>
-
-          <div class="space-y-1.5 pt-2 text-[11px]">
-            <div class="flex items-center space-x-2">
-              <span>✉️</span>
-              <a href="mailto:support@aemethtrader.com" class="hover:text-white">support@aemethtrader.com</a>
-            </div>
-            <div class="flex items-center space-x-2">
-              <span>💬</span>
-              <a href="https://t.me/aemethtrader" target="_blank" class="text-white hover:underline">@aemethtrader (Telegram)</a>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-
     </section>
 
   </main>
 
   <!-- ========================================================================= -->
-  <!-- 8. FOOTER (EXACT MINIMALIST BOTTOM BAR IN THE IMAGE) -->
+  <!-- 6. FOOTER & RISK DISCLAIMER -->
   <!-- ========================================================================= -->
-  <footer class="w-full border-t border-zinc-800/80 py-8 px-6 sm:px-12 max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between text-[11px] font-mono text-zinc-500 space-y-4 sm:space-y-0">
-    
-    <div>
-      © 2026 AEMETHTRADERANALIS. All Rights Reserved.
-    </div>
+  <footer class="bg-brandDarker border-t border-slate-800 pt-12 pb-10 text-slate-400 text-xs">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="flex flex-col md:flex-row items-center justify-between pb-8 border-b border-slate-800/80 gap-4">
+        <div class="flex items-center space-x-3">
+          <div class="w-8 h-8 rounded-lg bg-emerald-500 flex items-center justify-center text-slate-950 font-black text-sm">
+            A
+          </div>
+          <span class="font-extrabold text-white text-base tracking-wider">AEMETH TRADER</span>
+        </div>
+        <p class="text-slate-400 text-center md:text-right text-xs">
+          Butuh bantuan instalasi remote atau pertanyaan pra-pembelian? 
+          <a href="https://t.me/aemethtrader" target="_blank" class="text-emerald-400 font-bold hover:underline ml-1">
+            Hubungi Admin Telegram 💬
+          </a>
+        </p>
+      </div>
 
-    <div class="flex items-center space-x-6 text-zinc-400">
-      <span class="text-zinc-600">LET'S CONNECT</span>
-      <a href="https://t.me/aemethtrader" target="_blank" class="hover:text-white transition-colors">Telegram</a>
-      <a href="#" class="hover:text-white transition-colors">X / Twitter</a>
-      <a href="#" class="hover:text-white transition-colors">YouTube</a>
-      <a href="#" class="hover:text-white transition-colors">TradingView</a>
-    </div>
+      <div class="pt-6 text-[11px] text-slate-500 leading-relaxed space-y-3">
+        <p>
+          <strong>DISCLAIMER RISIKO TRADING:</strong> Perdagangan valuta asing (Forex), komoditas emas (XAUUSD), dan instrumen derivatif memiliki tingkat risiko finansial yang tinggi. Hasil pengujian masa lalu atau simulasi backtest dari Robot Expert Advisor (EA) tidak dapat dijadikan jaminan mutlak untuk performa di masa depan. Selalu gunakan manajemen risiko dan trading dengan modal yang bijak.
+        </p>
+        <div class="flex flex-col sm:flex-row items-center justify-between pt-2 text-slate-500">
+          <div>© 2026 AEMETH TRADER. All Rights Reserved.</div>
+          <div class="mt-2 sm:mt-0 space-x-4">
+            <a href="#" class="hover:text-slate-400">Syarat & Ketentuan</a>
+            <span>•</span>
+            <a href="#" class="hover:text-slate-400">Kebijakan Privasi</a>
+          </div>
+        </div>
+      </div>
 
+    </div>
   </footer>
+
+  <!-- ========================================================================= -->
+  <!-- 7. PURE JAVASCRIPT: FILTER LOGIC -->
+  <!-- ========================================================================= -->
+  <script>
+    function filterEACatalog(category, clickedBtn) {
+      // 1. Update filter button active states
+      const buttons = document.querySelectorAll('.filter-btn');
+      buttons.forEach(btn => {
+        btn.classList.remove('bg-emerald-500', 'text-slate-950', 'shadow-glow-green', 'border-emerald-400', 'active-filter');
+        btn.classList.add('bg-slate-800/80', 'text-slate-300', 'border-slate-700');
+      });
+
+      clickedBtn.classList.remove('bg-slate-800/80', 'text-slate-300', 'border-slate-700');
+      clickedBtn.classList.add('bg-emerald-500', 'text-slate-950', 'shadow-glow-green', 'border-emerald-400', 'active-filter');
+
+      // 2. Filter product cards
+      const cards = document.querySelectorAll('.product-card');
+      
+      cards.forEach(card => {
+        const capitalType = card.getAttribute('data-capital');
+
+        if (category === 'all') {
+          card.classList.remove('hide-card');
+        } else if (category === '100k') {
+          // Show cards suitable for <= 100k
+          if (capitalType === '100k') {
+            card.classList.remove('hide-card');
+          } else {
+            card.classList.add('hide-card');
+          }
+        } else if (category === '500k') {
+          // Show cards suitable for <= 500k (includes 100k and 500k)
+          if (capitalType === '100k' || capitalType === '500k') {
+            card.classList.remove('hide-card');
+          } else {
+            card.classList.add('hide-card');
+          }
+        } else if (category === '1m') {
+          // Show cards suitable for <= 1m (all tiers)
+          card.classList.remove('hide-card');
+        }
+      });
+    }
+  </script>
 
 </body>
 </html>
