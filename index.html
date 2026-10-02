@@ -71,18 +71,25 @@
     }
     .pill-btn { transition: all 0.2s ease; cursor: pointer; white-space: nowrap; flex-shrink: 0; }
   </style>
+  <style>
+    .faq-answer { display: none; }
+    .faq-answer.open { display: block; animation: faqFadeIn 0.25s ease-out; }
+    @keyframes faqFadeIn { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: translateY(0); } }
+    .faq-chevron { transition: transform 0.25s ease; display: inline-block; }
+    .faq-chevron.rotate { transform: rotate(180deg); }
+  </style>
 </head>
 <body class="antialiased selection:bg-white selection:text-black">
 <!-- NAV -->
-<header class="w-full pt-5 pb-4 px-4 sm:px-12 max-w-7xl mx-auto flex items-center justify-between z-40 sticky top-0 bg-bgDark/90 backdrop-blur-md border-b border-zinc-800/80">
-  <a href="#" class="flex items-center space-x-2.5 group">
+<header class="w-full pt-4 pb-3 px-4 sm:px-8 max-w-7xl mx-auto flex items-center justify-between z-40 sticky top-0 bg-bgDark/95 backdrop-blur-md border-b border-zinc-800/80">
+  <a href="#" class="flex items-center space-x-2.5 group shrink-0">
     <span class="font-serif text-2xl font-light tracking-tighter text-white">AT</span>
     <div class="flex flex-col">
       <span class="text-xs font-mono font-bold tracking-[0.25em] uppercase text-white">AEMETH <span class="text-emerald-400">TRADER</span></span>
       <span class="text-[8px] font-mono tracking-[0.3em] uppercase text-zinc-500" data-i18n="nav_sub_brand">SYSTEMATIC MT5 LAB</span>
     </div>
   </a>
-  <nav class="hidden lg:flex items-center space-x-6 text-xs font-mono font-semibold uppercase tracking-wider text-zinc-400">
+  <nav class="hidden xl:flex items-center space-x-5 text-xs font-mono font-semibold uppercase tracking-wider text-zinc-400">
     <a href="#performance-snapshot" class="hover:text-emerald-400 transition-colors" data-i18n="nav_perf">PERFORMANCE</a>
     <a href="#why-aemeth" class="hover:text-white transition-colors" data-i18n="nav_why">WHY AEMETH?</a>
     <a href="#paket-bundle" class="hover:text-amber-400 transition-colors">🎁 <span data-i18n="nav_bundle">PAKET BUNDLE</span></a>
@@ -91,19 +98,19 @@
     <a href="#package-includes" class="hover:text-zinc-200 transition-colors" data-i18n="nav_inc">INCLUSIONS</a>
     <a href="#faq" class="hover:text-amber-400 transition-colors">❓ <span data-i18n="nav_faq">FAQ</span></a>
   </nav>
-  <div class="flex items-center space-x-3">
+  <div class="flex items-center space-x-2.5 shrink-0">
     <!-- Status badge -->
     <div class="hidden sm:inline-flex items-center space-x-1.5 px-2.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-[10px] font-mono text-emerald-400">
       <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
       <span data-i18n="nav_status">Status EA: Active &amp; Verified</span>
     </div>
-    <!-- Language Toggle -->
-    <div class="flex items-center p-0.5 bg-zinc-900/90 border border-zinc-800 rounded-full text-xs font-mono">
-      <button id="lang-id-btn" onclick="setLanguage('id')" class="px-2.5 py-1 rounded-full text-xs font-bold transition-all bg-white text-black">ID</button>
-      <button id="lang-en-btn" onclick="setLanguage('en')" class="px-2.5 py-1 rounded-full text-xs font-medium text-zinc-400 hover:text-white transition-all">EN</button>
+    <!-- Language Toggle (Fixed prominent button) -->
+    <div class="flex items-center p-0.5 bg-zinc-900 border border-zinc-700/80 rounded-full text-xs font-mono shadow-sm">
+      <button id="lang-id-btn" onclick="setLanguage('id')" type="button" class="cursor-pointer px-3 py-1 rounded-full text-xs font-bold transition-all bg-white text-black shadow">ID</button>
+      <button id="lang-en-btn" onclick="setLanguage('en')" type="button" class="cursor-pointer px-3 py-1 rounded-full text-xs font-medium text-zinc-400 hover:text-white transition-all">EN</button>
     </div>
-    <a href="#paket-bundle" class="inline-flex items-center px-4 sm:px-5 py-2 bg-white text-black font-semibold text-xs rounded-full hover:bg-zinc-200 transition-all group">
-      <span data-i18n="nav_catalog">KATALOG EA</span> <span class="ml-1.5 group-hover:translate-x-0.5 transition-transform">↗</span>
+    <a href="#paket-bundle" class="inline-flex items-center px-3.5 sm:px-4 py-1.5 sm:py-2 bg-white text-black font-semibold text-xs rounded-full hover:bg-zinc-200 transition-all group shrink-0">
+      <span data-i18n="nav_catalog">KATALOG EA</span> <span class="ml-1 group-hover:translate-x-0.5 transition-transform">↗</span>
     </a>
   </div>
 </header>
@@ -299,7 +306,7 @@
 
   <div id="bundle-grid" class="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 items-stretch">
 
-    <!-- BUNDLE 1: Rp 3.000.000 — INSTITUTIONAL FLAGSHIP (ATTENTION MAGNET) -->
+    <!-- BUNDLE 1: Rp 3.000.000 / $199 USD — INSTITUTIONAL FLAGSHIP (ATTENTION MAGNET) -->
     <div class="bundle-card bg-gradient-to-b from-cardDark via-zinc-950 to-emerald-950/40 rounded-3xl border-2 border-emerald-400 shadow-[0_0_60px_-10px_rgba(16,185,129,0.45)] ring-2 ring-emerald-500/40 p-7 sm:p-8 flex flex-col justify-between relative overflow-hidden group scale-[1.01] hover:scale-[1.02] transition-transform">
       <!-- Top floating ribbon -->
       <div class="absolute top-0 right-0 bg-gradient-to-l from-emerald-500 via-teal-400 to-emerald-600 text-black font-mono font-black text-[10px] uppercase tracking-widest px-5 py-2 rounded-bl-2xl shadow-xl flex items-center gap-1.5">
@@ -392,11 +399,11 @@
       <div>
         <div class="mt-5 pt-4 border-t border-zinc-800/80">
           <div class="flex items-center space-x-2 mb-1 text-xs">
-            <span class="text-zinc-500 line-through font-mono">Rp 6.000.000</span>
+            <span class="text-zinc-500 line-through font-mono" data-i18n="price_orig_b1">Rp 6.000.000</span>
             <span class="text-emerald-400 font-bold font-mono text-[10px] bg-emerald-950/80 px-2.5 py-0.5 rounded-full border border-emerald-500/50" data-i18n="bundle_discount_badge">50% DISKON VIP</span>
           </div>
-          <div class="text-4xl sm:text-5xl font-black font-mono text-emerald-400 tracking-tight">Rp 3.000.000</div>
-          <div class="text-[11px] font-mono text-zinc-400 mt-0.5" data-i18n="bundle_usd">Loading...</div>
+          <div class="text-4xl sm:text-5xl font-black font-mono text-emerald-400 tracking-tight" data-i18n="price_main_b1">Rp 3.000.000</div>
+          <div class="text-[11px] font-mono text-zinc-400 mt-0.5" data-i18n="price_sub_b1">atau <strong>$199 USD</strong> &middot; Akses Seumur Hidup (6 Alat)</div>
         </div>
       <div class="mt-5 grid grid-cols-1 gap-2 text-[11px]">
         <a href="https://mayar.id/aemethtrader/master-bundle" target="_blank" class="flex items-center justify-center gap-2 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold tracking-wide transition-all shadow-md hover:scale-[1.01]"><span>🏦</span><span data-i18n="btn_pay_qris">QRIS / BANK TRANSFER</span></a>
@@ -406,7 +413,7 @@
       </div>
     </div>
 
-    <!-- BUNDLE 2: Rp 2.500.000 — BEST SELLER (MAXIMUM VALUE) -->
+    <!-- BUNDLE 2: Rp 2.500.000 / $165 USD — BEST SELLER (MAXIMUM VALUE) -->
     <div class="bundle-card bg-gradient-to-b from-cardDark via-zinc-950 to-amber-950/40 rounded-3xl border-2 border-amber-400 shadow-[0_0_60px_-10px_rgba(245,158,11,0.45)] ring-2 ring-amber-500/40 p-7 sm:p-8 flex flex-col justify-between hover:border-amber-300 relative overflow-hidden group scale-[1.01] hover:scale-[1.02] transition-transform">
       <!-- Best Seller Top Ribbon -->
       <div class="absolute top-0 right-0 bg-gradient-to-l from-amber-500 via-orange-500 to-amber-600 text-black font-mono font-black text-[10px] uppercase tracking-widest px-5 py-2 rounded-bl-2xl shadow-xl flex items-center gap-1.5">
@@ -468,11 +475,11 @@
         <div class="my-4 p-3.5 rounded-2xl bg-amber-950/30 border border-amber-500/40 text-xs font-mono">
           <div class="flex items-center justify-between text-zinc-400 text-[11px] mb-1">
             <span data-i18n="b2_val_calc_lbl">Total Harga Beli Satuan (14 Tools):</span>
-            <span class="line-through font-bold text-zinc-500">Rp 9.800.000+</span>
+            <span class="line-through font-bold text-zinc-500" data-i18n="b2_val_calc_orig">Rp 9.800.000+</span>
           </div>
           <div class="flex items-center justify-between text-amber-300 font-bold text-xs">
             <span data-i18n="b2_val_save_lbl">Penghematan Bersih Anda:</span>
-            <span class="text-emerald-400 font-black">+Rp 7.300.000 (Hemat 74%)</span>
+            <span class="text-emerald-400 font-black" data-i18n="b2_val_save_val">+Rp 7.300.000 (Hemat 74%)</span>
           </div>
         </div>
 
@@ -486,11 +493,11 @@
       <div>
         <div class="mt-5 pt-4 border-t border-zinc-800/80">
           <div class="flex items-center space-x-2 mb-1 text-xs">
-            <span class="text-zinc-500 line-through font-mono">Rp 5.000.000</span>
+            <span class="text-zinc-500 line-through font-mono" data-i18n="price_orig_b2">Rp 5.000.000</span>
             <span class="text-amber-400 font-bold font-mono text-[10px] bg-amber-950/80 px-2.5 py-0.5 rounded-full border border-amber-500/50" data-i18n="bundle2_discount_badge">50% DISKON LAUNCH</span>
           </div>
-          <div class="text-4xl sm:text-5xl font-black font-mono text-amber-400 tracking-tight">Rp 2.500.000</div>
-          <div class="text-[11px] font-mono text-zinc-400 mt-0.5" data-i18n="bundle2_usd">Loading...</div>
+          <div class="text-4xl sm:text-5xl font-black font-mono text-amber-400 tracking-tight" data-i18n="price_main_b2">Rp 2.500.000</div>
+          <div class="text-[11px] font-mono text-zinc-400 mt-0.5" data-i18n="price_sub_b2">atau <strong>$165 USD</strong> &middot; Akses Seumur Hidup (14 Alat)</div>
         </div>
       <div class="mt-5 grid grid-cols-1 gap-2 text-[11px]">
         <a href="https://mayar.id/aemethtrader/mega-bundle" target="_blank" class="flex items-center justify-center gap-2 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold tracking-wide transition-all shadow-md hover:scale-[1.01]"><span>🏦</span><span data-i18n="btn_pay_qris">QRIS / BANK TRANSFER</span></a>
@@ -500,7 +507,7 @@
       </div>
     </div>
 
-    <!-- BUNDLE 3: Rp 2.000.000 — STARTER BUNDLE -->
+    <!-- BUNDLE 3: Rp 2.000.000 / $130 USD — STARTER BUNDLE -->
     <div class="bundle-card bg-cardDark rounded-3xl border-2 border-sky-500/70 p-7 sm:p-8 flex flex-col justify-between hover:border-sky-400 shadow-glow-sky relative overflow-hidden group">
       <div class="absolute top-0 right-0 bg-gradient-to-l from-sky-600 to-sky-800 text-white font-mono font-bold text-[9px] uppercase tracking-widest px-4 py-1.5 rounded-bl-2xl" data-i18n="b4_badge">⚡ STARTER BUNDLE — 11 TOOLS</div>
       <div>
@@ -520,11 +527,11 @@
       <div>
         <div class="mt-6 pt-4 border-t border-zinc-800/80">
           <div class="flex items-center space-x-2 mb-1 text-xs">
-            <span class="text-zinc-500 line-through font-mono">Rp 4.000.000</span>
+            <span class="text-zinc-500 line-through font-mono" data-i18n="price_orig_b4">Rp 4.000.000</span>
             <span class="text-sky-400 font-bold font-mono text-[10px] bg-sky-950/60 px-2 py-0.5 rounded-full border border-sky-800/60" data-i18n="bundle4_discount_badge">50% DISKON</span>
           </div>
-          <div class="text-3xl sm:text-4xl font-black font-mono text-sky-400 tracking-tight">Rp 2.000.000</div>
-          <div class="text-[11px] font-mono text-zinc-500 mt-0.5" data-i18n="bundle4_usd">Loading...</div>
+          <div class="text-3xl sm:text-4xl font-black font-mono text-sky-400 tracking-tight" data-i18n="price_main_b4">Rp 2.000.000</div>
+          <div class="text-[11px] font-mono text-zinc-500 mt-0.5" data-i18n="price_sub_b4">atau <strong>$130 USD</strong> &middot; Akses Seumur Hidup (11 Alat)</div>
         </div>
       <div class="mt-5 grid grid-cols-1 gap-2 text-[11px]">
         <a href="https://mayar.id/aemethtrader/starter-bundle" target="_blank" class="flex items-center justify-center gap-2 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold tracking-wide transition-all shadow-md hover:scale-[1.01]"><span>🏦</span><span data-i18n="btn_pay_qris">QRIS / BANK TRANSFER</span></a>
@@ -534,7 +541,7 @@
       </div>
     </div>
 
-    <!-- BUNDLE 4: Rp 1.500.000 — HYBRID SUITE -->
+    <!-- BUNDLE 4: Rp 1.500.000 / $99 USD — HYBRID SUITE -->
     <div class="bundle-card bg-cardDark rounded-3xl border-2 border-purple-500/70 p-7 sm:p-8 flex flex-col justify-between hover:border-purple-400 shadow-glow-purple relative overflow-hidden group">
       <div class="absolute top-0 right-0 bg-gradient-to-l from-purple-600 to-purple-800 text-white font-mono font-bold text-[9px] uppercase tracking-widest px-4 py-1.5 rounded-bl-2xl" data-i18n="b3_badge">🔥 HYBRID BUNDLE — 11 TOOLS</div>
       <div>
@@ -554,11 +561,11 @@
       <div>
         <div class="mt-6 pt-4 border-t border-zinc-800/80">
           <div class="flex items-center space-x-2 mb-1 text-xs">
-            <span class="text-zinc-500 line-through font-mono">Rp 3.000.000</span>
+            <span class="text-zinc-500 line-through font-mono" data-i18n="price_orig_b3">Rp 3.000.000</span>
             <span class="text-purple-400 font-bold font-mono text-[10px] bg-purple-950/60 px-2 py-0.5 rounded-full border border-purple-800/60" data-i18n="bundle3_discount_badge">50% DISKON</span>
           </div>
-          <div class="text-3xl sm:text-4xl font-black font-mono text-purple-400 tracking-tight">Rp 1.500.000</div>
-          <div class="text-[11px] font-mono text-zinc-500 mt-0.5" data-i18n="bundle3_usd">Loading...</div>
+          <div class="text-3xl sm:text-4xl font-black font-mono text-purple-400 tracking-tight" data-i18n="price_main_b3">Rp 1.500.000</div>
+          <div class="text-[11px] font-mono text-zinc-500 mt-0.5" data-i18n="price_sub_b3">atau <strong>$99 USD</strong> &middot; Akses Seumur Hidup (11 Alat)</div>
         </div>
       <div class="mt-5 grid grid-cols-1 gap-2 text-[11px]">
         <a href="https://mayar.id/aemethtrader/hybrid-bundle" target="_blank" class="flex items-center justify-center gap-2 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold tracking-wide transition-all shadow-md hover:scale-[1.01]"><span>🏦</span><span data-i18n="btn_pay_qris">QRIS / BANK TRANSFER</span></a>
@@ -587,11 +594,11 @@
   <div class="mb-4">
     <div class="text-xs font-mono text-zinc-400 mb-2 uppercase tracking-widest" data-i18n="lbl_price">FILTER HARGA PRODUK:</div>
     <div class="filter-scroll flex gap-2 pb-1">
-      <button class="price-btn active whitespace-nowrap px-3 py-1.5 rounded-full text-xs font-bold font-mono border border-emerald-500 text-emerald-300 bg-emerald-950/50 transition-all" onclick="setPrice('all',this)" data-i18n="f_all">SEMUA (13)</button>
-      <button class="price-btn whitespace-nowrap px-3 py-1.5 rounded-full text-xs font-mono border border-zinc-700 text-zinc-400 hover:border-zinc-500 transition-all" onclick="setPrice('100k',this)" data-i18n="f_100k">≤ Rp 100K</button>
-      <button class="price-btn whitespace-nowrap px-3 py-1.5 rounded-full text-xs font-mono border border-zinc-700 text-zinc-400 hover:border-zinc-500 transition-all" onclick="setPrice('500k',this)" data-i18n="f_500k">≤ Rp 500K</button>
-      <button class="price-btn whitespace-nowrap px-3 py-1.5 rounded-full text-xs font-mono border border-zinc-700 text-zinc-400 hover:border-zinc-500 transition-all" onclick="setPrice('1m',this)" data-i18n="f_1m">≤ Rp 1JT</button>
-      <button class="price-btn whitespace-nowrap px-3 py-1.5 rounded-full text-xs font-mono border border-zinc-700 text-zinc-400 hover:border-zinc-500 transition-all" onclick="setPrice('vip',this)" data-i18n="f_vip">👑 VIP (> 1JT)</button>
+      <button class="price-btn active whitespace-nowrap px-3 py-1.5 rounded-full text-xs font-bold font-mono border border-emerald-500 text-emerald-300 bg-emerald-950/50 transition-all cursor-pointer" onclick="setPrice('all',this)" data-i18n="f_all">SEMUA (13)</button>
+      <button class="price-btn whitespace-nowrap px-3 py-1.5 rounded-full text-xs font-mono border border-zinc-700 text-zinc-400 hover:border-zinc-500 transition-all cursor-pointer" onclick="setPrice('100k',this)" data-i18n="f_100k">≤ Rp 100K</button>
+      <button class="price-btn whitespace-nowrap px-3 py-1.5 rounded-full text-xs font-mono border border-zinc-700 text-zinc-400 hover:border-zinc-500 transition-all cursor-pointer" onclick="setPrice('500k',this)" data-i18n="f_500k">≤ Rp 500K</button>
+      <button class="price-btn whitespace-nowrap px-3 py-1.5 rounded-full text-xs font-mono border border-zinc-700 text-zinc-400 hover:border-zinc-500 transition-all cursor-pointer" onclick="setPrice('1m',this)" data-i18n="f_1m">≤ Rp 1JT</button>
+      <button class="price-btn whitespace-nowrap px-3 py-1.5 rounded-full text-xs font-mono border border-zinc-700 text-zinc-400 hover:border-zinc-500 transition-all cursor-pointer" onclick="setPrice('vip',this)" data-i18n="f_vip">👑 VIP (> 1JT)</button>
     </div>
   </div>
 
@@ -599,14 +606,14 @@
   <div class="mb-8">
     <div class="text-xs font-mono text-zinc-400 mb-2 uppercase tracking-widest" data-i18n="lbl_cat">KATEGORI STRATEGI:</div>
     <div class="filter-scroll flex gap-2 pb-1">
-      <button class="cat-btn active whitespace-nowrap px-3 py-1.5 rounded-full text-xs font-bold font-mono border border-emerald-500 text-emerald-300 bg-emerald-950/50 transition-all" onclick="setCategory('all',this)" data-i18n="c_all">SEMUA (13)</button>
-      <button class="cat-btn whitespace-nowrap px-3 py-1.5 rounded-full text-xs font-mono border border-zinc-700 text-zinc-400 hover:border-zinc-500 transition-all" onclick="setCategory('flagship',this)" data-i18n="c_flagship">👑 FLAGSHIP</button>
-      <button class="cat-btn whitespace-nowrap px-3 py-1.5 rounded-full text-xs font-mono border border-zinc-700 text-zinc-400 hover:border-zinc-500 transition-all" onclick="setCategory('hft',this)" data-i18n="c_hft">⚡ HIGH-FREQUENCY</button>
-      <button class="cat-btn whitespace-nowrap px-3 py-1.5 rounded-full text-xs font-mono border border-zinc-700 text-zinc-400 hover:border-zinc-500 transition-all" onclick="setCategory('risk',this)" data-i18n="c_risk">🛡️ RISK MANAGEMENT</button>
-      <button class="cat-btn whitespace-nowrap px-3 py-1.5 rounded-full text-xs font-mono border border-zinc-700 text-zinc-400 hover:border-zinc-500 transition-all" onclick="setCategory('trend',this)" data-i18n="c_trend">📈 TREND SYSTEM</button>
-      <button class="cat-btn whitespace-nowrap px-3 py-1.5 rounded-full text-xs font-mono border border-zinc-700 text-zinc-400 hover:border-zinc-500 transition-all" onclick="setCategory('gold',this)" data-i18n="c_gold">🥇 GOLD SCALPING</button>
-      <button class="cat-btn whitespace-nowrap px-3 py-1.5 rounded-full text-xs font-mono border border-zinc-700 text-zinc-400 hover:border-zinc-500 transition-all" onclick="setCategory('starter',this)" data-i18n="c_starter">🌱 STARTER &amp; CENT</button>
-      <button class="cat-btn whitespace-nowrap px-3 py-1.5 rounded-full text-xs font-mono border border-zinc-700 text-zinc-400 hover:border-zinc-500 transition-all" onclick="setCategory('budget',this)" data-i18n="c_budget">🏷️ BUDGET (≤ 100K)</button>
+      <button class="cat-btn active whitespace-nowrap px-3 py-1.5 rounded-full text-xs font-bold font-mono border border-emerald-500 text-emerald-300 bg-emerald-950/50 transition-all cursor-pointer" onclick="setCategory('all',this)" data-i18n="c_all">SEMUA (13)</button>
+      <button class="cat-btn whitespace-nowrap px-3 py-1.5 rounded-full text-xs font-mono border border-zinc-700 text-zinc-400 hover:border-zinc-500 transition-all cursor-pointer" onclick="setCategory('flagship',this)" data-i18n="c_flagship">👑 FLAGSHIP</button>
+      <button class="cat-btn whitespace-nowrap px-3 py-1.5 rounded-full text-xs font-mono border border-zinc-700 text-zinc-400 hover:border-zinc-500 transition-all cursor-pointer" onclick="setCategory('hft',this)" data-i18n="c_hft">⚡ HIGH-FREQUENCY</button>
+      <button class="cat-btn whitespace-nowrap px-3 py-1.5 rounded-full text-xs font-mono border border-zinc-700 text-zinc-400 hover:border-zinc-500 transition-all cursor-pointer" onclick="setCategory('risk',this)" data-i18n="c_risk">🛡️ RISK MANAGEMENT</button>
+      <button class="cat-btn whitespace-nowrap px-3 py-1.5 rounded-full text-xs font-mono border border-zinc-700 text-zinc-400 hover:border-zinc-500 transition-all cursor-pointer" onclick="setCategory('trend',this)" data-i18n="c_trend">📈 TREND SYSTEM</button>
+      <button class="cat-btn whitespace-nowrap px-3 py-1.5 rounded-full text-xs font-mono border border-zinc-700 text-zinc-400 hover:border-zinc-500 transition-all cursor-pointer" onclick="setCategory('gold',this)" data-i18n="c_gold">🥇 GOLD SCALPING</button>
+      <button class="cat-btn whitespace-nowrap px-3 py-1.5 rounded-full text-xs font-mono border border-zinc-700 text-zinc-400 hover:border-zinc-500 transition-all cursor-pointer" onclick="setCategory('starter',this)" data-i18n="c_starter">🌱 STARTER &amp; CENT</button>
+      <button class="cat-btn whitespace-nowrap px-3 py-1.5 rounded-full text-xs font-mono border border-zinc-700 text-zinc-400 hover:border-zinc-500 transition-all cursor-pointer" onclick="setCategory('budget',this)" data-i18n="c_budget">🏷️ BUDGET (≤ 100K)</button>
     </div>
   </div>
 
@@ -639,19 +646,19 @@
       <div>
         <div class="mt-6 pt-4 border-t border-zinc-800/80">
           <div class="flex items-center space-x-2 mb-1 text-xs">
-            <span class="text-zinc-500 line-through font-mono">Rp 4.000.000</span>
+            <span class="text-zinc-500 line-through font-mono" data-i18n="p1_orig">Rp 4.000.000</span>
             <span class="text-emerald-400 font-bold font-mono text-[10px] bg-emerald-950/60 px-2 py-0.5 rounded-full border border-emerald-800/60" data-i18n="disc_badge">50% Launch Price</span>
           </div>
-          <div class="text-2xl font-black font-mono text-amber-400 tracking-tight">Rp 2.000.000</div>
-          <div class="text-[11px] font-mono text-zinc-500 mt-0.5" data-i18n="price1_sub">Loading...</div>
+          <div class="text-2xl font-black font-mono text-amber-400 tracking-tight" data-i18n="p1_main">Rp 2.000.000</div>
+          <div class="text-[11px] font-mono text-zinc-500 mt-0.5" data-i18n="p1_sub">atau <strong>$135 USD</strong> &middot; Lisensi Seumur Hidup</div>
         </div>
         <div class="mt-3">
-          <button onclick="openModal('neural-master')" class="w-full py-2 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-white text-xs font-bold tracking-wide transition-all" data-i18n="btn_detail">LIHAT DETAIL 📄</button>
+          <button onclick="openModal('neural-master')" class="w-full py-2 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-white text-xs font-bold tracking-wide transition-all cursor-pointer" data-i18n="btn_detail">LIHAT DETAIL 📄</button>
         </div>
       <div class="mt-5 grid grid-cols-1 gap-2 text-[11px]">
-        <a href="https://mayar.id/aemethtrader/neural-master" target="_blank" class="flex items-center justify-center gap-2 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold tracking-wide transition-all shadow-md"><span>🏦</span><span data-i18n="btn_pay_qris">QRIS / BANK TRANSFER</span></a>
-        <a href="https://aemethtrader.gumroad.com/l/neural-master" target="_blank" class="flex items-center justify-center gap-2 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold tracking-wide transition-all shadow-md"><span>💳</span><span data-i18n="btn_pay_global">PAYPAL / CARD / CRYPTO</span></a>
-        <a href="https://t.me/aemethtrader?text=Halo%20AEMETH%20TRADER%2C%20saya%20mau%20beli%20Neural%20Master%20v4" target="_blank" class="flex items-center justify-center gap-2 py-2.5 rounded-xl bg-zinc-700 hover:bg-zinc-600 text-white font-bold tracking-wide transition-all shadow-md"><span>📱</span><span data-i18n="btn_pay_tg">P2P CRYPTO (USDT)</span></a>
+        <a href="https://mayar.id/aemethtrader/neural-master" target="_blank" class="flex items-center justify-center gap-2 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold tracking-wide transition-all shadow-md hover:scale-[1.01]"><span>🏦</span><span data-i18n="btn_pay_qris">QRIS / BANK TRANSFER</span></a>
+        <a href="https://aemethtrader.gumroad.com/l/neural-master" target="_blank" class="flex items-center justify-center gap-2 py-3 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold tracking-wide transition-all shadow-md hover:scale-[1.01]"><span>💳</span><span data-i18n="btn_pay_global">PAYPAL / CARD / CRYPTO</span></a>
+        <a href="https://t.me/aemethtrader?text=Halo%20AEMETH%20TRADER%2C%20saya%20mau%20beli%20Neural%20Master%20v4" target="_blank" class="flex items-center justify-center gap-2 py-3 rounded-xl bg-zinc-700 hover:bg-zinc-600 text-white font-bold tracking-wide transition-all shadow-md hover:scale-[1.01]"><span>📱</span><span data-i18n="btn_pay_tg">P2P CRYPTO (USDT)</span></a>
       </div>
       </div>
     </div>
@@ -678,19 +685,19 @@
       <div>
         <div class="mt-6 pt-4 border-t border-zinc-800/80">
           <div class="flex items-center space-x-2 mb-1 text-xs">
-            <span class="text-zinc-500 line-through font-mono">Rp 3.000.000</span>
+            <span class="text-zinc-500 line-through font-mono" data-i18n="p2_orig">Rp 4.000.000</span>
             <span class="text-emerald-400 font-bold font-mono text-[10px] bg-emerald-950/60 px-2 py-0.5 rounded-full border border-emerald-800/60" data-i18n="disc_badge">50% Launch Price</span>
           </div>
-          <div class="text-2xl font-black font-mono text-cyan-400 tracking-tight">Rp 1.500.000</div>
-          <div class="text-[11px] font-mono text-zinc-500 mt-0.5" data-i18n="price2_sub">Loading...</div>
+          <div class="text-2xl font-black font-mono text-cyan-400 tracking-tight" data-i18n="p2_main">Rp 2.000.000</div>
+          <div class="text-[11px] font-mono text-zinc-500 mt-0.5" data-i18n="p2_sub">atau <strong>$135 USD</strong> &middot; Lisensi Seumur Hidup</div>
         </div>
         <div class="mt-3">
-          <button onclick="openModal('hft-multi')" class="w-full py-2 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-white text-xs font-bold tracking-wide transition-all" data-i18n="btn_detail">LIHAT DETAIL 📄</button>
+          <button onclick="openModal('hft-multi')" class="w-full py-2 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-white text-xs font-bold tracking-wide transition-all cursor-pointer" data-i18n="btn_detail">LIHAT DETAIL 📄</button>
         </div>
       <div class="mt-5 grid grid-cols-1 gap-2 text-[11px]">
-        <a href="https://mayar.id/aemethtrader/hft-multi" target="_blank" class="flex items-center justify-center gap-2 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold tracking-wide transition-all shadow-md"><span>🏦</span><span data-i18n="btn_pay_qris">QRIS / BANK TRANSFER</span></a>
-        <a href="https://aemethtrader.gumroad.com/l/hft-multi" target="_blank" class="flex items-center justify-center gap-2 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold tracking-wide transition-all shadow-md"><span>💳</span><span data-i18n="btn_pay_global">PAYPAL / CARD / CRYPTO</span></a>
-        <a href="https://t.me/aemethtrader?text=Halo%20AEMETH%20TRADER%2C%20saya%20mau%20beli%20HFT%20Multi%20v3" target="_blank" class="flex items-center justify-center gap-2 py-2.5 rounded-xl bg-zinc-700 hover:bg-zinc-600 text-white font-bold tracking-wide transition-all shadow-md"><span>📱</span><span data-i18n="btn_pay_tg">P2P CRYPTO (USDT)</span></a>
+        <a href="https://mayar.id/aemethtrader/hft-multi" target="_blank" class="flex items-center justify-center gap-2 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold tracking-wide transition-all shadow-md hover:scale-[1.01]"><span>🏦</span><span data-i18n="btn_pay_qris">QRIS / BANK TRANSFER</span></a>
+        <a href="https://aemethtrader.gumroad.com/l/hft-multi" target="_blank" class="flex items-center justify-center gap-2 py-3 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold tracking-wide transition-all shadow-md hover:scale-[1.01]"><span>💳</span><span data-i18n="btn_pay_global">PAYPAL / CARD / CRYPTO</span></a>
+        <a href="https://t.me/aemethtrader?text=Halo%20AEMETH%20TRADER%2C%20saya%20mau%20beli%20HFT%20Multi%20v3" target="_blank" class="flex items-center justify-center gap-2 py-3 rounded-xl bg-zinc-700 hover:bg-zinc-600 text-white font-bold tracking-wide transition-all shadow-md hover:scale-[1.01]"><span>📱</span><span data-i18n="btn_pay_tg">P2P CRYPTO (USDT)</span></a>
       </div>
       </div>
     </div>
@@ -717,19 +724,19 @@
       <div>
         <div class="mt-6 pt-4 border-t border-zinc-800/80">
           <div class="flex items-center space-x-2 mb-1 text-xs">
-            <span class="text-zinc-500 line-through font-mono">Rp 1.599.000</span>
+            <span class="text-zinc-500 line-through font-mono" data-i18n="p3_orig">Rp 4.000.000</span>
             <span class="text-emerald-400 font-bold font-mono text-[10px] bg-emerald-950/60 px-2 py-0.5 rounded-full border border-emerald-800/60" data-i18n="disc_badge">50% Launch Price</span>
           </div>
-          <div class="text-2xl font-black font-mono text-rose-400 tracking-tight">Rp 799.000</div>
-          <div class="text-[11px] font-mono text-zinc-500 mt-0.5" data-i18n="price3_sub">Loading...</div>
+          <div class="text-2xl font-black font-mono text-rose-400 tracking-tight" data-i18n="p3_main">Rp 2.000.000</div>
+          <div class="text-[11px] font-mono text-zinc-500 mt-0.5" data-i18n="p3_sub">atau <strong>$135 USD</strong> &middot; Lisensi Seumur Hidup</div>
         </div>
         <div class="mt-3">
-          <button onclick="openModal('prop-shield')" class="w-full py-2 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-white text-xs font-bold tracking-wide transition-all" data-i18n="btn_detail">LIHAT DETAIL 📄</button>
+          <button onclick="openModal('prop-shield')" class="w-full py-2 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-white text-xs font-bold tracking-wide transition-all cursor-pointer" data-i18n="btn_detail">LIHAT DETAIL 📄</button>
         </div>
       <div class="mt-5 grid grid-cols-1 gap-2 text-[11px]">
-        <a href="https://mayar.id/aemethtrader/prop-shield" target="_blank" class="flex items-center justify-center gap-2 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold tracking-wide transition-all shadow-md"><span>🏦</span><span data-i18n="btn_pay_qris">QRIS / BANK TRANSFER</span></a>
-        <a href="https://aemethtrader.gumroad.com/l/prop-shield" target="_blank" class="flex items-center justify-center gap-2 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold tracking-wide transition-all shadow-md"><span>💳</span><span data-i18n="btn_pay_global">PAYPAL / CARD / CRYPTO</span></a>
-        <a href="https://t.me/aemethtrader?text=Halo%20AEMETH%20TRADER%2C%20saya%20mau%20beli%20Prop%20Shield%20v2" target="_blank" class="flex items-center justify-center gap-2 py-2.5 rounded-xl bg-zinc-700 hover:bg-zinc-600 text-white font-bold tracking-wide transition-all shadow-md"><span>📱</span><span data-i18n="btn_pay_tg">P2P CRYPTO (USDT)</span></a>
+        <a href="https://mayar.id/aemethtrader/prop-shield" target="_blank" class="flex items-center justify-center gap-2 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold tracking-wide transition-all shadow-md hover:scale-[1.01]"><span>🏦</span><span data-i18n="btn_pay_qris">QRIS / BANK TRANSFER</span></a>
+        <a href="https://aemethtrader.gumroad.com/l/prop-shield" target="_blank" class="flex items-center justify-center gap-2 py-3 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold tracking-wide transition-all shadow-md hover:scale-[1.01]"><span>💳</span><span data-i18n="btn_pay_global">PAYPAL / CARD / CRYPTO</span></a>
+        <a href="https://t.me/aemethtrader?text=Halo%20AEMETH%20TRADER%2C%20saya%20mau%20beli%20Prop%20Shield%20v2" target="_blank" class="flex items-center justify-center gap-2 py-3 rounded-xl bg-zinc-700 hover:bg-zinc-600 text-white font-bold tracking-wide transition-all shadow-md hover:scale-[1.01]"><span>📱</span><span data-i18n="btn_pay_tg">P2P CRYPTO (USDT)</span></a>
       </div>
       </div>
     </div>
@@ -756,19 +763,19 @@
       <div>
         <div class="mt-6 pt-4 border-t border-zinc-800/80">
           <div class="flex items-center space-x-2 mb-1 text-xs">
-            <span class="text-zinc-500 line-through font-mono">Rp 1.300.000</span>
+            <span class="text-zinc-500 line-through font-mono" data-i18n="p4_orig">Rp 4.000.000</span>
             <span class="text-emerald-400 font-bold font-mono text-[10px] bg-emerald-950/60 px-2 py-0.5 rounded-full border border-emerald-800/60" data-i18n="disc_badge">50% Launch Price</span>
           </div>
-          <div class="text-2xl font-black font-mono text-violet-400 tracking-tight">Rp 650.000</div>
-          <div class="text-[11px] font-mono text-zinc-500 mt-0.5" data-i18n="price4_sub">Loading...</div>
+          <div class="text-2xl font-black font-mono text-violet-400 tracking-tight" data-i18n="p4_main">Rp 2.000.000</div>
+          <div class="text-[11px] font-mono text-zinc-500 mt-0.5" data-i18n="p4_sub">atau <strong>$135 USD</strong> &middot; Lisensi Seumur Hidup</div>
         </div>
         <div class="mt-3">
-          <button onclick="openModal('trend-pulse')" class="w-full py-2 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-white text-xs font-bold tracking-wide transition-all" data-i18n="btn_detail">LIHAT DETAIL 📄</button>
+          <button onclick="openModal('trend-pulse')" class="w-full py-2 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-white text-xs font-bold tracking-wide transition-all cursor-pointer" data-i18n="btn_detail">LIHAT DETAIL 📄</button>
         </div>
       <div class="mt-5 grid grid-cols-1 gap-2 text-[11px]">
-        <a href="https://mayar.id/aemethtrader/trend-pulse" target="_blank" class="flex items-center justify-center gap-2 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold tracking-wide transition-all shadow-md"><span>🏦</span><span data-i18n="btn_pay_qris">QRIS / BANK TRANSFER</span></a>
-        <a href="https://aemethtrader.gumroad.com/l/trend-pulse" target="_blank" class="flex items-center justify-center gap-2 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold tracking-wide transition-all shadow-md"><span>💳</span><span data-i18n="btn_pay_global">PAYPAL / CARD / CRYPTO</span></a>
-        <a href="https://t.me/aemethtrader?text=Halo%20AEMETH%20TRADER%2C%20saya%20mau%20beli%20Trend%20Pulse%20v2" target="_blank" class="flex items-center justify-center gap-2 py-2.5 rounded-xl bg-zinc-700 hover:bg-zinc-600 text-white font-bold tracking-wide transition-all shadow-md"><span>📱</span><span data-i18n="btn_pay_tg">P2P CRYPTO (USDT)</span></a>
+        <a href="https://mayar.id/aemethtrader/trend-pulse" target="_blank" class="flex items-center justify-center gap-2 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold tracking-wide transition-all shadow-md hover:scale-[1.01]"><span>🏦</span><span data-i18n="btn_pay_qris">QRIS / BANK TRANSFER</span></a>
+        <a href="https://aemethtrader.gumroad.com/l/trend-pulse" target="_blank" class="flex items-center justify-center gap-2 py-3 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold tracking-wide transition-all shadow-md hover:scale-[1.01]"><span>💳</span><span data-i18n="btn_pay_global">PAYPAL / CARD / CRYPTO</span></a>
+        <a href="https://t.me/aemethtrader?text=Halo%20AEMETH%20TRADER%2C%20saya%20mau%20beli%20Trend%20Pulse%20v2" target="_blank" class="flex items-center justify-center gap-2 py-3 rounded-xl bg-zinc-700 hover:bg-zinc-600 text-white font-bold tracking-wide transition-all shadow-md hover:scale-[1.01]"><span>📱</span><span data-i18n="btn_pay_tg">P2P CRYPTO (USDT)</span></a>
       </div>
       </div>
     </div>
@@ -795,19 +802,19 @@
       <div>
         <div class="mt-6 pt-4 border-t border-zinc-800/80">
           <div class="flex items-center space-x-2 mb-1 text-xs">
-            <span class="text-zinc-500 line-through font-mono">Rp 1.000.000</span>
+            <span class="text-zinc-500 line-through font-mono" data-i18n="p5_orig">Rp 4.000.000</span>
             <span class="text-emerald-400 font-bold font-mono text-[10px] bg-emerald-950/60 px-2 py-0.5 rounded-full border border-emerald-800/60" data-i18n="disc_badge">50% Launch Price</span>
           </div>
-          <div class="text-2xl font-black font-mono text-yellow-400 tracking-tight">Rp 500.000</div>
-          <div class="text-[11px] font-mono text-zinc-500 mt-0.5" data-i18n="price5_sub">Loading...</div>
+          <div class="text-2xl font-black font-mono text-yellow-400 tracking-tight" data-i18n="p5_main">Rp 2.000.000</div>
+          <div class="text-[11px] font-mono text-zinc-500 mt-0.5" data-i18n="p5_sub">atau <strong>$135 USD</strong> &middot; Lisensi Seumur Hidup</div>
         </div>
         <div class="mt-3">
-          <button onclick="openModal('quantum-scalper')" class="w-full py-2 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-white text-xs font-bold tracking-wide transition-all" data-i18n="btn_detail">LIHAT DETAIL 📄</button>
+          <button onclick="openModal('quantum-scalper')" class="w-full py-2 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-white text-xs font-bold tracking-wide transition-all cursor-pointer" data-i18n="btn_detail">LIHAT DETAIL 📄</button>
         </div>
       <div class="mt-5 grid grid-cols-1 gap-2 text-[11px]">
-        <a href="https://mayar.id/aemethtrader/quantum-scalper" target="_blank" class="flex items-center justify-center gap-2 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold tracking-wide transition-all shadow-md"><span>🏦</span><span data-i18n="btn_pay_qris">QRIS / BANK TRANSFER</span></a>
-        <a href="https://aemethtrader.gumroad.com/l/quantum-scalper" target="_blank" class="flex items-center justify-center gap-2 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold tracking-wide transition-all shadow-md"><span>💳</span><span data-i18n="btn_pay_global">PAYPAL / CARD / CRYPTO</span></a>
-        <a href="https://t.me/aemethtrader?text=Halo%20AEMETH%20TRADER%2C%20saya%20mau%20beli%20Quantum%20Scalper%20Gold" target="_blank" class="flex items-center justify-center gap-2 py-2.5 rounded-xl bg-zinc-700 hover:bg-zinc-600 text-white font-bold tracking-wide transition-all shadow-md"><span>📱</span><span data-i18n="btn_pay_tg">P2P CRYPTO (USDT)</span></a>
+        <a href="https://mayar.id/aemethtrader/quantum-scalper" target="_blank" class="flex items-center justify-center gap-2 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold tracking-wide transition-all shadow-md hover:scale-[1.01]"><span>🏦</span><span data-i18n="btn_pay_qris">QRIS / BANK TRANSFER</span></a>
+        <a href="https://aemethtrader.gumroad.com/l/quantum-scalper" target="_blank" class="flex items-center justify-center gap-2 py-3 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold tracking-wide transition-all shadow-md hover:scale-[1.01]"><span>💳</span><span data-i18n="btn_pay_global">PAYPAL / CARD / CRYPTO</span></a>
+        <a href="https://t.me/aemethtrader?text=Halo%20AEMETH%20TRADER%2C%20saya%20mau%20beli%20Quantum%20Scalper%20Gold" target="_blank" class="flex items-center justify-center gap-2 py-3 rounded-xl bg-zinc-700 hover:bg-zinc-600 text-white font-bold tracking-wide transition-all shadow-md hover:scale-[1.01]"><span>📱</span><span data-i18n="btn_pay_tg">P2P CRYPTO (USDT)</span></a>
       </div>
       </div>
     </div>
@@ -834,19 +841,19 @@
       <div>
         <div class="mt-6 pt-4 border-t border-zinc-800/80">
           <div class="flex items-center space-x-2 mb-1 text-xs">
-            <span class="text-zinc-500 line-through font-mono">Rp 800.000</span>
+            <span class="text-zinc-500 line-through font-mono" data-i18n="p6_orig">Rp 4.000.000</span>
             <span class="text-emerald-400 font-bold font-mono text-[10px] bg-emerald-950/60 px-2 py-0.5 rounded-full border border-emerald-800/60" data-i18n="disc_badge">50% Launch Price</span>
           </div>
-          <div class="text-2xl font-black font-mono text-teal-400 tracking-tight">Rp 400.000</div>
-          <div class="text-[11px] font-mono text-zinc-500 mt-0.5" data-i18n="price6_sub">Loading...</div>
+          <div class="text-2xl font-black font-mono text-teal-400 tracking-tight" data-i18n="p6_main">Rp 2.000.000</div>
+          <div class="text-[11px] font-mono text-zinc-500 mt-0.5" data-i18n="p6_sub">atau <strong>$135 USD</strong> &middot; Lisensi Seumur Hidup</div>
         </div>
         <div class="mt-3">
-          <button onclick="openModal('micro-cent')" class="w-full py-2 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-white text-xs font-bold tracking-wide transition-all" data-i18n="btn_detail">LIHAT DETAIL 📄</button>
+          <button onclick="openModal('micro-cent')" class="w-full py-2 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-white text-xs font-bold tracking-wide transition-all cursor-pointer" data-i18n="btn_detail">LIHAT DETAIL 📄</button>
         </div>
       <div class="mt-5 grid grid-cols-1 gap-2 text-[11px]">
-        <a href="https://mayar.id/aemethtrader/micro-cent" target="_blank" class="flex items-center justify-center gap-2 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold tracking-wide transition-all shadow-md"><span>🏦</span><span data-i18n="btn_pay_qris">QRIS / BANK TRANSFER</span></a>
-        <a href="https://aemethtrader.gumroad.com/l/micro-cent" target="_blank" class="flex items-center justify-center gap-2 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold tracking-wide transition-all shadow-md"><span>💳</span><span data-i18n="btn_pay_global">PAYPAL / CARD / CRYPTO</span></a>
-        <a href="https://t.me/aemethtrader?text=Halo%20AEMETH%20TRADER%2C%20saya%20mau%20beli%20Micro%20Cent%20Trader" target="_blank" class="flex items-center justify-center gap-2 py-2.5 rounded-xl bg-zinc-700 hover:bg-zinc-600 text-white font-bold tracking-wide transition-all shadow-md"><span>📱</span><span data-i18n="btn_pay_tg">P2P CRYPTO (USDT)</span></a>
+        <a href="https://mayar.id/aemethtrader/micro-cent" target="_blank" class="flex items-center justify-center gap-2 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold tracking-wide transition-all shadow-md hover:scale-[1.01]"><span>🏦</span><span data-i18n="btn_pay_qris">QRIS / BANK TRANSFER</span></a>
+        <a href="https://aemethtrader.gumroad.com/l/micro-cent" target="_blank" class="flex items-center justify-center gap-2 py-3 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold tracking-wide transition-all shadow-md hover:scale-[1.01]"><span>💳</span><span data-i18n="btn_pay_global">PAYPAL / CARD / CRYPTO</span></a>
+        <a href="https://t.me/aemethtrader?text=Halo%20AEMETH%20TRADER%2C%20saya%20mau%20beli%20Micro%20Cent%20Trader" target="_blank" class="flex items-center justify-center gap-2 py-3 rounded-xl bg-zinc-700 hover:bg-zinc-600 text-white font-bold tracking-wide transition-all shadow-md hover:scale-[1.01]"><span>📱</span><span data-i18n="btn_pay_tg">P2P CRYPTO (USDT)</span></a>
       </div>
       </div>
     </div>
@@ -873,19 +880,19 @@
       <div>
         <div class="mt-6 pt-4 border-t border-zinc-800/80">
           <div class="flex items-center space-x-2 mb-1 text-xs">
-            <span class="text-zinc-500 line-through font-mono">Rp 200.000</span>
+            <span class="text-zinc-500 line-through font-mono" data-i18n="p7_orig">Rp 4.000.000</span>
             <span class="text-emerald-400 font-bold font-mono text-[10px] bg-emerald-950/60 px-2 py-0.5 rounded-full border border-emerald-800/60" data-i18n="disc_badge">50% Launch Price</span>
           </div>
-          <div class="text-2xl font-black font-mono text-lime-400 tracking-tight">Rp 100.000</div>
-          <div class="text-[11px] font-mono text-zinc-500 mt-0.5" data-i18n="price7_sub">Loading...</div>
+          <div class="text-2xl font-black font-mono text-lime-400 tracking-tight" data-i18n="p7_main">Rp 2.000.000</div>
+          <div class="text-[11px] font-mono text-zinc-500 mt-0.5" data-i18n="p7_sub">atau <strong>$135 USD</strong> &middot; Lisensi Seumur Hidup</div>
         </div>
         <div class="mt-3">
-          <button onclick="openModal('budget-scalper')" class="w-full py-2 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-white text-xs font-bold tracking-wide transition-all" data-i18n="btn_detail">LIHAT DETAIL 📄</button>
+          <button onclick="openModal('budget-scalper')" class="w-full py-2 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-white text-xs font-bold tracking-wide transition-all cursor-pointer" data-i18n="btn_detail">LIHAT DETAIL 📄</button>
         </div>
       <div class="mt-5 grid grid-cols-1 gap-2 text-[11px]">
-        <a href="https://mayar.id/aemethtrader/budget-scalper" target="_blank" class="flex items-center justify-center gap-2 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold tracking-wide transition-all shadow-md"><span>🏦</span><span data-i18n="btn_pay_qris">QRIS / BANK TRANSFER</span></a>
-        <a href="https://aemethtrader.gumroad.com/l/budget-scalper" target="_blank" class="flex items-center justify-center gap-2 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold tracking-wide transition-all shadow-md"><span>💳</span><span data-i18n="btn_pay_global">PAYPAL / CARD / CRYPTO</span></a>
-        <a href="https://t.me/aemethtrader?text=Halo%20AEMETH%20TRADER%2C%20saya%20mau%20beli%20Budget%20Scalper%20Nano" target="_blank" class="flex items-center justify-center gap-2 py-2.5 rounded-xl bg-zinc-700 hover:bg-zinc-600 text-white font-bold tracking-wide transition-all shadow-md"><span>📱</span><span data-i18n="btn_pay_tg">P2P CRYPTO (USDT)</span></a>
+        <a href="https://mayar.id/aemethtrader/budget-scalper" target="_blank" class="flex items-center justify-center gap-2 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold tracking-wide transition-all shadow-md hover:scale-[1.01]"><span>🏦</span><span data-i18n="btn_pay_qris">QRIS / BANK TRANSFER</span></a>
+        <a href="https://aemethtrader.gumroad.com/l/budget-scalper" target="_blank" class="flex items-center justify-center gap-2 py-3 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold tracking-wide transition-all shadow-md hover:scale-[1.01]"><span>💳</span><span data-i18n="btn_pay_global">PAYPAL / CARD / CRYPTO</span></a>
+        <a href="https://t.me/aemethtrader?text=Halo%20AEMETH%20TRADER%2C%20saya%20mau%20beli%20Budget%20Scalper%20Nano" target="_blank" class="flex items-center justify-center gap-2 py-3 rounded-xl bg-zinc-700 hover:bg-zinc-600 text-white font-bold tracking-wide transition-all shadow-md hover:scale-[1.01]"><span>📱</span><span data-i18n="btn_pay_tg">P2P CRYPTO (USDT)</span></a>
       </div>
       </div>
     </div>
@@ -912,19 +919,19 @@
       <div>
         <div class="mt-6 pt-4 border-t border-zinc-800/80">
           <div class="flex items-center space-x-2 mb-1 text-xs">
-            <span class="text-zinc-500 line-through font-mono">Rp 100.000</span>
+            <span class="text-zinc-500 line-through font-mono" data-i18n="p8_orig">Rp 4.000.000</span>
             <span class="text-emerald-400 font-bold font-mono text-[10px] bg-emerald-950/60 px-2 py-0.5 rounded-full border border-emerald-800/60" data-i18n="disc_badge">50% Launch Price</span>
           </div>
-          <div class="text-2xl font-black font-mono text-slate-400 tracking-tight">Rp 50.000</div>
-          <div class="text-[11px] font-mono text-zinc-500 mt-0.5" data-i18n="price8_sub">Loading...</div>
+          <div class="text-2xl font-black font-mono text-slate-400 tracking-tight" data-i18n="p8_main">Rp 2.000.000</div>
+          <div class="text-[11px] font-mono text-zinc-500 mt-0.5" data-i18n="p8_sub">atau <strong>$135 USD</strong> &middot; Lisensi Seumur Hidup</div>
         </div>
         <div class="mt-3">
-          <button onclick="openModal('mini-grid')" class="w-full py-2 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-white text-xs font-bold tracking-wide transition-all" data-i18n="btn_detail">LIHAT DETAIL 📄</button>
+          <button onclick="openModal('mini-grid')" class="w-full py-2 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-white text-xs font-bold tracking-wide transition-all cursor-pointer" data-i18n="btn_detail">LIHAT DETAIL 📄</button>
         </div>
       <div class="mt-5 grid grid-cols-1 gap-2 text-[11px]">
-        <a href="https://mayar.id/aemethtrader/mini-grid" target="_blank" class="flex items-center justify-center gap-2 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold tracking-wide transition-all shadow-md"><span>🏦</span><span data-i18n="btn_pay_qris">QRIS / BANK TRANSFER</span></a>
-        <a href="https://aemethtrader.gumroad.com/l/mini-grid" target="_blank" class="flex items-center justify-center gap-2 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold tracking-wide transition-all shadow-md"><span>💳</span><span data-i18n="btn_pay_global">PAYPAL / CARD / CRYPTO</span></a>
-        <a href="https://t.me/aemethtrader?text=Halo%20AEMETH%20TRADER%2C%20saya%20mau%20beli%20Mini%20Grid%20Breaker" target="_blank" class="flex items-center justify-center gap-2 py-2.5 rounded-xl bg-zinc-700 hover:bg-zinc-600 text-white font-bold tracking-wide transition-all shadow-md"><span>📱</span><span data-i18n="btn_pay_tg">P2P CRYPTO (USDT)</span></a>
+        <a href="https://mayar.id/aemethtrader/mini-grid" target="_blank" class="flex items-center justify-center gap-2 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold tracking-wide transition-all shadow-md hover:scale-[1.01]"><span>🏦</span><span data-i18n="btn_pay_qris">QRIS / BANK TRANSFER</span></a>
+        <a href="https://aemethtrader.gumroad.com/l/mini-grid" target="_blank" class="flex items-center justify-center gap-2 py-3 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold tracking-wide transition-all shadow-md hover:scale-[1.01]"><span>💳</span><span data-i18n="btn_pay_global">PAYPAL / CARD / CRYPTO</span></a>
+        <a href="https://t.me/aemethtrader?text=Halo%20AEMETH%20TRADER%2C%20saya%20mau%20beli%20Mini%20Grid%20Breaker" target="_blank" class="flex items-center justify-center gap-2 py-3 rounded-xl bg-zinc-700 hover:bg-zinc-600 text-white font-bold tracking-wide transition-all shadow-md hover:scale-[1.01]"><span>📱</span><span data-i18n="btn_pay_tg">P2P CRYPTO (USDT)</span></a>
       </div>
       </div>
     </div>
@@ -951,19 +958,19 @@
       <div>
         <div class="mt-6 pt-4 border-t border-zinc-800/80">
           <div class="flex items-center space-x-2 mb-1 text-xs">
-            <span class="text-zinc-500 line-through font-mono">Rp 1.300.000</span>
+            <span class="text-zinc-500 line-through font-mono" data-i18n="p9_orig">Rp 4.000.000</span>
             <span class="text-emerald-400 font-bold font-mono text-[10px] bg-emerald-950/60 px-2 py-0.5 rounded-full border border-emerald-800/60" data-i18n="disc_badge">50% Launch Price</span>
           </div>
-          <div class="text-2xl font-black font-mono text-orange-400 tracking-tight">Rp 650.000</div>
-          <div class="text-[11px] font-mono text-zinc-500 mt-0.5" data-i18n="price9_sub">Loading...</div>
+          <div class="text-2xl font-black font-mono text-orange-400 tracking-tight" data-i18n="p9_main">Rp 2.000.000</div>
+          <div class="text-[11px] font-mono text-zinc-500 mt-0.5" data-i18n="p9_sub">atau <strong>$135 USD</strong> &middot; Lisensi Seumur Hidup</div>
         </div>
         <div class="mt-3">
-          <button onclick="openModal('london-breakout')" class="w-full py-2 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-white text-xs font-bold tracking-wide transition-all" data-i18n="btn_detail">LIHAT DETAIL 📄</button>
+          <button onclick="openModal('london-breakout')" class="w-full py-2 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-white text-xs font-bold tracking-wide transition-all cursor-pointer" data-i18n="btn_detail">LIHAT DETAIL 📄</button>
         </div>
       <div class="mt-5 grid grid-cols-1 gap-2 text-[11px]">
-        <a href="https://mayar.id/aemethtrader/london-breakout" target="_blank" class="flex items-center justify-center gap-2 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold tracking-wide transition-all shadow-md"><span>🏦</span><span data-i18n="btn_pay_qris">QRIS / BANK TRANSFER</span></a>
-        <a href="https://aemethtrader.gumroad.com/l/london-breakout" target="_blank" class="flex items-center justify-center gap-2 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold tracking-wide transition-all shadow-md"><span>💳</span><span data-i18n="btn_pay_global">PAYPAL / CARD / CRYPTO</span></a>
-        <a href="https://t.me/aemethtrader?text=Halo%20AEMETH%20TRADER%2C%20saya%20mau%20beli%20London%20Breakout%20Rider" target="_blank" class="flex items-center justify-center gap-2 py-2.5 rounded-xl bg-zinc-700 hover:bg-zinc-600 text-white font-bold tracking-wide transition-all shadow-md"><span>📱</span><span data-i18n="btn_pay_tg">P2P CRYPTO (USDT)</span></a>
+        <a href="https://mayar.id/aemethtrader/london-breakout" target="_blank" class="flex items-center justify-center gap-2 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold tracking-wide transition-all shadow-md hover:scale-[1.01]"><span>🏦</span><span data-i18n="btn_pay_qris">QRIS / BANK TRANSFER</span></a>
+        <a href="https://aemethtrader.gumroad.com/l/london-breakout" target="_blank" class="flex items-center justify-center gap-2 py-3 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold tracking-wide transition-all shadow-md hover:scale-[1.01]"><span>💳</span><span data-i18n="btn_pay_global">PAYPAL / CARD / CRYPTO</span></a>
+        <a href="https://t.me/aemethtrader?text=Halo%20AEMETH%20TRADER%2C%20saya%20mau%20beli%20London%20Breakout%20Rider" target="_blank" class="flex items-center justify-center gap-2 py-3 rounded-xl bg-zinc-700 hover:bg-zinc-600 text-white font-bold tracking-wide transition-all shadow-md hover:scale-[1.01]"><span>📱</span><span data-i18n="btn_pay_tg">P2P CRYPTO (USDT)</span></a>
       </div>
       </div>
     </div>
@@ -990,19 +997,19 @@
       <div>
         <div class="mt-6 pt-4 border-t border-zinc-800/80">
           <div class="flex items-center space-x-2 mb-1 text-xs">
-            <span class="text-zinc-500 line-through font-mono">Rp 1.000.000</span>
+            <span class="text-zinc-500 line-through font-mono" data-i18n="p10_orig">Rp 4.000.000</span>
             <span class="text-emerald-400 font-bold font-mono text-[10px] bg-emerald-950/60 px-2 py-0.5 rounded-full border border-emerald-800/60" data-i18n="disc_badge">50% Launch Price</span>
           </div>
-          <div class="text-2xl font-black font-mono text-cyan-400 tracking-tight">Rp 500.000</div>
-          <div class="text-[11px] font-mono text-zinc-500 mt-0.5" data-i18n="price10_sub">Loading...</div>
+          <div class="text-2xl font-black font-mono text-cyan-400 tracking-tight" data-i18n="p10_main">Rp 2.000.000</div>
+          <div class="text-[11px] font-mono text-zinc-500 mt-0.5" data-i18n="p10_sub">atau <strong>$135 USD</strong> &middot; Lisensi Seumur Hidup</div>
         </div>
         <div class="mt-3">
-          <button onclick="openModal('grid-momentum')" class="w-full py-2 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-white text-xs font-bold tracking-wide transition-all" data-i18n="btn_detail">LIHAT DETAIL 📄</button>
+          <button onclick="openModal('grid-momentum')" class="w-full py-2 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-white text-xs font-bold tracking-wide transition-all cursor-pointer" data-i18n="btn_detail">LIHAT DETAIL 📄</button>
         </div>
       <div class="mt-5 grid grid-cols-1 gap-2 text-[11px]">
-        <a href="https://mayar.id/aemethtrader/grid-momentum" target="_blank" class="flex items-center justify-center gap-2 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold tracking-wide transition-all shadow-md"><span>🏦</span><span data-i18n="btn_pay_qris">QRIS / BANK TRANSFER</span></a>
-        <a href="https://aemethtrader.gumroad.com/l/grid-momentum" target="_blank" class="flex items-center justify-center gap-2 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold tracking-wide transition-all shadow-md"><span>💳</span><span data-i18n="btn_pay_global">PAYPAL / CARD / CRYPTO</span></a>
-        <a href="https://t.me/aemethtrader?text=Halo%20AEMETH%20TRADER%2C%20saya%20mau%20beli%20Grid%20Momentum%20Pro" target="_blank" class="flex items-center justify-center gap-2 py-2.5 rounded-xl bg-zinc-700 hover:bg-zinc-600 text-white font-bold tracking-wide transition-all shadow-md"><span>📱</span><span data-i18n="btn_pay_tg">P2P CRYPTO (USDT)</span></a>
+        <a href="https://mayar.id/aemethtrader/grid-momentum" target="_blank" class="flex items-center justify-center gap-2 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold tracking-wide transition-all shadow-md hover:scale-[1.01]"><span>🏦</span><span data-i18n="btn_pay_qris">QRIS / BANK TRANSFER</span></a>
+        <a href="https://aemethtrader.gumroad.com/l/grid-momentum" target="_blank" class="flex items-center justify-center gap-2 py-3 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold tracking-wide transition-all shadow-md hover:scale-[1.01]"><span>💳</span><span data-i18n="btn_pay_global">PAYPAL / CARD / CRYPTO</span></a>
+        <a href="https://t.me/aemethtrader?text=Halo%20AEMETH%20TRADER%2C%20saya%20mau%20beli%20Grid%20Momentum%20Pro" target="_blank" class="flex items-center justify-center gap-2 py-3 rounded-xl bg-zinc-700 hover:bg-zinc-600 text-white font-bold tracking-wide transition-all shadow-md hover:scale-[1.01]"><span>📱</span><span data-i18n="btn_pay_tg">P2P CRYPTO (USDT)</span></a>
       </div>
       </div>
     </div>
@@ -1029,19 +1036,19 @@
       <div>
         <div class="mt-6 pt-4 border-t border-zinc-800/80">
           <div class="flex items-center space-x-2 mb-1 text-xs">
-            <span class="text-zinc-500 line-through font-mono">Rp 1.599.000</span>
+            <span class="text-zinc-500 line-through font-mono" data-i18n="p11_orig">Rp 4.000.000</span>
             <span class="text-emerald-400 font-bold font-mono text-[10px] bg-emerald-950/60 px-2 py-0.5 rounded-full border border-emerald-800/60" data-i18n="disc_badge">50% Launch Price</span>
           </div>
-          <div class="text-2xl font-black font-mono text-rose-400 tracking-tight">Rp 799.000</div>
-          <div class="text-[11px] font-mono text-zinc-500 mt-0.5" data-i18n="price11_sub">Loading...</div>
+          <div class="text-2xl font-black font-mono text-rose-400 tracking-tight" data-i18n="p11_main">Rp 2.000.000</div>
+          <div class="text-[11px] font-mono text-zinc-500 mt-0.5" data-i18n="p11_sub">atau <strong>$135 USD</strong> &middot; Lisensi Seumur Hidup</div>
         </div>
         <div class="mt-3">
-          <button onclick="openModal('news-armor')" class="w-full py-2 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-white text-xs font-bold tracking-wide transition-all" data-i18n="btn_detail">LIHAT DETAIL 📄</button>
+          <button onclick="openModal('news-armor')" class="w-full py-2 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-white text-xs font-bold tracking-wide transition-all cursor-pointer" data-i18n="btn_detail">LIHAT DETAIL 📄</button>
         </div>
       <div class="mt-5 grid grid-cols-1 gap-2 text-[11px]">
-        <a href="https://mayar.id/aemethtrader/news-armor" target="_blank" class="flex items-center justify-center gap-2 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold tracking-wide transition-all shadow-md"><span>🏦</span><span data-i18n="btn_pay_qris">QRIS / BANK TRANSFER</span></a>
-        <a href="https://aemethtrader.gumroad.com/l/news-armor" target="_blank" class="flex items-center justify-center gap-2 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold tracking-wide transition-all shadow-md"><span>💳</span><span data-i18n="btn_pay_global">PAYPAL / CARD / CRYPTO</span></a>
-        <a href="https://t.me/aemethtrader?text=Halo%20AEMETH%20TRADER%2C%20saya%20mau%20beli%20News%20Volatility%20Armor" target="_blank" class="flex items-center justify-center gap-2 py-2.5 rounded-xl bg-zinc-700 hover:bg-zinc-600 text-white font-bold tracking-wide transition-all shadow-md"><span>📱</span><span data-i18n="btn_pay_tg">P2P CRYPTO (USDT)</span></a>
+        <a href="https://mayar.id/aemethtrader/news-armor" target="_blank" class="flex items-center justify-center gap-2 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold tracking-wide transition-all shadow-md hover:scale-[1.01]"><span>🏦</span><span data-i18n="btn_pay_qris">QRIS / BANK TRANSFER</span></a>
+        <a href="https://aemethtrader.gumroad.com/l/news-armor" target="_blank" class="flex items-center justify-center gap-2 py-3 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold tracking-wide transition-all shadow-md hover:scale-[1.01]"><span>💳</span><span data-i18n="btn_pay_global">PAYPAL / CARD / CRYPTO</span></a>
+        <a href="https://t.me/aemethtrader?text=Halo%20AEMETH%20TRADER%2C%20saya%20mau%20beli%20News%20Volatility%20Armor" target="_blank" class="flex items-center justify-center gap-2 py-3 rounded-xl bg-zinc-700 hover:bg-zinc-600 text-white font-bold tracking-wide transition-all shadow-md hover:scale-[1.01]"><span>📱</span><span data-i18n="btn_pay_tg">P2P CRYPTO (USDT)</span></a>
       </div>
       </div>
     </div>
@@ -1068,19 +1075,19 @@
       <div>
         <div class="mt-6 pt-4 border-t border-zinc-800/80">
           <div class="flex items-center space-x-2 mb-1 text-xs">
-            <span class="text-zinc-500 line-through font-mono">Rp 800.000</span>
+            <span class="text-zinc-500 line-through font-mono" data-i18n="p12_orig">Rp 4.000.000</span>
             <span class="text-emerald-400 font-bold font-mono text-[10px] bg-emerald-950/60 px-2 py-0.5 rounded-full border border-emerald-800/60" data-i18n="disc_badge">50% Launch Price</span>
           </div>
-          <div class="text-2xl font-black font-mono text-yellow-400 tracking-tight">Rp 400.000</div>
-          <div class="text-[11px] font-mono text-zinc-500 mt-0.5" data-i18n="price12_sub">Loading...</div>
+          <div class="text-2xl font-black font-mono text-yellow-400 tracking-tight" data-i18n="p12_main">Rp 2.000.000</div>
+          <div class="text-[11px] font-mono text-zinc-500 mt-0.5" data-i18n="p12_sub">atau <strong>$135 USD</strong> &middot; Lisensi Seumur Hidup</div>
         </div>
         <div class="mt-3">
-          <button onclick="openModal('night-scalper')" class="w-full py-2 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-white text-xs font-bold tracking-wide transition-all" data-i18n="btn_detail">LIHAT DETAIL 📄</button>
+          <button onclick="openModal('night-scalper')" class="w-full py-2 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-white text-xs font-bold tracking-wide transition-all cursor-pointer" data-i18n="btn_detail">LIHAT DETAIL 📄</button>
         </div>
       <div class="mt-5 grid grid-cols-1 gap-2 text-[11px]">
-        <a href="https://mayar.id/aemethtrader/night-scalper" target="_blank" class="flex items-center justify-center gap-2 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold tracking-wide transition-all shadow-md"><span>🏦</span><span data-i18n="btn_pay_qris">QRIS / BANK TRANSFER</span></a>
-        <a href="https://aemethtrader.gumroad.com/l/night-scalper" target="_blank" class="flex items-center justify-center gap-2 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold tracking-wide transition-all shadow-md"><span>💳</span><span data-i18n="btn_pay_global">PAYPAL / CARD / CRYPTO</span></a>
-        <a href="https://t.me/aemethtrader?text=Halo%20AEMETH%20TRADER%2C%20saya%20mau%20beli%20Night%20Scalper%20Elite" target="_blank" class="flex items-center justify-center gap-2 py-2.5 rounded-xl bg-zinc-700 hover:bg-zinc-600 text-white font-bold tracking-wide transition-all shadow-md"><span>📱</span><span data-i18n="btn_pay_tg">P2P CRYPTO (USDT)</span></a>
+        <a href="https://mayar.id/aemethtrader/night-scalper" target="_blank" class="flex items-center justify-center gap-2 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold tracking-wide transition-all shadow-md hover:scale-[1.01]"><span>🏦</span><span data-i18n="btn_pay_qris">QRIS / BANK TRANSFER</span></a>
+        <a href="https://aemethtrader.gumroad.com/l/night-scalper" target="_blank" class="flex items-center justify-center gap-2 py-3 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold tracking-wide transition-all shadow-md hover:scale-[1.01]"><span>💳</span><span data-i18n="btn_pay_global">PAYPAL / CARD / CRYPTO</span></a>
+        <a href="https://t.me/aemethtrader?text=Halo%20AEMETH%20TRADER%2C%20saya%20mau%20beli%20Night%20Scalper%20Elite" target="_blank" class="flex items-center justify-center gap-2 py-3 rounded-xl bg-zinc-700 hover:bg-zinc-600 text-white font-bold tracking-wide transition-all shadow-md hover:scale-[1.01]"><span>📱</span><span data-i18n="btn_pay_tg">P2P CRYPTO (USDT)</span></a>
       </div>
       </div>
     </div>
@@ -1107,19 +1114,19 @@
       <div>
         <div class="mt-6 pt-4 border-t border-zinc-800/80">
           <div class="flex items-center space-x-2 mb-1 text-xs">
-            <span class="text-zinc-500 line-through font-mono">Rp 3.000.000</span>
+            <span class="text-zinc-500 line-through font-mono" data-i18n="p13_orig">Rp 4.000.000</span>
             <span class="text-emerald-400 font-bold font-mono text-[10px] bg-emerald-950/60 px-2 py-0.5 rounded-full border border-emerald-800/60" data-i18n="disc_badge">50% Launch Price</span>
           </div>
-          <div class="text-2xl font-black font-mono text-violet-400 tracking-tight">Rp 1.500.000</div>
-          <div class="text-[11px] font-mono text-zinc-500 mt-0.5" data-i18n="price13_sub">Loading...</div>
+          <div class="text-2xl font-black font-mono text-violet-400 tracking-tight" data-i18n="p13_main">Rp 2.000.000</div>
+          <div class="text-[11px] font-mono text-zinc-500 mt-0.5" data-i18n="p13_sub">atau <strong>$135 USD</strong> &middot; Lisensi Seumur Hidup</div>
         </div>
         <div class="mt-3">
-          <button onclick="openModal('swing-multi')" class="w-full py-2 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-white text-xs font-bold tracking-wide transition-all" data-i18n="btn_detail">LIHAT DETAIL 📄</button>
+          <button onclick="openModal('swing-multi')" class="w-full py-2 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-white text-xs font-bold tracking-wide transition-all cursor-pointer" data-i18n="btn_detail">LIHAT DETAIL 📄</button>
         </div>
       <div class="mt-5 grid grid-cols-1 gap-2 text-[11px]">
-        <a href="https://mayar.id/aemethtrader/swing-multi" target="_blank" class="flex items-center justify-center gap-2 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold tracking-wide transition-all shadow-md"><span>🏦</span><span data-i18n="btn_pay_qris">QRIS / BANK TRANSFER</span></a>
-        <a href="https://aemethtrader.gumroad.com/l/swing-multi" target="_blank" class="flex items-center justify-center gap-2 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold tracking-wide transition-all shadow-md"><span>💳</span><span data-i18n="btn_pay_global">PAYPAL / CARD / CRYPTO</span></a>
-        <a href="https://t.me/aemethtrader?text=Halo%20AEMETH%20TRADER%2C%20saya%20mau%20beli%20Multi%20Currency%20Swing" target="_blank" class="flex items-center justify-center gap-2 py-2.5 rounded-xl bg-zinc-700 hover:bg-zinc-600 text-white font-bold tracking-wide transition-all shadow-md"><span>📱</span><span data-i18n="btn_pay_tg">P2P CRYPTO (USDT)</span></a>
+        <a href="https://mayar.id/aemethtrader/swing-multi" target="_blank" class="flex items-center justify-center gap-2 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold tracking-wide transition-all shadow-md hover:scale-[1.01]"><span>🏦</span><span data-i18n="btn_pay_qris">QRIS / BANK TRANSFER</span></a>
+        <a href="https://aemethtrader.gumroad.com/l/swing-multi" target="_blank" class="flex items-center justify-center gap-2 py-3 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold tracking-wide transition-all shadow-md hover:scale-[1.01]"><span>💳</span><span data-i18n="btn_pay_global">PAYPAL / CARD / CRYPTO</span></a>
+        <a href="https://t.me/aemethtrader?text=Halo%20AEMETH%20TRADER%2C%20saya%20mau%20beli%20Multi%20Currency%20Swing" target="_blank" class="flex items-center justify-center gap-2 py-3 rounded-xl bg-zinc-700 hover:bg-zinc-600 text-white font-bold tracking-wide transition-all shadow-md hover:scale-[1.01]"><span>📱</span><span data-i18n="btn_pay_tg">P2P CRYPTO (USDT)</span></a>
       </div>
       </div>
     </div>
@@ -1155,16 +1162,16 @@
       <div>
         <div class="mt-6 pt-4 border-t border-zinc-800/80">
           <div class="flex items-center space-x-2 mb-1 text-xs">
-            <span class="text-zinc-500 line-through font-mono">Rp 900.000</span>
+            <span class="text-zinc-500 line-through font-mono" data-i18n="ind1_orig">Rp 900.000</span>
             <span class="text-emerald-400 font-bold font-mono text-[10px] bg-emerald-950/60 px-2 py-0.5 rounded-full border border-emerald-800/60" data-i18n="disc_badge">50% Launch Price</span>
           </div>
-          <div class="text-2xl font-black font-mono text-purple-400 tracking-tight">Rp 450.000</div>
-          <div class="text-[11px] font-mono text-zinc-500 mt-0.5" data-i18n="ind1_usd">Loading...</div>
+          <div class="text-2xl font-black font-mono text-purple-400 tracking-tight" data-i18n="ind1_main">Rp 450.000</div>
+          <div class="text-[11px] font-mono text-zinc-500 mt-0.5" data-i18n="ind1_sub">atau <strong>$30 USD</strong> &middot; Lisensi Seumur Hidup</div>
         </div>
       <div class="mt-5 grid grid-cols-1 gap-2 text-[11px]">
-        <a href="https://mayar.id/aemethtrader/ind-ob" target="_blank" class="flex items-center justify-center gap-2 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold tracking-wide transition-all shadow-md"><span>🏦</span><span data-i18n="btn_pay_qris">QRIS / BANK TRANSFER</span></a>
-        <a href="https://aemethtrader.gumroad.com/l/ind-ob" target="_blank" class="flex items-center justify-center gap-2 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold tracking-wide transition-all shadow-md"><span>💳</span><span data-i18n="btn_pay_global">PAYPAL / CARD / CRYPTO</span></a>
-        <a href="https://t.me/aemethtrader?text=Halo%20AEMETH%20TRADER%2C%20saya%20mau%20beli%20Indikator%20Order%20Block" target="_blank" class="flex items-center justify-center gap-2 py-2.5 rounded-xl bg-zinc-700 hover:bg-zinc-600 text-white font-bold tracking-wide transition-all shadow-md"><span>📱</span><span data-i18n="btn_pay_tg">P2P CRYPTO (USDT)</span></a>
+        <a href="https://mayar.id/aemethtrader/ind-ob" target="_blank" class="flex items-center justify-center gap-2 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold tracking-wide transition-all shadow-md hover:scale-[1.01]"><span>🏦</span><span data-i18n="btn_pay_qris">QRIS / BANK TRANSFER</span></a>
+        <a href="https://aemethtrader.gumroad.com/l/ind-ob" target="_blank" class="flex items-center justify-center gap-2 py-3 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold tracking-wide transition-all shadow-md hover:scale-[1.01]"><span>💳</span><span data-i18n="btn_pay_global">PAYPAL / CARD / CRYPTO</span></a>
+        <a href="https://t.me/aemethtrader?text=Halo%20AEMETH%20TRADER%2C%20saya%20mau%20beli%20Indikator%20Order%20Block" target="_blank" class="flex items-center justify-center gap-2 py-3 rounded-xl bg-zinc-700 hover:bg-zinc-600 text-white font-bold tracking-wide transition-all shadow-md hover:scale-[1.01]"><span>📱</span><span data-i18n="btn_pay_tg">P2P CRYPTO (USDT)</span></a>
       </div>
       </div>
     </div>
@@ -1188,16 +1195,16 @@
       <div>
         <div class="mt-6 pt-4 border-t border-zinc-800/80">
           <div class="flex items-center space-x-2 mb-1 text-xs">
-            <span class="text-zinc-500 line-through font-mono">Rp 750.000</span>
+            <span class="text-zinc-500 line-through font-mono" data-i18n="ind2_orig">Rp 900.000</span>
             <span class="text-emerald-400 font-bold font-mono text-[10px] bg-emerald-950/60 px-2 py-0.5 rounded-full border border-emerald-800/60" data-i18n="disc_badge">50% Launch Price</span>
           </div>
-          <div class="text-2xl font-black font-mono text-emerald-400 tracking-tight">Rp 375.000</div>
-          <div class="text-[11px] font-mono text-zinc-500 mt-0.5" data-i18n="ind2_usd">Loading...</div>
+          <div class="text-2xl font-black font-mono text-emerald-400 tracking-tight" data-i18n="ind2_main">Rp 450.000</div>
+          <div class="text-[11px] font-mono text-zinc-500 mt-0.5" data-i18n="ind2_sub">atau <strong>$30 USD</strong> &middot; Lisensi Seumur Hidup</div>
         </div>
       <div class="mt-5 grid grid-cols-1 gap-2 text-[11px]">
-        <a href="https://mayar.id/aemethtrader/ind-signal" target="_blank" class="flex items-center justify-center gap-2 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold tracking-wide transition-all shadow-md"><span>🏦</span><span data-i18n="btn_pay_qris">QRIS / BANK TRANSFER</span></a>
-        <a href="https://aemethtrader.gumroad.com/l/ind-signal" target="_blank" class="flex items-center justify-center gap-2 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold tracking-wide transition-all shadow-md"><span>💳</span><span data-i18n="btn_pay_global">PAYPAL / CARD / CRYPTO</span></a>
-        <a href="https://t.me/aemethtrader?text=Halo%20AEMETH%20TRADER%2C%20saya%20mau%20beli%20Indikator%20Arrow%20Signal" target="_blank" class="flex items-center justify-center gap-2 py-2.5 rounded-xl bg-zinc-700 hover:bg-zinc-600 text-white font-bold tracking-wide transition-all shadow-md"><span>📱</span><span data-i18n="btn_pay_tg">P2P CRYPTO (USDT)</span></a>
+        <a href="https://mayar.id/aemethtrader/ind-signal" target="_blank" class="flex items-center justify-center gap-2 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold tracking-wide transition-all shadow-md hover:scale-[1.01]"><span>🏦</span><span data-i18n="btn_pay_qris">QRIS / BANK TRANSFER</span></a>
+        <a href="https://aemethtrader.gumroad.com/l/ind-signal" target="_blank" class="flex items-center justify-center gap-2 py-3 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold tracking-wide transition-all shadow-md hover:scale-[1.01]"><span>💳</span><span data-i18n="btn_pay_global">PAYPAL / CARD / CRYPTO</span></a>
+        <a href="https://t.me/aemethtrader?text=Halo%20AEMETH%20TRADER%2C%20saya%20mau%20beli%20Indikator%20Arrow%20Signal" target="_blank" class="flex items-center justify-center gap-2 py-3 rounded-xl bg-zinc-700 hover:bg-zinc-600 text-white font-bold tracking-wide transition-all shadow-md hover:scale-[1.01]"><span>📱</span><span data-i18n="btn_pay_tg">P2P CRYPTO (USDT)</span></a>
       </div>
       </div>
     </div>
@@ -1221,16 +1228,16 @@
       <div>
         <div class="mt-6 pt-4 border-t border-zinc-800/80">
           <div class="flex items-center space-x-2 mb-1 text-xs">
-            <span class="text-zinc-500 line-through font-mono">Rp 600.000</span>
+            <span class="text-zinc-500 line-through font-mono" data-i18n="ind3_orig">Rp 900.000</span>
             <span class="text-emerald-400 font-bold font-mono text-[10px] bg-emerald-950/60 px-2 py-0.5 rounded-full border border-emerald-800/60" data-i18n="disc_badge">50% Launch Price</span>
           </div>
-          <div class="text-2xl font-black font-mono text-rose-400 tracking-tight">Rp 300.000</div>
-          <div class="text-[11px] font-mono text-zinc-500 mt-0.5" data-i18n="ind3_usd">Loading...</div>
+          <div class="text-2xl font-black font-mono text-rose-400 tracking-tight" data-i18n="ind3_main">Rp 450.000</div>
+          <div class="text-[11px] font-mono text-zinc-500 mt-0.5" data-i18n="ind3_sub">atau <strong>$30 USD</strong> &middot; Lisensi Seumur Hidup</div>
         </div>
       <div class="mt-5 grid grid-cols-1 gap-2 text-[11px]">
-        <a href="https://mayar.id/aemethtrader/ind-sd" target="_blank" class="flex items-center justify-center gap-2 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold tracking-wide transition-all shadow-md"><span>🏦</span><span data-i18n="btn_pay_qris">QRIS / BANK TRANSFER</span></a>
-        <a href="https://aemethtrader.gumroad.com/l/ind-sd" target="_blank" class="flex items-center justify-center gap-2 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold tracking-wide transition-all shadow-md"><span>💳</span><span data-i18n="btn_pay_global">PAYPAL / CARD / CRYPTO</span></a>
-        <a href="https://t.me/aemethtrader?text=Halo%20AEMETH%20TRADER%2C%20saya%20mau%20beli%20Indikator%20Supply%20Demand" target="_blank" class="flex items-center justify-center gap-2 py-2.5 rounded-xl bg-zinc-700 hover:bg-zinc-600 text-white font-bold tracking-wide transition-all shadow-md"><span>📱</span><span data-i18n="btn_pay_tg">P2P CRYPTO (USDT)</span></a>
+        <a href="https://mayar.id/aemethtrader/ind-sd" target="_blank" class="flex items-center justify-center gap-2 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold tracking-wide transition-all shadow-md hover:scale-[1.01]"><span>🏦</span><span data-i18n="btn_pay_qris">QRIS / BANK TRANSFER</span></a>
+        <a href="https://aemethtrader.gumroad.com/l/ind-sd" target="_blank" class="flex items-center justify-center gap-2 py-3 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold tracking-wide transition-all shadow-md hover:scale-[1.01]"><span>💳</span><span data-i18n="btn_pay_global">PAYPAL / CARD / CRYPTO</span></a>
+        <a href="https://t.me/aemethtrader?text=Halo%20AEMETH%20TRADER%2C%20saya%20mau%20beli%20Indikator%20Supply%20Demand" target="_blank" class="flex items-center justify-center gap-2 py-3 rounded-xl bg-zinc-700 hover:bg-zinc-600 text-white font-bold tracking-wide transition-all shadow-md hover:scale-[1.01]"><span>📱</span><span data-i18n="btn_pay_tg">P2P CRYPTO (USDT)</span></a>
       </div>
       </div>
     </div>
@@ -1254,16 +1261,16 @@
       <div>
         <div class="mt-6 pt-4 border-t border-zinc-800/80">
           <div class="flex items-center space-x-2 mb-1 text-xs">
-            <span class="text-zinc-500 line-through font-mono">Rp 400.000</span>
+            <span class="text-zinc-500 line-through font-mono" data-i18n="ind4_orig">Rp 900.000</span>
             <span class="text-emerald-400 font-bold font-mono text-[10px] bg-emerald-950/60 px-2 py-0.5 rounded-full border border-emerald-800/60" data-i18n="disc_badge">50% Launch Price</span>
           </div>
-          <div class="text-2xl font-black font-mono text-amber-400 tracking-tight">Rp 200.000</div>
-          <div class="text-[11px] font-mono text-zinc-500 mt-0.5" data-i18n="ind4_usd">Loading...</div>
+          <div class="text-2xl font-black font-mono text-amber-400 tracking-tight" data-i18n="ind4_main">Rp 450.000</div>
+          <div class="text-[11px] font-mono text-zinc-500 mt-0.5" data-i18n="ind4_sub">atau <strong>$30 USD</strong> &middot; Lisensi Seumur Hidup</div>
         </div>
       <div class="mt-5 grid grid-cols-1 gap-2 text-[11px]">
-        <a href="https://mayar.id/aemethtrader/ind-div" target="_blank" class="flex items-center justify-center gap-2 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold tracking-wide transition-all shadow-md"><span>🏦</span><span data-i18n="btn_pay_qris">QRIS / BANK TRANSFER</span></a>
-        <a href="https://aemethtrader.gumroad.com/l/ind-div" target="_blank" class="flex items-center justify-center gap-2 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold tracking-wide transition-all shadow-md"><span>💳</span><span data-i18n="btn_pay_global">PAYPAL / CARD / CRYPTO</span></a>
-        <a href="https://t.me/aemethtrader?text=Halo%20AEMETH%20TRADER%2C%20saya%20mau%20beli%20Indikator%20Divergence%20Matrix" target="_blank" class="flex items-center justify-center gap-2 py-2.5 rounded-xl bg-zinc-700 hover:bg-zinc-600 text-white font-bold tracking-wide transition-all shadow-md"><span>📱</span><span data-i18n="btn_pay_tg">P2P CRYPTO (USDT)</span></a>
+        <a href="https://mayar.id/aemethtrader/ind-div" target="_blank" class="flex items-center justify-center gap-2 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold tracking-wide transition-all shadow-md hover:scale-[1.01]"><span>🏦</span><span data-i18n="btn_pay_qris">QRIS / BANK TRANSFER</span></a>
+        <a href="https://aemethtrader.gumroad.com/l/ind-div" target="_blank" class="flex items-center justify-center gap-2 py-3 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold tracking-wide transition-all shadow-md hover:scale-[1.01]"><span>💳</span><span data-i18n="btn_pay_global">PAYPAL / CARD / CRYPTO</span></a>
+        <a href="https://t.me/aemethtrader?text=Halo%20AEMETH%20TRADER%2C%20saya%20mau%20beli%20Indikator%20Divergence%20Matrix" target="_blank" class="flex items-center justify-center gap-2 py-3 rounded-xl bg-zinc-700 hover:bg-zinc-600 text-white font-bold tracking-wide transition-all shadow-md hover:scale-[1.01]"><span>📱</span><span data-i18n="btn_pay_tg">P2P CRYPTO (USDT)</span></a>
       </div>
       </div>
     </div>
@@ -1287,16 +1294,16 @@
       <div>
         <div class="mt-6 pt-4 border-t border-zinc-800/80">
           <div class="flex items-center space-x-2 mb-1 text-xs">
-            <span class="text-zinc-500 line-through font-mono">Rp 300.000</span>
+            <span class="text-zinc-500 line-through font-mono" data-i18n="ind5_orig">Rp 900.000</span>
             <span class="text-emerald-400 font-bold font-mono text-[10px] bg-emerald-950/60 px-2 py-0.5 rounded-full border border-emerald-800/60" data-i18n="disc_badge">50% Launch Price</span>
           </div>
-          <div class="text-2xl font-black font-mono text-blue-400 tracking-tight">Rp 150.000</div>
-          <div class="text-[11px] font-mono text-zinc-500 mt-0.5" data-i18n="ind5_usd">Loading...</div>
+          <div class="text-2xl font-black font-mono text-blue-400 tracking-tight" data-i18n="ind5_main">Rp 450.000</div>
+          <div class="text-[11px] font-mono text-zinc-500 mt-0.5" data-i18n="ind5_sub">atau <strong>$30 USD</strong> &middot; Lisensi Seumur Hidup</div>
         </div>
       <div class="mt-5 grid grid-cols-1 gap-2 text-[11px]">
-        <a href="https://mayar.id/aemethtrader/ind-trend" target="_blank" class="flex items-center justify-center gap-2 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold tracking-wide transition-all shadow-md"><span>🏦</span><span data-i18n="btn_pay_qris">QRIS / BANK TRANSFER</span></a>
-        <a href="https://aemethtrader.gumroad.com/l/ind-trend" target="_blank" class="flex items-center justify-center gap-2 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold tracking-wide transition-all shadow-md"><span>💳</span><span data-i18n="btn_pay_global">PAYPAL / CARD / CRYPTO</span></a>
-        <a href="https://t.me/aemethtrader?text=Halo%20AEMETH%20TRADER%2C%20saya%20mau%20beli%20Indikator%20Trend%20Dashboard" target="_blank" class="flex items-center justify-center gap-2 py-2.5 rounded-xl bg-zinc-700 hover:bg-zinc-600 text-white font-bold tracking-wide transition-all shadow-md"><span>📱</span><span data-i18n="btn_pay_tg">P2P CRYPTO (USDT)</span></a>
+        <a href="https://mayar.id/aemethtrader/ind-trend" target="_blank" class="flex items-center justify-center gap-2 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold tracking-wide transition-all shadow-md hover:scale-[1.01]"><span>🏦</span><span data-i18n="btn_pay_qris">QRIS / BANK TRANSFER</span></a>
+        <a href="https://aemethtrader.gumroad.com/l/ind-trend" target="_blank" class="flex items-center justify-center gap-2 py-3 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold tracking-wide transition-all shadow-md hover:scale-[1.01]"><span>💳</span><span data-i18n="btn_pay_global">PAYPAL / CARD / CRYPTO</span></a>
+        <a href="https://t.me/aemethtrader?text=Halo%20AEMETH%20TRADER%2C%20saya%20mau%20beli%20Indikator%20Trend%20Dashboard" target="_blank" class="flex items-center justify-center gap-2 py-3 rounded-xl bg-zinc-700 hover:bg-zinc-600 text-white font-bold tracking-wide transition-all shadow-md hover:scale-[1.01]"><span>📱</span><span data-i18n="btn_pay_tg">P2P CRYPTO (USDT)</span></a>
       </div>
       </div>
     </div>
@@ -1320,16 +1327,16 @@
       <div>
         <div class="mt-6 pt-4 border-t border-zinc-800/80">
           <div class="flex items-center space-x-2 mb-1 text-xs">
-            <span class="text-zinc-500 line-through font-mono">Rp 200.000</span>
+            <span class="text-zinc-500 line-through font-mono" data-i18n="ind6_orig">Rp 900.000</span>
             <span class="text-emerald-400 font-bold font-mono text-[10px] bg-emerald-950/60 px-2 py-0.5 rounded-full border border-emerald-800/60" data-i18n="disc_badge">50% Launch Price</span>
           </div>
-          <div class="text-2xl font-black font-mono text-teal-400 tracking-tight">Rp 100.000</div>
-          <div class="text-[11px] font-mono text-zinc-500 mt-0.5" data-i18n="ind6_usd">Loading...</div>
+          <div class="text-2xl font-black font-mono text-teal-400 tracking-tight" data-i18n="ind6_main">Rp 450.000</div>
+          <div class="text-[11px] font-mono text-zinc-500 mt-0.5" data-i18n="ind6_sub">atau <strong>$30 USD</strong> &middot; Lisensi Seumur Hidup</div>
         </div>
       <div class="mt-5 grid grid-cols-1 gap-2 text-[11px]">
-        <a href="https://mayar.id/aemethtrader/ind-sr" target="_blank" class="flex items-center justify-center gap-2 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold tracking-wide transition-all shadow-md"><span>🏦</span><span data-i18n="btn_pay_qris">QRIS / BANK TRANSFER</span></a>
-        <a href="https://aemethtrader.gumroad.com/l/ind-sr" target="_blank" class="flex items-center justify-center gap-2 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold tracking-wide transition-all shadow-md"><span>💳</span><span data-i18n="btn_pay_global">PAYPAL / CARD / CRYPTO</span></a>
-        <a href="https://t.me/aemethtrader?text=Halo%20AEMETH%20TRADER%2C%20saya%20mau%20beli%20Indikator%20Support%20Resistance" target="_blank" class="flex items-center justify-center gap-2 py-2.5 rounded-xl bg-zinc-700 hover:bg-zinc-600 text-white font-bold tracking-wide transition-all shadow-md"><span>📱</span><span data-i18n="btn_pay_tg">P2P CRYPTO (USDT)</span></a>
+        <a href="https://mayar.id/aemethtrader/ind-sr" target="_blank" class="flex items-center justify-center gap-2 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold tracking-wide transition-all shadow-md hover:scale-[1.01]"><span>🏦</span><span data-i18n="btn_pay_qris">QRIS / BANK TRANSFER</span></a>
+        <a href="https://aemethtrader.gumroad.com/l/ind-sr" target="_blank" class="flex items-center justify-center gap-2 py-3 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold tracking-wide transition-all shadow-md hover:scale-[1.01]"><span>💳</span><span data-i18n="btn_pay_global">PAYPAL / CARD / CRYPTO</span></a>
+        <a href="https://t.me/aemethtrader?text=Halo%20AEMETH%20TRADER%2C%20saya%20mau%20beli%20Indikator%20Support%20Resistance" target="_blank" class="flex items-center justify-center gap-2 py-3 rounded-xl bg-zinc-700 hover:bg-zinc-600 text-white font-bold tracking-wide transition-all shadow-md hover:scale-[1.01]"><span>📱</span><span data-i18n="btn_pay_tg">P2P CRYPTO (USDT)</span></a>
       </div>
       </div>
     </div>
@@ -1353,16 +1360,16 @@
       <div>
         <div class="mt-6 pt-4 border-t border-zinc-800/80">
           <div class="flex items-center space-x-2 mb-1 text-xs">
-            <span class="text-zinc-500 line-through font-mono">Rp 100.000</span>
+            <span class="text-zinc-500 line-through font-mono" data-i18n="ind7_orig">Rp 900.000</span>
             <span class="text-emerald-400 font-bold font-mono text-[10px] bg-emerald-950/60 px-2 py-0.5 rounded-full border border-emerald-800/60" data-i18n="disc_badge">50% Launch Price</span>
           </div>
-          <div class="text-2xl font-black font-mono text-zinc-400 tracking-tight">Rp 50.000</div>
-          <div class="text-[11px] font-mono text-zinc-500 mt-0.5" data-i18n="ind7_usd">Loading...</div>
+          <div class="text-2xl font-black font-mono text-zinc-400 tracking-tight" data-i18n="ind7_main">Rp 450.000</div>
+          <div class="text-[11px] font-mono text-zinc-500 mt-0.5" data-i18n="ind7_sub">atau <strong>$30 USD</strong> &middot; Lisensi Seumur Hidup</div>
         </div>
       <div class="mt-5 grid grid-cols-1 gap-2 text-[11px]">
-        <a href="https://mayar.id/aemethtrader/ind-timer" target="_blank" class="flex items-center justify-center gap-2 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold tracking-wide transition-all shadow-md"><span>🏦</span><span data-i18n="btn_pay_qris">QRIS / BANK TRANSFER</span></a>
-        <a href="https://aemethtrader.gumroad.com/l/ind-timer" target="_blank" class="flex items-center justify-center gap-2 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold tracking-wide transition-all shadow-md"><span>💳</span><span data-i18n="btn_pay_global">PAYPAL / CARD / CRYPTO</span></a>
-        <a href="https://t.me/aemethtrader?text=Halo%20AEMETH%20TRADER%2C%20saya%20mau%20beli%20Indikator%20Candle%20Timer" target="_blank" class="flex items-center justify-center gap-2 py-2.5 rounded-xl bg-zinc-700 hover:bg-zinc-600 text-white font-bold tracking-wide transition-all shadow-md"><span>📱</span><span data-i18n="btn_pay_tg">P2P CRYPTO (USDT)</span></a>
+        <a href="https://mayar.id/aemethtrader/ind-timer" target="_blank" class="flex items-center justify-center gap-2 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold tracking-wide transition-all shadow-md hover:scale-[1.01]"><span>🏦</span><span data-i18n="btn_pay_qris">QRIS / BANK TRANSFER</span></a>
+        <a href="https://aemethtrader.gumroad.com/l/ind-timer" target="_blank" class="flex items-center justify-center gap-2 py-3 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold tracking-wide transition-all shadow-md hover:scale-[1.01]"><span>💳</span><span data-i18n="btn_pay_global">PAYPAL / CARD / CRYPTO</span></a>
+        <a href="https://t.me/aemethtrader?text=Halo%20AEMETH%20TRADER%2C%20saya%20mau%20beli%20Indikator%20Candle%20Timer" target="_blank" class="flex items-center justify-center gap-2 py-3 rounded-xl bg-zinc-700 hover:bg-zinc-600 text-white font-bold tracking-wide transition-all shadow-md hover:scale-[1.01]"><span>📱</span><span data-i18n="btn_pay_tg">P2P CRYPTO (USDT)</span></a>
       </div>
       </div>
     </div>
@@ -1386,16 +1393,16 @@
       <div>
         <div class="mt-6 pt-4 border-t border-zinc-800/80">
           <div class="flex items-center space-x-2 mb-1 text-xs">
-            <span class="text-zinc-500 line-through font-mono">Rp 600.000</span>
+            <span class="text-zinc-500 line-through font-mono" data-i18n="ind8_orig">Rp 900.000</span>
             <span class="text-emerald-400 font-bold font-mono text-[10px] bg-emerald-950/60 px-2 py-0.5 rounded-full border border-emerald-800/60" data-i18n="disc_badge">50% Launch Price</span>
           </div>
-          <div class="text-2xl font-black font-mono text-violet-400 tracking-tight">Rp 300.000</div>
-          <div class="text-[11px] font-mono text-zinc-500 mt-0.5" data-i18n="ind8_usd">Loading...</div>
+          <div class="text-2xl font-black font-mono text-violet-400 tracking-tight" data-i18n="ind8_main">Rp 450.000</div>
+          <div class="text-[11px] font-mono text-zinc-500 mt-0.5" data-i18n="ind8_sub">atau <strong>$30 USD</strong> &middot; Lisensi Seumur Hidup</div>
         </div>
       <div class="mt-5 grid grid-cols-1 gap-2 text-[11px]">
-        <a href="https://mayar.id/aemethtrader/ind-vp" target="_blank" class="flex items-center justify-center gap-2 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold tracking-wide transition-all shadow-md"><span>🏦</span><span data-i18n="btn_pay_qris">QRIS / BANK TRANSFER</span></a>
-        <a href="https://aemethtrader.gumroad.com/l/ind-vp" target="_blank" class="flex items-center justify-center gap-2 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold tracking-wide transition-all shadow-md"><span>💳</span><span data-i18n="btn_pay_global">PAYPAL / CARD / CRYPTO</span></a>
-        <a href="https://t.me/aemethtrader?text=Halo%20AEMETH%20TRADER%2C%20saya%20mau%20beli%20Indikator%20Volume%20Profile" target="_blank" class="flex items-center justify-center gap-2 py-2.5 rounded-xl bg-zinc-700 hover:bg-zinc-600 text-white font-bold tracking-wide transition-all shadow-md"><span>📱</span><span data-i18n="btn_pay_tg">P2P CRYPTO (USDT)</span></a>
+        <a href="https://mayar.id/aemethtrader/ind-vp" target="_blank" class="flex items-center justify-center gap-2 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold tracking-wide transition-all shadow-md hover:scale-[1.01]"><span>🏦</span><span data-i18n="btn_pay_qris">QRIS / BANK TRANSFER</span></a>
+        <a href="https://aemethtrader.gumroad.com/l/ind-vp" target="_blank" class="flex items-center justify-center gap-2 py-3 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold tracking-wide transition-all shadow-md hover:scale-[1.01]"><span>💳</span><span data-i18n="btn_pay_global">PAYPAL / CARD / CRYPTO</span></a>
+        <a href="https://t.me/aemethtrader?text=Halo%20AEMETH%20TRADER%2C%20saya%20mau%20beli%20Indikator%20Volume%20Profile" target="_blank" class="flex items-center justify-center gap-2 py-3 rounded-xl bg-zinc-700 hover:bg-zinc-600 text-white font-bold tracking-wide transition-all shadow-md hover:scale-[1.01]"><span>📱</span><span data-i18n="btn_pay_tg">P2P CRYPTO (USDT)</span></a>
       </div>
       </div>
     </div>
@@ -1419,16 +1426,16 @@
       <div>
         <div class="mt-6 pt-4 border-t border-zinc-800/80">
           <div class="flex items-center space-x-2 mb-1 text-xs">
-            <span class="text-zinc-500 line-through font-mono">Rp 500.000</span>
+            <span class="text-zinc-500 line-through font-mono" data-i18n="ind9_orig">Rp 900.000</span>
             <span class="text-emerald-400 font-bold font-mono text-[10px] bg-emerald-950/60 px-2 py-0.5 rounded-full border border-emerald-800/60" data-i18n="disc_badge">50% Launch Price</span>
           </div>
-          <div class="text-2xl font-black font-mono text-sky-400 tracking-tight">Rp 250.000</div>
-          <div class="text-[11px] font-mono text-zinc-500 mt-0.5" data-i18n="ind9_usd">Loading...</div>
+          <div class="text-2xl font-black font-mono text-sky-400 tracking-tight" data-i18n="ind9_main">Rp 450.000</div>
+          <div class="text-[11px] font-mono text-zinc-500 mt-0.5" data-i18n="ind9_sub">atau <strong>$30 USD</strong> &middot; Lisensi Seumur Hidup</div>
         </div>
       <div class="mt-5 grid grid-cols-1 gap-2 text-[11px]">
-        <a href="https://mayar.id/aemethtrader/ind-ict" target="_blank" class="flex items-center justify-center gap-2 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold tracking-wide transition-all shadow-md"><span>🏦</span><span data-i18n="btn_pay_qris">QRIS / BANK TRANSFER</span></a>
-        <a href="https://aemethtrader.gumroad.com/l/ind-ict" target="_blank" class="flex items-center justify-center gap-2 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold tracking-wide transition-all shadow-md"><span>💳</span><span data-i18n="btn_pay_global">PAYPAL / CARD / CRYPTO</span></a>
-        <a href="https://t.me/aemethtrader?text=Halo%20AEMETH%20TRADER%2C%20saya%20mau%20beli%20Indikator%20ICT%20Suite" target="_blank" class="flex items-center justify-center gap-2 py-2.5 rounded-xl bg-zinc-700 hover:bg-zinc-600 text-white font-bold tracking-wide transition-all shadow-md"><span>📱</span><span data-i18n="btn_pay_tg">P2P CRYPTO (USDT)</span></a>
+        <a href="https://mayar.id/aemethtrader/ind-ict" target="_blank" class="flex items-center justify-center gap-2 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold tracking-wide transition-all shadow-md hover:scale-[1.01]"><span>🏦</span><span data-i18n="btn_pay_qris">QRIS / BANK TRANSFER</span></a>
+        <a href="https://aemethtrader.gumroad.com/l/ind-ict" target="_blank" class="flex items-center justify-center gap-2 py-3 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold tracking-wide transition-all shadow-md hover:scale-[1.01]"><span>💳</span><span data-i18n="btn_pay_global">PAYPAL / CARD / CRYPTO</span></a>
+        <a href="https://t.me/aemethtrader?text=Halo%20AEMETH%20TRADER%2C%20saya%20mau%20beli%20Indikator%20ICT%20Suite" target="_blank" class="flex items-center justify-center gap-2 py-3 rounded-xl bg-zinc-700 hover:bg-zinc-600 text-white font-bold tracking-wide transition-all shadow-md hover:scale-[1.01]"><span>📱</span><span data-i18n="btn_pay_tg">P2P CRYPTO (USDT)</span></a>
       </div>
       </div>
     </div>
@@ -1452,16 +1459,16 @@
       <div>
         <div class="mt-6 pt-4 border-t border-zinc-800/80">
           <div class="flex items-center space-x-2 mb-1 text-xs">
-            <span class="text-zinc-500 line-through font-mono">Rp 300.000</span>
+            <span class="text-zinc-500 line-through font-mono" data-i18n="ind10_orig">Rp 900.000</span>
             <span class="text-emerald-400 font-bold font-mono text-[10px] bg-emerald-950/60 px-2 py-0.5 rounded-full border border-emerald-800/60" data-i18n="disc_badge">50% Launch Price</span>
           </div>
-          <div class="text-2xl font-black font-mono text-lime-400 tracking-tight">Rp 150.000</div>
-          <div class="text-[11px] font-mono text-zinc-500 mt-0.5" data-i18n="ind10_usd">Loading...</div>
+          <div class="text-2xl font-black font-mono text-lime-400 tracking-tight" data-i18n="ind10_main">Rp 450.000</div>
+          <div class="text-[11px] font-mono text-zinc-500 mt-0.5" data-i18n="ind10_sub">atau <strong>$30 USD</strong> &middot; Lisensi Seumur Hidup</div>
         </div>
       <div class="mt-5 grid grid-cols-1 gap-2 text-[11px]">
-        <a href="https://mayar.id/aemethtrader/ind-bb" target="_blank" class="flex items-center justify-center gap-2 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold tracking-wide transition-all shadow-md"><span>🏦</span><span data-i18n="btn_pay_qris">QRIS / BANK TRANSFER</span></a>
-        <a href="https://aemethtrader.gumroad.com/l/ind-bb" target="_blank" class="flex items-center justify-center gap-2 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold tracking-wide transition-all shadow-md"><span>💳</span><span data-i18n="btn_pay_global">PAYPAL / CARD / CRYPTO</span></a>
-        <a href="https://t.me/aemethtrader?text=Halo%20AEMETH%20TRADER%2C%20saya%20mau%20beli%20Indikator%20Bollinger%20Squeeze" target="_blank" class="flex items-center justify-center gap-2 py-2.5 rounded-xl bg-zinc-700 hover:bg-zinc-600 text-white font-bold tracking-wide transition-all shadow-md"><span>📱</span><span data-i18n="btn_pay_tg">P2P CRYPTO (USDT)</span></a>
+        <a href="https://mayar.id/aemethtrader/ind-bb" target="_blank" class="flex items-center justify-center gap-2 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold tracking-wide transition-all shadow-md hover:scale-[1.01]"><span>🏦</span><span data-i18n="btn_pay_qris">QRIS / BANK TRANSFER</span></a>
+        <a href="https://aemethtrader.gumroad.com/l/ind-bb" target="_blank" class="flex items-center justify-center gap-2 py-3 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold tracking-wide transition-all shadow-md hover:scale-[1.01]"><span>💳</span><span data-i18n="btn_pay_global">PAYPAL / CARD / CRYPTO</span></a>
+        <a href="https://t.me/aemethtrader?text=Halo%20AEMETH%20TRADER%2C%20saya%20mau%20beli%20Indikator%20Bollinger%20Squeeze" target="_blank" class="flex items-center justify-center gap-2 py-3 rounded-xl bg-zinc-700 hover:bg-zinc-600 text-white font-bold tracking-wide transition-all shadow-md hover:scale-[1.01]"><span>📱</span><span data-i18n="btn_pay_tg">P2P CRYPTO (USDT)</span></a>
       </div>
       </div>
     </div>
@@ -1485,16 +1492,16 @@
       <div>
         <div class="mt-6 pt-4 border-t border-zinc-800/80">
           <div class="flex items-center space-x-2 mb-1 text-xs">
-            <span class="text-zinc-500 line-through font-mono">Rp 250.000</span>
+            <span class="text-zinc-500 line-through font-mono" data-i18n="ind11_orig">Rp 900.000</span>
             <span class="text-emerald-400 font-bold font-mono text-[10px] bg-emerald-950/60 px-2 py-0.5 rounded-full border border-emerald-800/60" data-i18n="disc_badge">50% Launch Price</span>
           </div>
-          <div class="text-2xl font-black font-mono text-orange-400 tracking-tight">Rp 125.000</div>
-          <div class="text-[11px] font-mono text-zinc-500 mt-0.5" data-i18n="ind11_usd">Loading...</div>
+          <div class="text-2xl font-black font-mono text-orange-400 tracking-tight" data-i18n="ind11_main">Rp 450.000</div>
+          <div class="text-[11px] font-mono text-zinc-500 mt-0.5" data-i18n="ind11_sub">atau <strong>$30 USD</strong> &middot; Lisensi Seumur Hidup</div>
         </div>
       <div class="mt-5 grid grid-cols-1 gap-2 text-[11px]">
-        <a href="https://mayar.id/aemethtrader/ind-fib" target="_blank" class="flex items-center justify-center gap-2 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold tracking-wide transition-all shadow-md"><span>🏦</span><span data-i18n="btn_pay_qris">QRIS / BANK TRANSFER</span></a>
-        <a href="https://aemethtrader.gumroad.com/l/ind-fib" target="_blank" class="flex items-center justify-center gap-2 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold tracking-wide transition-all shadow-md"><span>💳</span><span data-i18n="btn_pay_global">PAYPAL / CARD / CRYPTO</span></a>
-        <a href="https://t.me/aemethtrader?text=Halo%20AEMETH%20TRADER%2C%20saya%20mau%20beli%20Indikator%20Fibonacci%20Auto" target="_blank" class="flex items-center justify-center gap-2 py-2.5 rounded-xl bg-zinc-700 hover:bg-zinc-600 text-white font-bold tracking-wide transition-all shadow-md"><span>📱</span><span data-i18n="btn_pay_tg">P2P CRYPTO (USDT)</span></a>
+        <a href="https://mayar.id/aemethtrader/ind-fib" target="_blank" class="flex items-center justify-center gap-2 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold tracking-wide transition-all shadow-md hover:scale-[1.01]"><span>🏦</span><span data-i18n="btn_pay_qris">QRIS / BANK TRANSFER</span></a>
+        <a href="https://aemethtrader.gumroad.com/l/ind-fib" target="_blank" class="flex items-center justify-center gap-2 py-3 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold tracking-wide transition-all shadow-md hover:scale-[1.01]"><span>💳</span><span data-i18n="btn_pay_global">PAYPAL / CARD / CRYPTO</span></a>
+        <a href="https://t.me/aemethtrader?text=Halo%20AEMETH%20TRADER%2C%20saya%20mau%20beli%20Indikator%20Fibonacci%20Auto" target="_blank" class="flex items-center justify-center gap-2 py-3 rounded-xl bg-zinc-700 hover:bg-zinc-600 text-white font-bold tracking-wide transition-all shadow-md hover:scale-[1.01]"><span>📱</span><span data-i18n="btn_pay_tg">P2P CRYPTO (USDT)</span></a>
       </div>
       </div>
     </div>
@@ -1518,16 +1525,16 @@
       <div>
         <div class="mt-6 pt-4 border-t border-zinc-800/80">
           <div class="flex items-center space-x-2 mb-1 text-xs">
-            <span class="text-zinc-500 line-through font-mono">Rp 200.000</span>
+            <span class="text-zinc-500 line-through font-mono" data-i18n="ind12_orig">Rp 900.000</span>
             <span class="text-emerald-400 font-bold font-mono text-[10px] bg-emerald-950/60 px-2 py-0.5 rounded-full border border-emerald-800/60" data-i18n="disc_badge">50% Launch Price</span>
           </div>
-          <div class="text-2xl font-black font-mono text-pink-400 tracking-tight">Rp 100.000</div>
-          <div class="text-[11px] font-mono text-zinc-500 mt-0.5" data-i18n="ind12_usd">Loading...</div>
+          <div class="text-2xl font-black font-mono text-pink-400 tracking-tight" data-i18n="ind12_main">Rp 450.000</div>
+          <div class="text-[11px] font-mono text-zinc-500 mt-0.5" data-i18n="ind12_sub">atau <strong>$30 USD</strong> &middot; Lisensi Seumur Hidup</div>
         </div>
       <div class="mt-5 grid grid-cols-1 gap-2 text-[11px]">
-        <a href="https://mayar.id/aemethtrader/ind-session" target="_blank" class="flex items-center justify-center gap-2 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold tracking-wide transition-all shadow-md"><span>🏦</span><span data-i18n="btn_pay_qris">QRIS / BANK TRANSFER</span></a>
-        <a href="https://aemethtrader.gumroad.com/l/ind-session" target="_blank" class="flex items-center justify-center gap-2 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold tracking-wide transition-all shadow-md"><span>💳</span><span data-i18n="btn_pay_global">PAYPAL / CARD / CRYPTO</span></a>
-        <a href="https://t.me/aemethtrader?text=Halo%20AEMETH%20TRADER%2C%20saya%20mau%20beli%20Indikator%20Session%20Map" target="_blank" class="flex items-center justify-center gap-2 py-2.5 rounded-xl bg-zinc-700 hover:bg-zinc-600 text-white font-bold tracking-wide transition-all shadow-md"><span>📱</span><span data-i18n="btn_pay_tg">P2P CRYPTO (USDT)</span></a>
+        <a href="https://mayar.id/aemethtrader/ind-session" target="_blank" class="flex items-center justify-center gap-2 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold tracking-wide transition-all shadow-md hover:scale-[1.01]"><span>🏦</span><span data-i18n="btn_pay_qris">QRIS / BANK TRANSFER</span></a>
+        <a href="https://aemethtrader.gumroad.com/l/ind-session" target="_blank" class="flex items-center justify-center gap-2 py-3 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold tracking-wide transition-all shadow-md hover:scale-[1.01]"><span>💳</span><span data-i18n="btn_pay_global">PAYPAL / CARD / CRYPTO</span></a>
+        <a href="https://t.me/aemethtrader?text=Halo%20AEMETH%20TRADER%2C%20saya%20mau%20beli%20Indikator%20Session%20Map" target="_blank" class="flex items-center justify-center gap-2 py-3 rounded-xl bg-zinc-700 hover:bg-zinc-600 text-white font-bold tracking-wide transition-all shadow-md hover:scale-[1.01]"><span>📱</span><span data-i18n="btn_pay_tg">P2P CRYPTO (USDT)</span></a>
       </div>
       </div>
     </div>
@@ -1551,16 +1558,16 @@
       <div>
         <div class="mt-6 pt-4 border-t border-zinc-800/80">
           <div class="flex items-center space-x-2 mb-1 text-xs">
-            <span class="text-zinc-500 line-through font-mono">Rp 150.000</span>
+            <span class="text-zinc-500 line-through font-mono" data-i18n="ind13_orig">Rp 900.000</span>
             <span class="text-emerald-400 font-bold font-mono text-[10px] bg-emerald-950/60 px-2 py-0.5 rounded-full border border-emerald-800/60" data-i18n="disc_badge">50% Launch Price</span>
           </div>
-          <div class="text-2xl font-black font-mono text-cyan-400 tracking-tight">Rp 75.000</div>
-          <div class="text-[11px] font-mono text-zinc-500 mt-0.5" data-i18n="ind13_usd">Loading...</div>
+          <div class="text-2xl font-black font-mono text-cyan-400 tracking-tight" data-i18n="ind13_main">Rp 450.000</div>
+          <div class="text-[11px] font-mono text-zinc-500 mt-0.5" data-i18n="ind13_sub">atau <strong>$30 USD</strong> &middot; Lisensi Seumur Hidup</div>
         </div>
       <div class="mt-5 grid grid-cols-1 gap-2 text-[11px]">
-        <a href="https://mayar.id/aemethtrader/ind-pivot" target="_blank" class="flex items-center justify-center gap-2 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold tracking-wide transition-all shadow-md"><span>🏦</span><span data-i18n="btn_pay_qris">QRIS / BANK TRANSFER</span></a>
-        <a href="https://aemethtrader.gumroad.com/l/ind-pivot" target="_blank" class="flex items-center justify-center gap-2 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold tracking-wide transition-all shadow-md"><span>💳</span><span data-i18n="btn_pay_global">PAYPAL / CARD / CRYPTO</span></a>
-        <a href="https://t.me/aemethtrader?text=Halo%20AEMETH%20TRADER%2C%20saya%20mau%20beli%20Indikator%20Pivot%20Points" target="_blank" class="flex items-center justify-center gap-2 py-2.5 rounded-xl bg-zinc-700 hover:bg-zinc-600 text-white font-bold tracking-wide transition-all shadow-md"><span>📱</span><span data-i18n="btn_pay_tg">P2P CRYPTO (USDT)</span></a>
+        <a href="https://mayar.id/aemethtrader/ind-pivot" target="_blank" class="flex items-center justify-center gap-2 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold tracking-wide transition-all shadow-md hover:scale-[1.01]"><span>🏦</span><span data-i18n="btn_pay_qris">QRIS / BANK TRANSFER</span></a>
+        <a href="https://aemethtrader.gumroad.com/l/ind-pivot" target="_blank" class="flex items-center justify-center gap-2 py-3 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold tracking-wide transition-all shadow-md hover:scale-[1.01]"><span>💳</span><span data-i18n="btn_pay_global">PAYPAL / CARD / CRYPTO</span></a>
+        <a href="https://t.me/aemethtrader?text=Halo%20AEMETH%20TRADER%2C%20saya%20mau%20beli%20Indikator%20Pivot%20Points" target="_blank" class="flex items-center justify-center gap-2 py-3 rounded-xl bg-zinc-700 hover:bg-zinc-600 text-white font-bold tracking-wide transition-all shadow-md hover:scale-[1.01]"><span>📱</span><span data-i18n="btn_pay_tg">P2P CRYPTO (USDT)</span></a>
       </div>
       </div>
     </div>
@@ -1633,39 +1640,53 @@
   </div>
   <div class="max-w-4xl mx-auto space-y-3.5">
     <div class="bg-cardDark border border-zinc-800 rounded-2xl overflow-hidden hover:border-zinc-700 transition-all">
-      <button onclick="toggleFaq(this)" class="w-full p-5 sm:p-6 text-left flex items-center justify-between space-x-4 focus:outline-none">
+      <button onclick="toggleFaq(this)" type="button" class="w-full p-5 sm:p-6 text-left flex items-center justify-between space-x-4 focus:outline-none cursor-pointer">
         <span class="font-bold text-white text-sm sm:text-base" data-i18n="faq1_q"><span class="text-emerald-400 mr-2">&#129302;</span> Apa itu Robot Expert Advisor (EA) MT5 dan bagaimana cara kerjanya?</span>
-        <span class="faq-chevron text-zinc-400 font-mono shrink-0">&#9660;</span>
+        <span class="faq-chevron text-zinc-400 font-mono shrink-0 select-none">&#9660;</span>
       </button>
-      <div class="faq-answer px-5 sm:px-6 pb-5 text-xs sm:text-sm text-zinc-400 leading-relaxed border-t border-zinc-800/60 pt-4" data-i18n="faq1_a">Loading...</div>
+      <div class="faq-answer px-5 sm:px-6 pb-5 text-xs sm:text-sm text-zinc-300 leading-relaxed border-t border-zinc-800/60 pt-4" data-i18n="faq1_a">
+        <strong>Robot Expert Advisor (EA)</strong> adalah program perangkat lunak algoritma yang dipasang di MetaTrader 5 (MT5). EA bekerja otomatis 24/5 menganalisis harga, menghitung lot, membuka posisi Buy/Sell, dan memasang TP/SL secara otomatis tanpa intervensi emosi manusia.
+      </div>
     </div>
     <div class="bg-cardDark border-2 border-amber-500/40 rounded-2xl overflow-hidden hover:border-amber-400 transition-all">
-      <button onclick="toggleFaq(this)" class="w-full p-5 sm:p-6 text-left flex items-center justify-between space-x-4 focus:outline-none">
+      <button onclick="toggleFaq(this)" type="button" class="w-full p-5 sm:p-6 text-left flex items-center justify-between space-x-4 focus:outline-none cursor-pointer">
         <span class="font-bold text-amber-300 text-sm sm:text-base" data-i18n="faq2_q"><span class="text-amber-400 mr-2">&#9888;&#65039;</span> Apakah Robot EA ini selalu profit dan ada jaminan keuntungan?</span>
-        <span class="faq-chevron text-amber-400 font-mono shrink-0">&#9660;</span>
+        <span class="faq-chevron text-amber-400 font-mono shrink-0 select-none">&#9660;</span>
       </button>
-      <div class="faq-answer px-5 sm:px-6 pb-5 text-xs sm:text-sm text-zinc-300 leading-relaxed border-t border-amber-500/20 pt-4 bg-amber-950/20" data-i18n="faq2_a">Loading...</div>
+      <div class="faq-answer px-5 sm:px-6 pb-5 text-xs sm:text-sm text-zinc-300 leading-relaxed border-t border-amber-500/20 pt-4 bg-amber-950/20" data-i18n="faq2_a">
+        <p class="mb-2"><strong>TIDAK. Robot EA TIDAK SELALU PROFIT, dan kami SAMA SEKALI TIDAK MENJAMIN PROFIT.</strong></p>
+        <p class="text-zinc-400 mb-2">Trading memiliki risiko fluktuasi harga yang tinggi. Hasil backtest tidak menjamin keuntungan di masa mendatang.</p>
+        <p class="text-amber-300 font-semibold">Gunakanlah selalu dana dingin yang siap Anda tanggung risikonya.</p>
+      </div>
     </div>
     <div class="bg-cardDark border-2 border-rose-500/40 rounded-2xl overflow-hidden hover:border-rose-400 transition-all">
-      <button onclick="toggleFaq(this)" class="w-full p-5 sm:p-6 text-left flex items-center justify-between space-x-4 focus:outline-none">
+      <button onclick="toggleFaq(this)" type="button" class="w-full p-5 sm:p-6 text-left flex items-center justify-between space-x-4 focus:outline-none cursor-pointer">
         <span class="font-bold text-rose-300 text-sm sm:text-base" data-i18n="faq3_q"><span class="text-rose-400 mr-2">&#9878;&#65039;</span> Bagaimana jika terjadi kerugian (Loss) pada akun trading saya?</span>
-        <span class="faq-chevron text-rose-400 font-mono shrink-0">&#9660;</span>
+        <span class="faq-chevron text-rose-400 font-mono shrink-0 select-none">&#9660;</span>
       </button>
-      <div class="faq-answer px-5 sm:px-6 pb-5 text-xs sm:text-sm text-zinc-300 leading-relaxed border-t border-rose-500/20 pt-4 bg-rose-950/20" data-i18n="faq3_a">Loading...</div>
+      <div class="faq-answer px-5 sm:px-6 pb-5 text-xs sm:text-sm text-zinc-300 leading-relaxed border-t border-rose-500/20 pt-4 bg-rose-950/20" data-i18n="faq3_a">
+        <p class="mb-2"><strong>Segala kerugian finansial, margin call, atau drawdown sepenuhnya adalah TANGGUNG JAWAB PRIBADI ANDA SEBAGAI TRADER.</strong></p>
+        <p class="text-zinc-400 mb-2">Kami bertindak murni sebagai pengembang software. Kami <strong>BUKAN pengelola dana, bukan penasihat keuangan, dan TIDAK BERTANGGUNG JAWAB</strong> atas kerugian akun, gangguan broker/internet, atau kesalahan pemilihan lot.</p>
+        <p class="text-zinc-400">Dengan membeli software ini, Anda menyatakan telah membaca dan menyetujui seluruh risiko perdagangan.</p>
+      </div>
     </div>
     <div class="bg-cardDark border border-zinc-800 rounded-2xl overflow-hidden hover:border-zinc-700 transition-all">
-      <button onclick="toggleFaq(this)" class="w-full p-5 sm:p-6 text-left flex items-center justify-between space-x-4 focus:outline-none">
+      <button onclick="toggleFaq(this)" type="button" class="w-full p-5 sm:p-6 text-left flex items-center justify-between space-x-4 focus:outline-none cursor-pointer">
         <span class="font-bold text-white text-sm sm:text-base" data-i18n="faq4_q"><span class="text-purple-400 mr-2">&#128202;</span> Apa perbedaan Robot EA dengan Indikator MT5?</span>
-        <span class="faq-chevron text-zinc-400 font-mono shrink-0">&#9660;</span>
+        <span class="faq-chevron text-zinc-400 font-mono shrink-0 select-none">&#9660;</span>
       </button>
-      <div class="faq-answer px-5 sm:px-6 pb-5 text-xs sm:text-sm text-zinc-400 leading-relaxed border-t border-zinc-800/60 pt-4" data-i18n="faq4_a">Loading...</div>
+      <div class="faq-answer px-5 sm:px-6 pb-5 text-xs sm:text-sm text-zinc-300 leading-relaxed border-t border-zinc-800/60 pt-4" data-i18n="faq4_a">
+        <strong>Robot EA</strong> adalah sistem otomatis penuh yang membuka dan menutup posisi sendiri. <strong>Indikator Custom</strong> adalah alat bantu visual (Order Block, Supply &amp; Demand, sinyal panah) untuk membantu trading manual.
+      </div>
     </div>
     <div class="bg-cardDark border border-zinc-800 rounded-2xl overflow-hidden hover:border-zinc-700 transition-all">
-      <button onclick="toggleFaq(this)" class="w-full p-5 sm:p-6 text-left flex items-center justify-between space-x-4 focus:outline-none">
+      <button onclick="toggleFaq(this)" type="button" class="w-full p-5 sm:p-6 text-left flex items-center justify-between space-x-4 focus:outline-none cursor-pointer">
         <span class="font-bold text-white text-sm sm:text-base" data-i18n="faq5_q"><span class="text-blue-400 mr-2">&#127760;</span> Apakah saya harus memakai VPS?</span>
-        <span class="faq-chevron text-zinc-400 font-mono shrink-0">&#9660;</span>
+        <span class="faq-chevron text-zinc-400 font-mono shrink-0 select-none">&#9660;</span>
       </button>
-      <div class="faq-answer px-5 sm:px-6 pb-5 text-xs sm:text-sm text-zinc-400 leading-relaxed border-t border-zinc-800/60 pt-4" data-i18n="faq5_a">Loading...</div>
+      <div class="faq-answer px-5 sm:px-6 pb-5 text-xs sm:text-sm text-zinc-300 leading-relaxed border-t border-zinc-800/60 pt-4" data-i18n="faq5_a">
+        Untuk Robot EA, sangat disarankan menggunakan <strong>VPS Windows</strong> agar EA berjalan 24 jam nonstop tanpa laptop Anda harus menyala. Rekomendasi VPS murah berkualitas ($3-$5/bulan) tersedia di dalam panduan instalasi.
+      </div>
     </div>
   </div>
   <!-- Risk callout -->
@@ -1684,7 +1705,7 @@
 <!-- DETAIL MODAL -->
 <div id="detail-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/85 backdrop-blur-md overflow-y-auto">
   <div class="relative w-full max-w-2xl bg-zinc-950 border border-zinc-800 rounded-3xl p-6 sm:p-8 shadow-2xl my-auto">
-    <button onclick="closeModal()" class="absolute top-5 right-5 w-8 h-8 rounded-full bg-zinc-900 hover:bg-zinc-800 border border-zinc-700 text-zinc-400 hover:text-white flex items-center justify-center font-bold text-sm transition-all">&times;</button>
+    <button onclick="closeModal()" class="absolute top-5 right-5 w-8 h-8 rounded-full bg-zinc-900 hover:bg-zinc-800 border border-zinc-700 text-zinc-400 hover:text-white flex items-center justify-center font-bold text-sm transition-all cursor-pointer">&times;</button>
     <div class="flex items-center space-x-2 mb-2">
       <span id="modal-tag" class="px-3 py-1 rounded-full text-xs font-bold font-mono"></span>
       <span class="text-zinc-500 text-xs font-mono">MetaTrader 5 Native</span>
@@ -1779,45 +1800,55 @@ const T = {
     w5t:"Pengiriman Instan", w5d:"File .ex5 binary murni dan file konfigurasi dikirim ke inbox kamu dalam 1 detik setelah pembayaran terkonfirmasi.",
     bundle_kicker:"PENAWARAN HEMAT ALL-IN-ONE", bundle_title:"PAKET BUNDLE HEMAT MT5",
     bundle_sub:"Dapatkan kombinasi lengkap Robot EA otomatis multi-strategi + Indikator Pro non-repaint dengan diskon 50%. Solusi terbaik untuk diversifikasi portofolio dan akun challenge.",
-    b1_inc_header:"DAFTAR 6 TOOLS YANG DIDAPAT:",
-    b1_urgency:"HANYA TERSISA 5 LISENSI DENGAN BANTUAN ANYDESK SETUP",
-    b2_rate_tag:"HANYA RP 178.000 / TOOL!",
-    b2_inc_header:"ARSENAL LENGKAP 14 TOOLS MT5:",
-    b2_val_calc_lbl:"Total Harga Beli Satuan (14 Tools):",
-    b2_val_save_lbl:"Penghematan Bersih Anda:",
-    b2_social_proof:"98% TRADER MEMILIH PAKET INI KARENA PALING LENGKAP",
     b1_badge:"INSTITUTIONAL FLAGSHIP",
-    b1_hot_tag:"⭐ PALING DIREKOMENDASIKAN",
+    b1_hot_tag:"⭐ REKOMENDASI TERBAIK UNTUK AKUN BESAR &amp; PROP FIRM",
     b1_save_tag:"HEMAT RP 3.000.000",
     b1_title:"AEMETH MASTER BUNDLE 6 Tools",
     b1_tools_line:"4 Robot EA MT5 + 2 Indikator Pro — Akses Seumur Hidup",
     bundle_desc:"Dapatkan suite lengkap: 4 Expert Advisor MT5 institusional + 2 Indikator MT5 Pro non-repaint. Arsenal all-in-one untuk pertumbuhan pribadi, scalping cepat, dan evaluasi challenge Prop Firm.",
+    b1_inc_header:"DAFTAR 6 TOOLS YANG DIDAPAT:",
     b1_vip_bonus_title:"HAK ISTIMEWA VIP EKSKLUSIF:",
     b1_free_tag:"GRATIS",
     b1_bonus_1:"1-on-1 Remote Setup via AnyDesk / TeamViewer Prioritas",
     b1_bonus_2:"Setfile Khusus Low Drawdown untuk Challenge Prop Firm",
     b1_bonus_3:"Akses Komunitas VIP Telegram &amp; Update Algoritma Seumur Hidup",
+    b1_urgency:"HANYA TERSISA 5 LISENSI DENGAN BANTUAN ANYDESK SETUP",
     bundle_discount_badge:"50% DISKON VIP",
-    bundle_usd:"atau <strong>$199 USD</strong> &middot; Akses Seumur Hidup (6 Alat)",
-    b2_badge:"BEST SELLER — 14 TOOLS",
-    b2_seller_tag:"#1 BEST SELLER &bull; PILIHAN PALING POPULER",
+    price_orig_b1:"Rp 6.000.000",
+    price_main_b1:"Rp 3.000.000",
+    price_sub_b1:"atau <strong>$199 USD</strong> &middot; Akses Seumur Hidup (6 Alat)",
+    b2_badge:"#1 BEST SELLER — 14 TOOLS",
+    b2_seller_tag:"🏆 PALING BANYAK DIPILIH TRADER (14 TOOLS ALL-IN-ONE)",
+    b2_rate_tag:"HANYA RP 178.000 / TOOL!",
     b2_title:"AEMETH MEGA BUNDLE 14 Tools v2.0",
     b2_tools_line:"10 Robot EA MT5 + 4 Indikator Pro — Akses Seumur Hidup",
     bundle2_desc:"Suite all-inclusive terlengkap dari AEMETH TRADER. Dapatkan 10 Robot EA MT5 otomatis (Gold, Forex, Indeks, Prop Firm, Cent &amp; HFT) plus 4 Indikator MT5 Pro non-repaint untuk trading manual. Termasuk dukungan instalasi remote AnyDesk gratis.",
-    bundle2_discount_badge:"50% DISKON",
-    bundle2_usd:"atau <strong>$165 USD</strong> &middot; Akses Seumur Hidup (14 Alat)",
+    b2_inc_header:"ARSENAL LENGKAP 14 TOOLS MT5:",
+    b2_val_calc_lbl:"Total Harga Beli Satuan (14 Tools):",
+    b2_val_calc_orig:"Rp 9.800.000+",
+    b2_val_save_lbl:"Penghematan Bersih Anda:",
+    b2_val_save_val:"+Rp 7.300.000 (Hemat 74%)",
+    b2_social_proof:"98% TRADER MEMILIH PAKET INI KARENA PALING LENGKAP",
+    bundle2_discount_badge:"50% DISKON LAUNCH",
+    price_orig_b2:"Rp 5.000.000",
+    price_main_b2:"Rp 2.500.000",
+    price_sub_b2:"atau <strong>$165 USD</strong> &middot; Akses Seumur Hidup (14 Alat)",
     b4_badge:"⚡ STARTER BUNDLE — 11 TOOLS",
     b4_title:"AEMETH STARTER BUNDLE 5 EA + 6 Ind",
     b4_tools_line:"5 Robot EA MT5 + 6 Indikator Pro — Akses Seumur Hidup",
     bundle4_desc:"Paket pemula lengkap dari AEMETH TRADER. Dapatkan 5 Robot EA MT5 otomatis (London Breakout, Grid Momentum, News Armor, Night Scalper, Swing Multi) plus 6 Indikator MT5 Pro pilihan untuk trading manual. Termasuk panduan setup gratis.",
     bundle4_discount_badge:"50% DISKON",
-    bundle4_usd:"atau <strong>$130 USD</strong> &middot; Akses Seumur Hidup (11 Alat)",
+    price_orig_b4:"Rp 4.000.000",
+    price_main_b4:"Rp 2.000.000",
+    price_sub_b4:"atau <strong>$130 USD</strong> &middot; Akses Seumur Hidup (11 Alat)",
     b3_badge:"🔥 HYBRID BUNDLE — 11 TOOLS",
     b3_title:"AEMETH HYBRID SUITE 3 EA + 8 Ind",
     b3_tools_line:"3 Robot EA MT5 + 8 Indikator Pro — Akses Seumur Hidup",
     bundle3_desc:"Sinergi optimal antara otomasi penuh dan charting manual. Dapatkan 3 EA MT5 terbukti (Gold Scalper, Trend Pulse, Micro Cent) plus semua 8 Indikator MT5 Pro non-repaint untuk presisi charting institusional.",
     bundle3_discount_badge:"50% DISKON",
-    bundle3_usd:"atau <strong>$99 USD</strong> &middot; Akses Seumur Hidup (11 Alat)",
+    price_orig_b3:"Rp 3.000.000",
+    price_main_b3:"Rp 1.500.000",
+    price_sub_b3:"atau <strong>$99 USD</strong> &middot; Akses Seumur Hidup (11 Alat)",
     cat_kicker:"STANDALONE ALGORITHMS", cat_title:"KATALOG ROBOT EA SATUAN",
     cat_sub:"Pilih robot EA satuan sesuai modal dan strategi kamu mulai dari Rp 50.000 dengan screenshot backtest terverifikasi.",
     lbl_price:"FILTER HARGA PRODUK:", hint_price:"Filter berdasarkan harga jual software",
@@ -1835,19 +1866,19 @@ const T = {
     cap1:"Modal $500+ (10JT IDR)", cap2:"Modal $300+ (5JT IDR)", cap3:"Modal $100+ (1JT IDR)", cap4:"Modal $50 (500K IDR)",
     cap5:"$10 Cent/Std (100K IDR)", cap6:"$10 Cent (100K IDR)", cap7:"$5 Cent (50K IDR)", cap8:"$5 Cent (50K IDR)",
     cap9:"Modal $100+ (1JT IDR)", cap10:"Modal $50 (500K IDR)", cap11:"Modal $100+ (1JT IDR)", cap12:"$10 Cent (100K IDR)", cap13:"Modal $300+ (5JT IDR)",
-    price1_sub:"atau <strong>$135 USD</strong> &middot; Lisensi Seumur Hidup",
-    price2_sub:"atau <strong>$99 USD</strong> &middot; Lisensi Seumur Hidup",
-    price3_sub:"atau <strong>$55 USD</strong> &middot; Lisensi Seumur Hidup",
-    price4_sub:"atau <strong>$45 USD</strong> &middot; Lisensi Seumur Hidup",
-    price5_sub:"atau <strong>$35 USD</strong> &middot; Lisensi Seumur Hidup",
-    price6_sub:"atau <strong>$28 USD</strong> &middot; Lisensi Seumur Hidup",
-    price7_sub:"atau <strong>$7 USD</strong> &middot; Lisensi Seumur Hidup",
-    price8_sub:"atau <strong>$3.5 USD</strong> &middot; Lisensi Seumur Hidup",
-    price9_sub:"atau <strong>$45 USD</strong> &middot; Lisensi Seumur Hidup",
-    price10_sub:"atau <strong>$35 USD</strong> &middot; Lisensi Seumur Hidup",
-    price11_sub:"atau <strong>$55 USD</strong> &middot; Lisensi Seumur Hidup",
-    price12_sub:"atau <strong>$28 USD</strong> &middot; Lisensi Seumur Hidup",
-    price13_sub:"atau <strong>$99 USD</strong> &middot; Lisensi Seumur Hidup",
+    p1_orig:"Rp 4.000.000", p1_main:"Rp 2.000.000", p1_sub:"atau <strong>$135 USD</strong> &middot; Lisensi Seumur Hidup",
+    p2_orig:"Rp 3.000.000", p2_main:"Rp 1.500.000", p2_sub:"atau <strong>$99 USD</strong> &middot; Lisensi Seumur Hidup",
+    p3_orig:"Rp 1.599.000", p3_main:"Rp 799.000", p3_sub:"atau <strong>$55 USD</strong> &middot; Lisensi Seumur Hidup",
+    p4_orig:"Rp 1.300.000", p4_main:"Rp 650.000", p4_sub:"atau <strong>$45 USD</strong> &middot; Lisensi Seumur Hidup",
+    p5_orig:"Rp 1.000.000", p5_main:"Rp 500.000", p5_sub:"atau <strong>$35 USD</strong> &middot; Lisensi Seumur Hidup",
+    p6_orig:"Rp 800.000", p6_main:"Rp 400.000", p6_sub:"atau <strong>$28 USD</strong> &middot; Lisensi Seumur Hidup",
+    p7_orig:"Rp 200.000", p7_main:"Rp 100.000", p7_sub:"atau <strong>$7 USD</strong> &middot; Lisensi Seumur Hidup",
+    p8_orig:"Rp 100.000", p8_main:"Rp 50.000", p8_sub:"atau <strong>$3.5 USD</strong> &middot; Lisensi Seumur Hidup",
+    p9_orig:"Rp 1.300.000", p9_main:"Rp 650.000", p9_sub:"atau <strong>$45 USD</strong> &middot; Lisensi Seumur Hidup",
+    p10_orig:"Rp 1.000.000", p10_main:"Rp 500.000", p10_sub:"atau <strong>$35 USD</strong> &middot; Lisensi Seumur Hidup",
+    p11_orig:"Rp 1.599.000", p11_main:"Rp 799.000", p11_sub:"atau <strong>$55 USD</strong> &middot; Lisensi Seumur Hidup",
+    p12_orig:"Rp 800.000", p12_main:"Rp 400.000", p12_sub:"atau <strong>$28 USD</strong> &middot; Lisensi Seumur Hidup",
+    p13_orig:"Rp 3.000.000", p13_main:"Rp 1.500.000", p13_sub:"atau <strong>$99 USD</strong> &middot; Lisensi Seumur Hidup",
     ind_kicker:"ALAT CUSTOM MT5 PROFESIONAL", ind_title:"KATALOG INDIKATOR MT5 PRO",
     ind_sub:"13 Indikator SMC, Order Block, Divergensi, Volume Profile, dan HUD Dashboard profesional mulai Rp 50.000 untuk trader manual dengan opsi pembayaran lokal &amp; global.",
     ind1_desc:"Otomatis memetakan zona Order Block institusi, Fair Value Gap (FVG), Break of Structure (BOS), dan Change of Character (CHoCH).",
@@ -1863,19 +1894,19 @@ const T = {
     ind11_desc:"Fibonacci Extension otomatis yang menggambar level 23.6% hingga 4.236% dari swing high/low terbaru tanpa input manual.",
     ind12_desc:"Overlay sesi pasar London, New York, dan Asia dengan killzone visual untuk timing entry optimal berdasarkan likuiditas.",
     ind13_desc:"Smart Pivot Points dan Central Pivot Range (CPR) harian/mingguan dengan level S1-S3 dan R1-R3 otomatis.",
-    ind1_usd:"atau <strong>$30 USD</strong> &middot; Lisensi Seumur Hidup",
-    ind2_usd:"atau <strong>$25 USD</strong> &middot; Lisensi Seumur Hidup",
-    ind3_usd:"atau <strong>$20 USD</strong> &middot; Lisensi Seumur Hidup",
-    ind4_usd:"atau <strong>$14 USD</strong> &middot; Lisensi Seumur Hidup",
-    ind5_usd:"atau <strong>$10 USD</strong> &middot; Lisensi Seumur Hidup",
-    ind6_usd:"atau <strong>$7 USD</strong> &middot; Lisensi Seumur Hidup",
-    ind7_usd:"atau <strong>$3.5 USD</strong> &middot; Lisensi Seumur Hidup",
-    ind8_usd:"atau <strong>$20 USD</strong> &middot; Lisensi Seumur Hidup",
-    ind9_usd:"atau <strong>$17 USD</strong> &middot; Lisensi Seumur Hidup",
-    ind10_usd:"atau <strong>$10 USD</strong> &middot; Lisensi Seumur Hidup",
-    ind11_usd:"atau <strong>$8 USD</strong> &middot; Lisensi Seumur Hidup",
-    ind12_usd:"atau <strong>$7 USD</strong> &middot; Lisensi Seumur Hidup",
-    ind13_usd:"atau <strong>$5 USD</strong> &middot; Lisensi Seumur Hidup",
+    ind1_orig:"Rp 900.000", ind1_main:"Rp 450.000", ind1_sub:"atau <strong>$30 USD</strong> &middot; Lisensi Seumur Hidup",
+    ind2_orig:"Rp 750.000", ind2_main:"Rp 375.000", ind2_sub:"atau <strong>$25 USD</strong> &middot; Lisensi Seumur Hidup",
+    ind3_orig:"Rp 600.000", ind3_main:"Rp 300.000", ind3_sub:"atau <strong>$20 USD</strong> &middot; Lisensi Seumur Hidup",
+    ind4_orig:"Rp 400.000", ind4_main:"Rp 200.000", ind4_sub:"atau <strong>$14 USD</strong> &middot; Lisensi Seumur Hidup",
+    ind5_orig:"Rp 300.000", ind5_main:"Rp 150.000", ind5_sub:"atau <strong>$10 USD</strong> &middot; Lisensi Seumur Hidup",
+    ind6_orig:"Rp 200.000", ind6_main:"Rp 100.000", ind6_sub:"atau <strong>$7 USD</strong> &middot; Lisensi Seumur Hidup",
+    ind7_orig:"Rp 100.000", ind7_main:"Rp 50.000", ind7_sub:"atau <strong>$3.5 USD</strong> &middot; Lisensi Seumur Hidup",
+    ind8_orig:"Rp 600.000", ind8_main:"Rp 300.000", ind8_sub:"atau <strong>$20 USD</strong> &middot; Lisensi Seumur Hidup",
+    ind9_orig:"Rp 500.000", ind9_main:"Rp 250.000", ind9_sub:"atau <strong>$17 USD</strong> &middot; Lisensi Seumur Hidup",
+    ind10_orig:"Rp 300.000", ind10_main:"Rp 150.000", ind10_sub:"atau <strong>$10 USD</strong> &middot; Lisensi Seumur Hidup",
+    ind11_orig:"Rp 250.000", ind11_main:"Rp 125.000", ind11_sub:"atau <strong>$8 USD</strong> &middot; Lisensi Seumur Hidup",
+    ind12_orig:"Rp 200.000", ind12_main:"Rp 100.000", ind12_sub:"atau <strong>$7 USD</strong> &middot; Lisensi Seumur Hidup",
+    ind13_orig:"Rp 150.000", ind13_main:"Rp 75.000", ind13_sub:"atau <strong>$5 USD</strong> &middot; Lisensi Seumur Hidup",
     pkg_kicker:"PAKET LENGKAP YANG DAPAT DIKIRIM", pkg_title:"APA YANG ANDA DAPATKAN", pkg_sub:"Bukan sekadar file program, Anda menerima paket ekosistem trading terstruktur siap pakai.",
     pkg_1_t:"File Murni .EX5 (MT5 Native)", pkg_1_d:"Compiled binary original siap dimasukkan ke folder Experts MT5.",
     pkg_2_t:"Lifetime Permanent License", pkg_2_d:"Lisensi permanen tanpa biaya langganan bulanan berulang.",
@@ -1927,45 +1958,55 @@ const T = {
     w5t:"Instant Delivery", w5d:"Pure .ex5 binary and configuration files delivered to your inbox within seconds of confirmed payment.",
     bundle_kicker:"ALL-IN-ONE VALUE SUITES", bundle_title:"MT5 BUNDLE PACKAGES",
     bundle_sub:"Get complete suites combining multi-strategy automated EA robots + pro non-repaint indicators with up to 50% discount. Lifetime permanent licenses.",
-    b1_inc_header:"INCLUDED 6 ARSENAL TOOLS:",
-    b1_urgency:"ONLY 5 LICENSES LEFT WITH VIP REMOTE SETUP INCLUDED",
-    b2_rate_tag:"ONLY $12 / TOOL! (74% SAVINGS)",
-    b2_inc_header:"COMPLETE 14 MT5 TOOLS INVENTORY:",
-    b2_val_calc_lbl:"Total Retail Value (14 Tools):",
-    b2_val_save_lbl:"Your Net Savings:",
-    b2_social_proof:"98% OF TRADERS CHOOSE THIS BUNDLE FOR FULL ARSENAL",
     b1_badge:"INSTITUTIONAL FLAGSHIP",
-    b1_hot_tag:"⭐ MOST RECOMMENDED SUITE",
+    b1_hot_tag:"⭐ BEST RECOMMENDED FOR LARGE ACCOUNTS &amp; PROP FIRMS",
     b1_save_tag:"SAVE $199 USD",
     b1_title:"AEMETH MASTER BUNDLE 6 Tools",
     b1_tools_line:"4 MT5 Robot EAs + 2 Pro Indicators — Lifetime Access",
     bundle_desc:"Get the complete suite: 4 institutional MT5 Expert Advisors + 2 MT5 Pro non-repaint indicators. An all-in-one arsenal for personal growth, rapid scalping, and Prop Firm challenge evaluations.",
+    b1_inc_header:"INCLUDED 6 ARSENAL TOOLS:",
     b1_vip_bonus_title:"EXCLUSIVE VIP PRIVILEGES:",
     b1_free_tag:"INCLUDED FREE",
     b1_bonus_1:"Priority 1-on-1 Remote Setup via AnyDesk / TeamViewer",
     b1_bonus_2:"Custom Low-Drawdown Setfiles for Prop Firm Challenges",
     b1_bonus_3:"VIP Telegram Group Access &amp; Lifetime Algorithm Upgrades",
+    b1_urgency:"ONLY 5 LICENSES LEFT WITH VIP REMOTE SETUP INCLUDED",
     bundle_discount_badge:"50% VIP DISCOUNT",
-    bundle_usd:"or <strong>$199 USD</strong> &middot; Lifetime Permanent Access (6 Tools)",
-    b2_badge:"BEST SELLER — 14 TOOLS",
-    b2_seller_tag:"#1 BEST SELLER &bull; MOST POPULAR VALUE SUITE",
+    price_orig_b1:"$398 USD",
+    price_main_b1:"$199 USD",
+    price_sub_b1:"or ~<strong>Rp 3.000.000 IDR</strong> &middot; Lifetime Permanent Access (6 Tools)",
+    b2_badge:"#1 BEST SELLER — 14 TOOLS",
+    b2_seller_tag:"🏆 MOST POPULAR SUITE (14 TOOLS ALL-IN-ONE)",
+    b2_rate_tag:"ONLY $12 / TOOL! (74% SAVINGS)",
     b2_title:"AEMETH MEGA BUNDLE 14 Tools v2.0",
     b2_tools_line:"10 MT5 Robot EAs + 4 Pro Indicators — Lifetime Access",
     bundle2_desc:"The ultimate all-inclusive suite from AEMETH TRADER. Get 10 automated MT5 EAs (Gold, Forex, Indices, Prop Firm, Cent &amp; HFT) plus 4 MT5 Pro non-repaint indicators for manual trading. Includes free remote AnyDesk installation support.",
+    b2_inc_header:"COMPLETE 14 MT5 TOOLS INVENTORY:",
+    b2_val_calc_lbl:"Total Retail Value (14 Tools):",
+    b2_val_calc_orig:"$650 USD+",
+    b2_val_save_lbl:"Your Net Savings:",
+    b2_val_save_val:"+$485 USD (74% SAVINGS)",
+    b2_social_proof:"98% OF TRADERS CHOOSE THIS BUNDLE FOR FULL ARSENAL",
     bundle2_discount_badge:"50% DISCOUNT",
-    bundle2_usd:"or <strong>$165 USD</strong> &middot; Lifetime Permanent Access (14 Tools)",
+    price_orig_b2:"$330 USD",
+    price_main_b2:"$165 USD",
+    price_sub_b2:"or ~<strong>Rp 2.500.000 IDR</strong> &middot; Lifetime Permanent Access (14 Tools)",
     b4_badge:"⚡ STARTER BUNDLE — 11 TOOLS",
     b4_title:"AEMETH STARTER BUNDLE 5 EA + 6 Ind",
     b4_tools_line:"5 MT5 Robot EAs + 6 Pro Indicators — Lifetime Access",
     bundle4_desc:"The complete starter suite from AEMETH TRADER. Get 5 automated MT5 EAs (London Breakout, Grid Momentum, News Armor, Night Scalper, Swing Multi) plus 6 MT5 Pro indicators for manual trading. Includes free setup guide.",
     bundle4_discount_badge:"50% DISCOUNT",
-    bundle4_usd:"or <strong>$130 USD</strong> &middot; Lifetime Permanent Access (11 Tools)",
+    price_orig_b4:"$260 USD",
+    price_main_b4:"$130 USD",
+    price_sub_b4:"or ~<strong>Rp 2.000.000 IDR</strong> &middot; Lifetime Permanent Access (11 Tools)",
     b3_badge:"🔥 HYBRID BUNDLE — 11 TOOLS",
     b3_title:"AEMETH HYBRID SUITE 3 EA + 8 Ind",
     b3_tools_line:"3 MT5 Robot EAs + 8 Pro Indicators — Lifetime Access",
     bundle3_desc:"The optimal synergy between full automation and manual charting. Get 3 proven MT5 EAs (Gold Scalper, Trend Pulse, Micro Cent) plus all 8 MT5 Pro non-repaint indicators for institutional charting precision.",
     bundle3_discount_badge:"50% DISCOUNT",
-    bundle3_usd:"or <strong>$99 USD</strong> &middot; Lifetime Permanent Access (11 Tools)",
+    price_orig_b3:"$198 USD",
+    price_main_b3:"$99 USD",
+    price_sub_b3:"or ~<strong>Rp 1.500.000 IDR</strong> &middot; Lifetime Permanent Access (11 Tools)",
     cat_kicker:"STANDALONE ALGORITHMS", cat_title:"STANDALONE MT5 ROBOT EA CATALOG",
     cat_sub:"Select standalone EA robots matching your trading capital and style. 13 verified algorithms starting from $3.50 to Flagship.",
     lbl_price:"FILTER BY PRODUCT PRICE:", hint_price:"Filter by software retail price",
@@ -1983,19 +2024,19 @@ const T = {
     cap1:"$500+ (10M IDR)", cap2:"$300+ (5M IDR)", cap3:"$100+ (1M IDR)", cap4:"$50 (500K IDR)",
     cap5:"$10 Cent/Std (100K IDR)", cap6:"$10 Cent (100K IDR)", cap7:"$5 Cent (50K IDR)", cap8:"$5 Cent (50K IDR)",
     cap9:"$100+ (1M IDR)", cap10:"$50 (500K IDR)", cap11:"$100+ (1M IDR)", cap12:"$10 Cent (100K IDR)", cap13:"$300+ (5M IDR)",
-    price1_sub:"or <strong>$135 USD</strong> &middot; Lifetime License",
-    price2_sub:"or <strong>$99 USD</strong> &middot; Lifetime License",
-    price3_sub:"or <strong>$55 USD</strong> &middot; Lifetime License",
-    price4_sub:"or <strong>$45 USD</strong> &middot; Lifetime License",
-    price5_sub:"or <strong>$35 USD</strong> &middot; Lifetime License",
-    price6_sub:"or <strong>$28 USD</strong> &middot; Lifetime License",
-    price7_sub:"or <strong>$7 USD</strong> &middot; Lifetime License",
-    price8_sub:"or <strong>$3.5 USD</strong> &middot; Lifetime License",
-    price9_sub:"or <strong>$45 USD</strong> &middot; Lifetime License",
-    price10_sub:"or <strong>$35 USD</strong> &middot; Lifetime License",
-    price11_sub:"or <strong>$55 USD</strong> &middot; Lifetime License",
-    price12_sub:"or <strong>$28 USD</strong> &middot; Lifetime License",
-    price13_sub:"or <strong>$99 USD</strong> &middot; Lifetime License",
+    p1_orig:"$270 USD", p1_main:"$135 USD", p1_sub:"or ~<strong>Rp 2.000.000 IDR</strong> &middot; Lifetime License",
+    p2_orig:"$198 USD", p2_main:"$99 USD", p2_sub:"or ~<strong>Rp 1.500.000 IDR</strong> &middot; Lifetime License",
+    p3_orig:"$110 USD", p3_main:"$55 USD", p3_sub:"or ~<strong>Rp 799.000 IDR</strong> &middot; Lifetime License",
+    p4_orig:"$90 USD", p4_main:"$45 USD", p4_sub:"or ~<strong>Rp 650.000 IDR</strong> &middot; Lifetime License",
+    p5_orig:"$70 USD", p5_main:"$35 USD", p5_sub:"or ~<strong>Rp 500.000 IDR</strong> &middot; Lifetime License",
+    p6_orig:"$56 USD", p6_main:"$28 USD", p6_sub:"or ~<strong>Rp 400.000 IDR</strong> &middot; Lifetime License",
+    p7_orig:"$14 USD", p7_main:"$7 USD", p7_sub:"or ~<strong>Rp 100.000 IDR</strong> &middot; Lifetime License",
+    p8_orig:"$7 USD", p8_main:"$3.50 USD", p8_sub:"or ~<strong>Rp 50.000 IDR</strong> &middot; Lifetime License",
+    p9_orig:"$90 USD", p9_main:"$45 USD", p9_sub:"or ~<strong>Rp 650.000 IDR</strong> &middot; Lifetime License",
+    p10_orig:"$70 USD", p10_main:"$35 USD", p10_sub:"or ~<strong>Rp 500.000 IDR</strong> &middot; Lifetime License",
+    p11_orig:"$110 USD", p11_main:"$55 USD", p11_sub:"or ~<strong>Rp 799.000 IDR</strong> &middot; Lifetime License",
+    p12_orig:"$56 USD", p12_main:"$28 USD", p12_sub:"or ~<strong>Rp 400.000 IDR</strong> &middot; Lifetime License",
+    p13_orig:"$198 USD", p13_main:"$99 USD", p13_sub:"or ~<strong>Rp 1.500.000 IDR</strong> &middot; Lifetime License",
     ind_kicker:"PROFESSIONAL MT5 CUSTOM TOOLS", ind_title:"MT5 PRO INDICATORS CATALOG",
     ind_sub:"13 professional SMC, Order Block, Divergence, Volume Profile, and HUD tools starting from $3.50 with local &amp; global payment support.",
     ind1_desc:"Automatically maps institutional Order Blocks, Fair Value Gaps (FVG), Break of Structure (BOS), and Change of Character (CHoCH).",
@@ -2011,19 +2052,19 @@ const T = {
     ind11_desc:"Automatic Fibonacci Extension drawing levels from 23.6% to 4.236% from latest swing high/low without manual input.",
     ind12_desc:"London, New York, and Asia session market overlay with visual killzones for optimal entry timing based on liquidity.",
     ind13_desc:"Smart Pivot Points and Central Pivot Range (CPR) daily/weekly with automatic S1-S3 and R1-R3 levels.",
-    ind1_usd:"or <strong>$30 USD</strong> &middot; Lifetime License",
-    ind2_usd:"or <strong>$25 USD</strong> &middot; Lifetime License",
-    ind3_usd:"or <strong>$20 USD</strong> &middot; Lifetime License",
-    ind4_usd:"or <strong>$14 USD</strong> &middot; Lifetime License",
-    ind5_usd:"or <strong>$10 USD</strong> &middot; Lifetime License",
-    ind6_usd:"or <strong>$7 USD</strong> &middot; Lifetime License",
-    ind7_usd:"or <strong>$3.5 USD</strong> &middot; Lifetime License",
-    ind8_usd:"or <strong>$20 USD</strong> &middot; Lifetime License",
-    ind9_usd:"or <strong>$17 USD</strong> &middot; Lifetime License",
-    ind10_usd:"or <strong>$10 USD</strong> &middot; Lifetime License",
-    ind11_usd:"or <strong>$8 USD</strong> &middot; Lifetime License",
-    ind12_usd:"or <strong>$7 USD</strong> &middot; Lifetime License",
-    ind13_usd:"or <strong>$5 USD</strong> &middot; Lifetime License",
+    ind1_orig:"$60 USD", ind1_main:"$30 USD", ind1_sub:"or ~<strong>Rp 450.000 IDR</strong> &middot; Lifetime License",
+    ind2_orig:"$50 USD", ind2_main:"$25 USD", ind2_sub:"or ~<strong>Rp 375.000 IDR</strong> &middot; Lifetime License",
+    ind3_orig:"$40 USD", ind3_main:"$20 USD", ind3_sub:"or ~<strong>Rp 300.000 IDR</strong> &middot; Lifetime License",
+    ind4_orig:"$28 USD", ind4_main:"$14 USD", ind4_sub:"or ~<strong>Rp 200.000 IDR</strong> &middot; Lifetime License",
+    ind5_orig:"$20 USD", ind5_main:"$10 USD", ind5_sub:"or ~<strong>Rp 150.000 IDR</strong> &middot; Lifetime License",
+    ind6_orig:"$14 USD", ind6_main:"$7 USD", ind6_sub:"or ~<strong>Rp 100.000 IDR</strong> &middot; Lifetime License",
+    ind7_orig:"$7 USD", ind7_main:"$3.50 USD", ind7_sub:"or ~<strong>Rp 50.000 IDR</strong> &middot; Lifetime License",
+    ind8_orig:"$40 USD", ind8_main:"$20 USD", ind8_sub:"or ~<strong>Rp 300.000 IDR</strong> &middot; Lifetime License",
+    ind9_orig:"$34 USD", ind9_main:"$17 USD", ind9_sub:"or ~<strong>Rp 250.000 IDR</strong> &middot; Lifetime License",
+    ind10_orig:"$20 USD", ind10_main:"$10 USD", ind10_sub:"or ~<strong>Rp 150.000 IDR</strong> &middot; Lifetime License",
+    ind11_orig:"$16 USD", ind11_main:"$8 USD", ind11_sub:"or ~<strong>Rp 125.000 IDR</strong> &middot; Lifetime License",
+    ind12_orig:"$14 USD", ind12_main:"$7 USD", ind12_sub:"or ~<strong>Rp 100.000 IDR</strong> &middot; Lifetime License",
+    ind13_orig:"$10 USD", ind13_main:"$5 USD", ind13_sub:"or ~<strong>Rp 75.000 IDR</strong> &middot; Lifetime License",
     pkg_kicker:"COMPLETE DELIVERABLE PACKAGE", pkg_title:"WHAT YOUR PURCHASE INCLUDES", pkg_sub:"More than standalone files, you receive a production-grade automated trading ecosystem.",
     pkg_1_t:"Pure .EX5 Binaries (MT5 Native)", pkg_1_d:"Clean compiled original binary ready to install into MT5 Experts directory.",
     pkg_2_t:"Lifetime Permanent License", pkg_2_d:"Permanent license with zero recurring monthly subscription fees.",
@@ -2055,18 +2096,18 @@ let catFilter = "all";
 function setPrice(tier, btn) {
   priceFilter = tier;
   document.querySelectorAll(".price-btn").forEach(b => {
-    b.className = "price-btn whitespace-nowrap px-3 py-1.5 rounded-full text-xs font-mono border border-zinc-700 text-zinc-400 hover:border-zinc-500 transition-all";
+    b.className = "price-btn whitespace-nowrap px-3 py-1.5 rounded-full text-xs font-mono border border-zinc-700 text-zinc-400 hover:border-zinc-500 transition-all cursor-pointer";
   });
-  btn.className = "price-btn active whitespace-nowrap px-3 py-1.5 rounded-full text-xs font-bold font-mono border border-emerald-500 text-emerald-300 bg-emerald-950/50 transition-all";
+  btn.className = "price-btn active whitespace-nowrap px-3 py-1.5 rounded-full text-xs font-bold font-mono border border-emerald-500 text-emerald-300 bg-emerald-950/50 transition-all cursor-pointer";
   applyFilters();
 }
 
 function setCategory(cat, btn) {
   catFilter = cat;
   document.querySelectorAll(".cat-btn").forEach(b => {
-    b.className = "cat-btn whitespace-nowrap px-3 py-1.5 rounded-full text-xs font-mono border border-zinc-700 text-zinc-400 hover:border-zinc-500 transition-all";
+    b.className = "cat-btn whitespace-nowrap px-3 py-1.5 rounded-full text-xs font-mono border border-zinc-700 text-zinc-400 hover:border-zinc-500 transition-all cursor-pointer";
   });
-  btn.className = "cat-btn active whitespace-nowrap px-3 py-1.5 rounded-full text-xs font-bold font-mono border border-emerald-500 text-emerald-300 bg-emerald-950/50 transition-all";
+  btn.className = "cat-btn active whitespace-nowrap px-3 py-1.5 rounded-full text-xs font-bold font-mono border border-emerald-500 text-emerald-300 bg-emerald-950/50 transition-all cursor-pointer";
   applyFilters();
 }
 
@@ -2091,19 +2132,18 @@ function applyFilters() {
 }
 
 function toggleFaq(btn) {
-  const item = btn.closest(".bg-cardDark") || btn.parentElement;
-  const answer = item.querySelector(".faq-answer");
+  const card = btn.closest(".bg-cardDark") || btn.parentElement;
+  const answer = card.querySelector(".faq-answer");
   const chevron = btn.querySelector(".faq-chevron");
+  if (!answer) return;
   const isOpen = answer.classList.contains("open");
   if (isOpen) {
     answer.classList.remove("open");
+    answer.style.display = "none";
     if (chevron) chevron.classList.remove("rotate");
   } else {
     answer.classList.add("open");
-    if (chevron) chevron.classList.add("rotate");
-  }
-} else {
-    answer.classList.add("open");
+    answer.style.display = "block";
     if (chevron) chevron.classList.add("rotate");
   }
 }
@@ -2328,15 +2368,17 @@ function setLanguage(lang) {
   const idBtn = document.getElementById("lang-id-btn");
   const enBtn = document.getElementById("lang-en-btn");
   if(lang === "id") {
-    idBtn.className = "px-2.5 py-1 rounded-full text-xs font-bold transition-all bg-white text-black";
-    enBtn.className = "px-2.5 py-1 rounded-full text-xs font-medium text-zinc-400 hover:text-white transition-all";
+    if (idBtn) idBtn.className = "cursor-pointer px-3 py-1 rounded-full text-xs font-bold transition-all bg-white text-black shadow";
+    if (enBtn) enBtn.className = "cursor-pointer px-3 py-1 rounded-full text-xs font-medium text-zinc-400 hover:text-white transition-all";
   } else {
-    enBtn.className = "px-2.5 py-1 rounded-full text-xs font-bold transition-all bg-white text-black";
-    idBtn.className = "px-2.5 py-1 rounded-full text-xs font-medium text-zinc-400 hover:text-white transition-all";
+    if (enBtn) enBtn.className = "cursor-pointer px-3 py-1 rounded-full text-xs font-bold transition-all bg-white text-black shadow";
+    if (idBtn) idBtn.className = "cursor-pointer px-3 py-1 rounded-full text-xs font-medium text-zinc-400 hover:text-white transition-all";
   }
   document.querySelectorAll("[data-i18n]").forEach(el => {
     const key = el.getAttribute("data-i18n");
-    if(T[lang] && T[lang][key] !== undefined) el.innerHTML = T[lang][key];
+    if(T[lang] && T[lang][key] !== undefined) {
+      el.innerHTML = T[lang][key];
+    }
   });
 }
 
