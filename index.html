@@ -81,6 +81,24 @@
       opacity: 0;
       transform: scale(0.95);
     }
+
+    /* Accordion FAQ animation */
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+      opacity: 0;
+    }
+    .faq-answer.open {
+      max-height: 500px;
+      opacity: 1;
+    }
+    .faq-chevron {
+      transition: transform 0.3s ease;
+    }
+    .faq-chevron.rotate {
+      transform: rotate(180deg);
+    }
   </style>
 </head>
 <body class="antialiased selection:bg-white selection:text-black">
@@ -90,7 +108,7 @@
   <!-- ========================================================================= -->
   <header class="w-full pt-6 pb-4 px-4 sm:px-12 max-w-7xl mx-auto flex items-center justify-between z-50">
     
-    <!-- Left: Elegant Monogram Logo ("AT" for Aemeth Trader) -->
+    <!-- Left: Monogram Logo -->
     <a href="#" class="flex items-center space-x-2.5 sm:space-x-3 group">
       <span class="font-serif text-2xl sm:text-3xl font-light tracking-tighter text-white group-hover:opacity-80 transition-opacity">
         AT
@@ -105,13 +123,16 @@
       </div>
     </a>
 
-    <!-- Center: Main Navigation Menu (EA vs Indikator) -->
+    <!-- Center: Main Navigation Menu -->
     <nav class="hidden lg:flex items-center space-x-6 text-xs font-mono font-semibold uppercase tracking-wider text-zinc-400">
       <a href="#katalog-ea" class="hover:text-emerald-400 transition-colors flex items-center">
         <span class="mr-1.5">🤖</span> <span data-i18n="nav_menu_ea">ROBOT EA MT5</span>
       </a>
       <a href="#katalog-indikator" class="hover:text-purple-400 transition-colors flex items-center">
         <span class="mr-1.5">📊</span> <span data-i18n="nav_menu_indicators">INDIKATOR MT5</span>
+      </a>
+      <a href="#faq" class="hover:text-amber-400 transition-colors flex items-center">
+        <span class="mr-1.5">❓</span> <span data-i18n="nav_menu_faq">FAQ & DISCLAIMER</span>
       </a>
       <a href="#stats" class="hover:text-white transition-colors" data-i18n="nav_menu_stats">TELEMETRY</a>
     </nav>
@@ -135,7 +156,7 @@
         </button>
       </div>
 
-      <!-- Quick Link Button to Indicators -->
+      <!-- Quick Link to Indicators -->
       <a href="#katalog-indikator" class="hidden sm:inline-flex items-center px-3.5 py-2 bg-purple-950/70 hover:bg-purple-900 border border-purple-500/40 text-purple-300 font-semibold text-xs rounded-full transition-all">
         <span>📊 Indikator</span>
       </a>
@@ -282,7 +303,7 @@
       <!-- FILTER CONTROLS BAR: 2 CLEAN ROWS (NO OVERLAP ON MOBILE) -->
       <div class="bg-cardDark/90 border border-zinc-800 rounded-2xl p-4 sm:p-6 mb-10 max-w-4xl mx-auto shadow-xl">
         
-        <!-- ROW 1: FILTER BY MODAL TRADING (MOBILE 2x2/3 GRID) -->
+        <!-- ROW 1: FILTER BY MODAL TRADING -->
         <div class="mb-5 pb-5 border-b border-zinc-800/80">
           <div class="flex items-center justify-between mb-3">
             <span class="text-[11px] font-mono uppercase font-bold tracking-wider text-emerald-400 flex items-center">
@@ -372,13 +393,11 @@
       </div>
 
       <!-- ===================================================================== -->
-      <!-- PRODUCT CARDS GRID: 6 EA SORTED FROM HIGHEST PRICE / BEST QUALITY -->
+      <!-- PRODUCT CARDS GRID: 6 EA SORTED FROM HIGHEST PRICE -->
       <!-- ===================================================================== -->
       <div id="catalog-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         
-        <!-- ===================================================================== -->
-        <!-- PRODUK 1: RANK #1 ULTIMATE HEDGE FUND AI (4 JT -> DISKON 50% = 2 JT) -->
-        <!-- ===================================================================== -->
+        <!-- PRODUK 1: RANK #1 ULTIMATE HEDGE FUND AI (4 JT -> 2 JT) -->
         <div class="product-card bg-cardDark rounded-2xl border-2 border-purple-500/70 p-5 sm:p-6 flex flex-col justify-between hover:border-purple-400 transition-all shadow-glow-purple relative overflow-hidden group"
              data-capital-min="10000000"
              data-rank-tier="flagship">
@@ -411,7 +430,7 @@
               </span>
             </div>
 
-            <!-- Price Display (4jt -> 50% = 2jt) -->
+            <!-- Price (4jt -> 50% = 2jt) -->
             <div class="mt-6 pt-4 border-t border-zinc-800/80">
               <div class="flex items-baseline space-x-2 text-xs">
                 <span class="text-zinc-500 line-through" data-i18n="ea_master_strike"><s>Rp 4.000.000</s></span>
@@ -444,9 +463,7 @@
 
         </div>
 
-        <!-- ===================================================================== -->
-        <!-- PRODUK 2: RANK #2 INSTITUTIONAL HFT (3 JT -> 15%+15%+10%+10% = 1.5 JT) -->
-        <!-- ===================================================================== -->
+        <!-- PRODUK 2: RANK #2 INSTITUTIONAL HFT (3 JT -> 1.5 JT) -->
         <div class="product-card bg-cardDark rounded-2xl border-2 border-emerald-500/70 p-5 sm:p-6 flex flex-col justify-between hover:border-emerald-400 transition-all shadow-glow-emerald relative overflow-hidden group"
              data-capital-min="5000000"
              data-rank-tier="flagship">
@@ -479,7 +496,7 @@
               </span>
             </div>
 
-            <!-- Price Display (3jt -> 15%+15%+10%+10% = 1.5jt) -->
+            <!-- Price (3jt -> 15%+15%+10%+10% = 1.5jt) -->
             <div class="mt-6 pt-4 border-t border-zinc-800/80">
               <div class="flex items-baseline space-x-2 text-xs">
                 <span class="text-zinc-500 line-through" data-i18n="ea_hft_strike"><s>Rp 3.000.000</s></span>
@@ -512,9 +529,7 @@
 
         </div>
 
-        <!-- ===================================================================== -->
-        <!-- PRODUK 3: RANK #3 PROP SHIELD SUPREME (1.6 JT -> DISKON = 799 RB) -->
-        <!-- ===================================================================== -->
+        <!-- PRODUK 3: RANK #3 PROP SHIELD SUPREME (1.6 JT -> 799 RB) -->
         <div class="product-card bg-cardDark rounded-2xl border border-zinc-800/80 p-5 sm:p-6 flex flex-col justify-between hover:border-zinc-600 transition-all shadow-xl relative overflow-hidden group"
              data-capital-min="1000000"
              data-rank-tier="flagship">
@@ -575,9 +590,7 @@
 
         </div>
 
-        <!-- ===================================================================== -->
         <!-- PRODUK 4: RANK #4 TREND PULSE PRO (1.3 JT -> 650 RB) -->
-        <!-- ===================================================================== -->
         <div class="product-card bg-cardDark rounded-2xl border border-zinc-800/80 p-5 sm:p-6 flex flex-col justify-between hover:border-zinc-600 transition-all shadow-xl relative overflow-hidden group"
              data-capital-min="500000"
              data-rank-tier="flagship">
@@ -638,9 +651,7 @@
 
         </div>
 
-        <!-- ===================================================================== -->
         <!-- PRODUK 5: RANK #5 GOLD QUANTUM SCALPER (1 JT -> 500 RB) -->
-        <!-- ===================================================================== -->
         <div class="product-card bg-cardDark rounded-2xl border border-zinc-800/80 p-5 sm:p-6 flex flex-col justify-between hover:border-zinc-600 transition-all shadow-xl relative overflow-hidden group"
              data-capital-min="100000"
              data-rank-tier="scalper">
@@ -701,9 +712,7 @@
 
         </div>
 
-        <!-- ===================================================================== -->
         <!-- PRODUK 6: RANK #6 MICRO CENT STARTER (800 RB -> 400 RB) -->
-        <!-- ===================================================================== -->
         <div class="product-card bg-cardDark rounded-2xl border border-zinc-800/80 p-5 sm:p-6 flex flex-col justify-between hover:border-zinc-600 transition-all shadow-xl relative overflow-hidden group"
              data-capital-min="100000"
              data-rank-tier="starter">
@@ -769,7 +778,7 @@
     </section>
 
     <!-- ========================================================================= -->
-    <!-- 5. SECTION BARU: MENU JUAL INDIKATOR MT5 PRO (CUSTOM INDICATORS) -->
+    <!-- 5. SECTION: KATALOG INDIKATOR MT5 PRO (CUSTOM INDICATORS) -->
     <!-- ========================================================================= -->
     <section id="katalog-indikator" class="my-16 pt-12 border-t border-zinc-800">
       
@@ -785,9 +794,8 @@
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         
-        <!-- INDIKATOR 1: SMC ORDER BLOCK & LIQUIDITY HUNTER -->
+        <!-- INDIKATOR 1: SMC ORDER BLOCK -->
         <div class="bg-cardDark rounded-2xl border-2 border-purple-500/50 p-5 sm:p-6 flex flex-col justify-between hover:border-purple-400 transition-all shadow-glow-purple relative overflow-hidden group">
-          
           <div class="absolute top-0 right-0 bg-purple-600 text-white font-mono font-bold text-[9px] uppercase tracking-widest px-3 py-1 rounded-bl-lg">
             SMC & INSTITUTIONAL
           </div>
@@ -809,7 +817,6 @@
               Otomatis mendeteksi zona Order Block institusi, Fair Value Gap (FVG), Break of Structure (BOS), dan Change of Character (CHoCH) dengan akurasi sniper.
             </p>
 
-            <!-- Specs -->
             <div class="grid grid-cols-2 gap-2 mt-4 text-[11px] font-mono text-zinc-400">
               <div class="bg-zinc-950/70 p-2 rounded border border-zinc-800">
                 Fitur: <strong class="text-zinc-200">Alert Sound & Popup</strong>
@@ -819,7 +826,6 @@
               </div>
             </div>
 
-            <!-- Price & Double Discount -->
             <div class="mt-6 pt-4 border-t border-zinc-800/80">
               <div class="flex items-baseline space-x-2 text-xs">
                 <span class="text-zinc-500 line-through"><s>Rp 1.200.000</s></span>
@@ -842,12 +848,6 @@
           </div>
 
           <div class="mt-6 space-y-2">
-            <!-- 
-              ===================================================================================
-              LINK CHECKOUT MAYAR (INDIKATOR ORDER BLOCK):
-              Ganti link href di bawah dengan link Mayar produk indikator Anda.
-              ===================================================================================
-            -->
             <a href="https://mayar.link/checkout-aemeth-orderblock" target="_blank" rel="noopener noreferrer" class="w-full py-3 px-4 bg-emerald-500 hover:bg-emerald-400 text-black font-bold text-xs uppercase tracking-wider flex items-center justify-center rounded-xl transition-all shadow-md">
               <span data-i18n="btn_buy_qris">Beli via QRIS / Bank Transfer</span>
             </a>
@@ -858,9 +858,8 @@
 
         </div>
 
-        <!-- INDIKATOR 2: QUANTUM TREND REVERSAL ARROW -->
+        <!-- INDIKATOR 2: REVERSAL ARROW -->
         <div class="bg-cardDark rounded-2xl border border-zinc-800/80 p-5 sm:p-6 flex flex-col justify-between hover:border-purple-400 transition-all shadow-xl relative overflow-hidden group">
-          
           <div>
             <div class="flex items-center justify-between mb-4">
               <span class="inline-flex items-center px-3 py-1 rounded-full bg-blue-500/20 border border-blue-500/40 text-blue-300 text-xs font-bold font-mono">
@@ -887,7 +886,6 @@
               </div>
             </div>
 
-            <!-- Price & Double Discount -->
             <div class="mt-6 pt-4 border-t border-zinc-800/80">
               <div class="flex items-baseline space-x-2 text-xs">
                 <span class="text-zinc-500 line-through"><s>Rp 900.000</s></span>
@@ -920,9 +918,8 @@
 
         </div>
 
-        <!-- INDIKATOR 3: AUTO SUPPLY & DEMAND SNIPER -->
+        <!-- INDIKATOR 3: SUPPLY & DEMAND -->
         <div class="bg-cardDark rounded-2xl border border-zinc-800/80 p-5 sm:p-6 flex flex-col justify-between hover:border-purple-400 transition-all shadow-xl relative overflow-hidden group">
-          
           <div>
             <div class="flex items-center justify-between mb-4">
               <span class="inline-flex items-center px-3 py-1 rounded-full bg-emerald-500/20 border border-emerald-500/40 text-emerald-300 text-xs font-bold font-mono">
@@ -949,7 +946,6 @@
               </div>
             </div>
 
-            <!-- Price & Double Discount -->
             <div class="mt-6 pt-4 border-t border-zinc-800/80">
               <div class="flex items-baseline space-x-2 text-xs">
                 <span class="text-zinc-500 line-through"><s>Rp 800.000</s></span>
@@ -987,7 +983,125 @@
     </section>
 
     <!-- ========================================================================= -->
-    <!-- 6. BOTTOM BANNER METALLIC SHINE -->
+    <!-- 6. SECTION BARU: INTERACTIVE ACCORDION FAQ & TRANSPARENT RISK DISCLAIMER -->
+    <!-- ========================================================================= -->
+    <section id="faq" class="my-16 pt-12 border-t border-zinc-800">
+      
+      <div class="text-center max-w-2xl mx-auto mb-10">
+        <span class="text-xs font-mono uppercase tracking-[0.25em] text-amber-400 font-bold" data-i18n="faq_kicker">KNOWLEDGE BASE & RISK POLICY</span>
+        <h2 class="text-2xl sm:text-4xl font-black text-white uppercase tracking-tight mt-1" data-i18n="faq_title">
+          PERTANYAAN UMUM & DISCLAIMER RESMI
+        </h2>
+        <p class="text-zinc-400 text-xs sm:text-sm mt-2" data-i18n="faq_subtitle">
+          Klik pertanyaan di bawah untuk melihat penjelasan lengkap mengenai cara kerja EA, risiko trading, dan batasan tanggung jawab.
+        </p>
+      </div>
+
+      <!-- FAQ ACCORDION CONTAINER -->
+      <div class="max-w-4xl mx-auto space-y-3.5">
+        
+        <!-- FAQ 1: APA ITU ROBOT EA MT5? -->
+        <div class="bg-cardDark border border-zinc-800 rounded-2xl overflow-hidden shadow-lg transition-all hover:border-zinc-700">
+          <button onclick="toggleFaq(this)" class="w-full p-5 sm:p-6 text-left flex items-center justify-between space-x-4 focus:outline-none">
+            <span class="font-bold text-white text-sm sm:text-base flex items-center" data-i18n="faq1_q">
+              <span class="text-emerald-400 mr-2.5">🤖</span> Apa itu Robot Expert Advisor (EA) MT5 dan bagaimana cara kerjanya?
+            </span>
+            <span class="faq-chevron text-zinc-400 text-xs sm:text-sm font-mono shrink-0">▼</span>
+          </button>
+          <div class="faq-answer px-5 sm:px-6 pb-5 sm:pb-6 text-xs sm:text-sm text-zinc-400 leading-relaxed border-t border-zinc-800/60 pt-4" data-i18n="faq1_a">
+            <strong>Robot Expert Advisor (EA)</strong> adalah program perangkat lunak algoritma khusus yang dipasang di platform MetaTrader 5 (MT5). EA bekerja otomatis 24/5 menganalisis pergerakan harga pasar, menghitung lot sesuai manajemen risiko, membuka posisi (Buy/Sell), hingga memasang Take Profit (TP) dan Stop Loss (SL) secara otomatis tanpa intervensi emosi manusia.
+          </div>
+        </div>
+
+        <!-- FAQ 2: APAKAH EA SELALU PROFIT? (DISCLAIMER TIDAK ADA JAMINAN PROFIT) -->
+        <div class="bg-cardDark border-2 border-amber-500/40 rounded-2xl overflow-hidden shadow-lg transition-all hover:border-amber-400">
+          <button onclick="toggleFaq(this)" class="w-full p-5 sm:p-6 text-left flex items-center justify-between space-x-4 focus:outline-none">
+            <span class="font-bold text-amber-300 text-sm sm:text-base flex items-center" data-i18n="faq2_q">
+              <span class="text-amber-400 mr-2.5">⚠️</span> Apakah Robot EA ini selalu profit dan ada jaminan keuntungan?
+            </span>
+            <span class="faq-chevron text-amber-400 text-xs sm:text-sm font-mono shrink-0">▼</span>
+          </button>
+          <div class="faq-answer px-5 sm:px-6 pb-5 sm:pb-6 text-xs sm:text-sm text-zinc-300 leading-relaxed border-t border-amber-500/20 pt-4 bg-amber-950/20" data-i18n="faq2_a">
+            <p class="mb-2">
+              <strong>TIDAK. Robot EA TIDAK SELALU PROFIT di setiap kondisi pasar, dan kami SAMA SEKALI TIDAK MENJAMIN PROFIT.</strong>
+            </p>
+            <p class="text-zinc-400 mb-2">
+              Trading di pasar finansial (Forex, Gold, Saham) memiliki risiko fluktuasi harga yang tinggi. Robot EA kami dibangun dengan analisis probabilitas matematika dan manajemen risiko terukur, namun hasil di masa lalu atau pengujian backtest tidak dapat menjamin hasil keuntungan yang sama di masa mendatang.
+            </p>
+            <p class="text-amber-300 font-semibold">
+              Gunakanlah selalu dana dingin (risk capital) yang siap Anda tanggung jika terjadi risiko kerugian di pasar.
+            </p>
+          </div>
+        </div>
+
+        <!-- FAQ 3: BATASAN TANGGUNG JAWAB (JIKA RUGI BUKAN TANGGUNG JAWAB KAMI) -->
+        <div class="bg-cardDark border-2 border-rose-500/40 rounded-2xl overflow-hidden shadow-lg transition-all hover:border-rose-400">
+          <button onclick="toggleFaq(this)" class="w-full p-5 sm:p-6 text-left flex items-center justify-between space-x-4 focus:outline-none">
+            <span class="font-bold text-rose-300 text-sm sm:text-base flex items-center" data-i18n="faq3_q">
+              <span class="text-rose-400 mr-2.5">⚖️</span> Bagaimana jika terjadi kerugian (Loss) pada akun trading saya?
+            </span>
+            <span class="faq-chevron text-rose-400 text-xs sm:text-sm font-mono shrink-0">▼</span>
+          </button>
+          <div class="faq-answer px-5 sm:px-6 pb-5 sm:pb-6 text-xs sm:text-sm text-zinc-300 leading-relaxed border-t border-rose-500/20 pt-4 bg-rose-950/20" data-i18n="faq3_a">
+            <p class="mb-2">
+              <strong>Segala bentuk kerugian finansial, margin call, atau risiko drawdown yang terjadi pada akun trading Anda sepenuhnya merupakan TANGGUNG JAWAB PRIBADI ANDA SEBAGAI TRADER.</strong>
+            </p>
+            <p class="text-zinc-400 mb-2">
+              Kami bertindak murni sebagai pengembang perangkat lunak (software developer). Kami <strong>BUKAN pengelola dana, bukan penasihat keuangan, dan TIDAK BERTANGGUNG JAWAB</strong> atas keputusan eksekusi, kerugian akun, gangguan koneksi internet/broker, atau kesalahan pemilihan lot yang Anda lakukan.
+            </p>
+            <p class="text-zinc-400">
+              Dengan membeli software EA atau Indikator ini, Anda menyatakan telah membaca, memahami, dan menyetujui seluruh risiko perdagangan yang ada.
+            </p>
+          </div>
+        </div>
+
+        <!-- FAQ 4: APA PERBEDAAN ROBOT EA DENGAN INDIKATOR CUSTOM? -->
+        <div class="bg-cardDark border border-zinc-800 rounded-2xl overflow-hidden shadow-lg transition-all hover:border-zinc-700">
+          <button onclick="toggleFaq(this)" class="w-full p-5 sm:p-6 text-left flex items-center justify-between space-x-4 focus:outline-none">
+            <span class="font-bold text-white text-sm sm:text-base flex items-center" data-i18n="faq4_q">
+              <span class="text-purple-400 mr-2.5">📊</span> Apa perbedaan antara Robot EA dengan Indikator MT5?
+            </span>
+            <span class="faq-chevron text-zinc-400 text-xs sm:text-sm font-mono shrink-0">▼</span>
+          </button>
+          <div class="faq-answer px-5 sm:px-6 pb-5 sm:pb-6 text-xs sm:text-sm text-zinc-400 leading-relaxed border-t border-zinc-800/60 pt-4" data-i18n="faq4_a">
+            <strong>Robot EA</strong> adalah sistem otomatis penuh yang akan membuka dan menutup posisi trading sendiri tanpa Anda harus memencet tombol. Sedangkan <strong>Indikator Custom</strong> adalah alat bantu visual (seperti zona Order Block, Supply & Demand, atau panah sinyal) yang membantu Anda saat melakukan trading manual agar lebih terarah dan akurat.
+          </div>
+        </div>
+
+        <!-- FAQ 5: APAKAH MEMERLUKAN VPS (VIRTUAL PRIVATE SERVER)? -->
+        <div class="bg-cardDark border border-zinc-800 rounded-2xl overflow-hidden shadow-lg transition-all hover:border-zinc-700">
+          <button onclick="toggleFaq(this)" class="w-full p-5 sm:p-6 text-left flex items-center justify-between space-x-4 focus:outline-none">
+            <span class="font-bold text-white text-sm sm:text-base flex items-center" data-i18n="faq5_q">
+              <span class="text-blue-400 mr-2.5">🌐</span> Apakah saya harus memakai VPS dan laptop harus menyala terus?
+            </span>
+            <span class="faq-chevron text-zinc-400 text-xs sm:text-sm font-mono shrink-0">▼</span>
+          </button>
+          <div class="faq-answer px-5 sm:px-6 pb-5 sm:pb-6 text-xs sm:text-sm text-zinc-400 leading-relaxed border-t border-zinc-800/60 pt-4" data-i18n="faq5_a">
+            Untuk Robot EA, sangat disarankan menggunakan <strong>VPS Windows (Virtual Private Server)</strong> agar EA dapat berjalan 24 jam nonstop tanpa Anda harus membiarkan laptop/PC menyala dan tanpa khawatir mati lampu/putus internet. Kami menyediakan rekomendasi VPS murah berkualitas ($3 - $5/bulan) di dalam panduan instalasi.
+          </div>
+        </div>
+
+      </div>
+
+      <!-- DEDICATED OFFICIAL RISK CALLOUT BOX -->
+      <div class="max-w-4xl mx-auto mt-10 p-6 bg-gradient-to-r from-amber-950/40 via-zinc-900 to-rose-950/40 border border-amber-500/40 rounded-2xl shadow-xl">
+        <div class="flex items-start space-x-3.5">
+          <span class="text-2xl shrink-0">🛡️</span>
+          <div>
+            <h4 class="text-sm font-bold uppercase tracking-wider text-amber-300 mb-1" data-i18n="box_disclaimer_title">
+              PEMBERITAHUAN RESMI TENTANG RISIKO & TANGGUNG JAWAB
+            </h4>
+            <p class="text-xs text-zinc-400 leading-relaxed" data-i18n="box_disclaimer_desc">
+              Trading Forex, Komoditas (Emas/XAUUSD), dan Indeks membawa tingkat risiko kerugian finansial yang signifikan. Produk software kami disediakan apa adanya ("as-is") sebagai alat bantu teknologi analisis. Anda bertanggung jawab penuh atas segala hasil, untung, maupun rugi yang terjadi pada portofolio Anda.
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- 7. BOTTOM BANNER METALLIC SHINE -->
     <!-- ========================================================================= -->
     <section class="my-16">
       <div class="metallic-shine rounded-3xl border border-zinc-700/60 p-6 sm:p-12 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center shadow-2xl">
@@ -1026,7 +1140,7 @@
   </main>
 
   <!-- ========================================================================= -->
-  <!-- 7. FOOTER -->
+  <!-- 8. FOOTER -->
   <!-- ========================================================================= -->
   <footer class="w-full border-t border-zinc-800/80 py-8 px-4 sm:px-12 max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between text-[11px] font-mono text-zinc-500 space-y-4 sm:space-y-0">
     <div>
@@ -1043,16 +1157,39 @@
   </footer>
 
   <!-- ========================================================================= -->
-  <!-- 8. JAVASCRIPT: FILTER ENGINE & BILINGUAL TRANSLATIONS -->
+  <!-- 9. JAVASCRIPT: ACCORDION LOGIC, FILTERS & BILINGUAL TRANSLATIONS -->
   <!-- ========================================================================= -->
   <script>
     let currentCapitalFilter = 'all';
     let currentRankFilter = 'all';
 
+    // ==========================================
+    // 1. FAQ ACCORDION TOGGLE
+    // ==========================================
+    function toggleFaq(button) {
+      const answer = button.nextElementSibling;
+      const chevron = button.querySelector('.faq-chevron');
+
+      const isOpen = answer.classList.contains('open');
+
+      // Close all first (optional: accordion behavior)
+      document.querySelectorAll('.faq-answer').forEach(el => el.classList.remove('open'));
+      document.querySelectorAll('.faq-chevron').forEach(el => el.classList.remove('rotate'));
+
+      if (!isOpen) {
+        answer.classList.add('open');
+        chevron.classList.add('rotate');
+      }
+    }
+
+    // ==========================================
+    // 2. DICTIONARY TRANSLATIONS (ID & EN)
+    // ==========================================
     const translations = {
       id: {
         nav_menu_ea: 'ROBOT EA MT5',
         nav_menu_indicators: 'INDIKATOR MT5',
+        nav_menu_faq: 'FAQ & DISCLAIMER',
         nav_menu_stats: 'TELEMETRY',
         nav_status: 'Status EA: <strong>Active & Verified</strong>',
         nav_catalog_btn: 'KATALOG EA',
@@ -1157,6 +1294,28 @@
         ind3_desc: 'Secara otomatis menggambar kotak zona supply dan demand fresh dengan rasio Risk/Reward tinggi. Menghilangkan keraguan saat mencari titik entri.',
         ind3_usd_price: 'atau <strong>$20 USD</strong> (Lifetime License)',
 
+        // FAQ Section
+        faq_kicker: 'KNOWLEDGE BASE & RISK POLICY',
+        faq_title: 'PERTANYAAN UMUM & DISCLAIMER RESMI',
+        faq_subtitle: 'Klik pertanyaan di bawah untuk melihat penjelasan lengkap mengenai cara kerja EA, risiko trading, dan batasan tanggung jawab.',
+        faq1_q: '<span class="text-emerald-400 mr-2.5">🤖</span> Apa itu Robot Expert Advisor (EA) MT5 dan bagaimana cara kerjanya?',
+        faq1_a: '<strong>Robot Expert Advisor (EA)</strong> adalah program perangkat lunak algoritma khusus yang dipasang di platform MetaTrader 5 (MT5). EA bekerja otomatis 24/5 menganalisis pergerakan harga pasar, menghitung lot sesuai manajemen risiko, membuka posisi (Buy/Sell), hingga memasang Take Profit (TP) dan Stop Loss (SL) secara otomatis tanpa intervensi emosi manusia.',
+        
+        faq2_q: '<span class="text-amber-400 mr-2.5">⚠️</span> Apakah Robot EA ini selalu profit dan ada jaminan keuntungan?',
+        faq2_a: '<p class="mb-2"><strong>TIDAK. Robot EA TIDAK SELALU PROFIT di setiap kondisi pasar, dan kami SAMA SEKALI TIDAK MENJAMIN PROFIT.</strong></p><p class="text-zinc-400 mb-2">Trading di pasar finansial (Forex, Gold, Saham) memiliki risiko fluktuasi harga yang tinggi. Robot EA kami dibangun dengan analisis probabilitas matematika dan manajemen risiko terukur, namun hasil di masa lalu atau pengujian backtest tidak dapat menjamin hasil keuntungan yang sama di masa mendatang.</p><p class="text-amber-300 font-semibold">Gunakanlah selalu dana dingin (risk capital) yang siap Anda tanggung jika terjadi risiko kerugian di pasar.</p>',
+
+        faq3_q: '<span class="text-rose-400 mr-2.5">⚖️</span> Bagaimana jika terjadi kerugian (Loss) pada akun trading saya?',
+        faq3_a: '<p class="mb-2"><strong>Segala bentuk kerugian finansial, margin call, atau risiko drawdown yang terjadi pada akun trading Anda sepenuhnya merupakan TANGGUNG JAWAB PRIBADI ANDA SEBAGAI TRADER.</strong></p><p class="text-zinc-400 mb-2">Kami bertindak murni sebagai pengembang perangkat lunak (software developer). Kami <strong>BUKAN pengelola dana, bukan penasihat keuangan, dan TIDAK BERTANGGUNG JAWAB</strong> atas keputusan eksekusi, kerugian akun, gangguan koneksi internet/broker, atau kesalahan pemilihan lot yang Anda lakukan.</p><p class="text-zinc-400">Dengan membeli software EA atau Indikator ini, Anda menyatakan telah membaca, memahami, dan menyetujui seluruh risiko perdagangan yang ada.</p>',
+
+        faq4_q: '<span class="text-purple-400 mr-2.5">📊</span> Apa perbedaan antara Robot EA dengan Indikator MT5?',
+        faq4_a: '<strong>Robot EA</strong> adalah sistem otomatis penuh yang akan membuka dan menutup posisi trading sendiri tanpa Anda harus memencet tombol. Sedangkan <strong>Indikator Custom</strong> adalah alat bantu visual (seperti zona Order Block, Supply & Demand, atau panah sinyal) yang membantu Anda saat melakukan trading manual agar lebih terarah dan akurat.',
+
+        faq5_q: '<span class="text-blue-400 mr-2.5">🌐</span> Apakah saya harus memakai VPS dan laptop harus menyala terus?',
+        faq5_a: 'Untuk Robot EA, sangat disarankan menggunakan <strong>VPS Windows (Virtual Private Server)</strong> agar EA dapat berjalan 24 jam nonstop tanpa Anda harus membiarkan laptop/PC menyala dan tanpa khawatir mati lampu/putus internet. Kami menyediakan rekomendasi VPS murah berkualitas ($3 - $5/bulan) di dalam panduan instalasi.',
+
+        box_disclaimer_title: 'PEMBERITAHUAN RESMI TENTANG RISIKO & TANGGUNG JAWAB',
+        box_disclaimer_desc: 'Trading Forex, Komoditas (Emas/XAUUSD), dan Indeks membawa tingkat risiko kerugian finansial yang signifikan. Produk software kami disediakan apa adanya ("as-is") sebagai alat bantu teknologi analisis. Anda bertanggung jawab penuh atas segala hasil, untung, maupun rugi yang terjadi pada portofolio Anda.',
+
         banner_title: "LET'S TRADE<br/>SOMETHING<br/>EXTRAORDINARY ✦",
         banner_subtitle: 'AEMETH MT5 EA & INDICATORS — LIFETIME LICENSE & INSTANT DELIVERY',
         banner_instant_badge: '⚡ <strong>Instant Access:</strong> File Murni .EX5 & Lisensi akan otomatis dikirim ke email Anda 1 detik setelah pembayaran berhasil.'
@@ -1164,6 +1323,7 @@
       en: {
         nav_menu_ea: 'MT5 ROBOT EA',
         nav_menu_indicators: 'MT5 INDICATORS',
+        nav_menu_faq: 'FAQ & DISCLAIMER',
         nav_menu_stats: 'TELEMETRY',
         nav_status: 'EA Status: <strong>Active & Verified</strong>',
         nav_catalog_btn: 'EA CATALOG',
@@ -1267,6 +1427,28 @@
         ind2_usd_price: 'or <strong>Rp 350.000</strong> (Lifetime License)',
         ind3_desc: 'Automatically draws fresh Supply and Demand zones with high Risk-to-Reward ratios. Removes all guesswork for sniper entries.',
         ind3_usd_price: 'or <strong>Rp 299.000</strong> (Lifetime License)',
+
+        // FAQ Section
+        faq_kicker: 'KNOWLEDGE BASE & RISK POLICY',
+        faq_title: 'FREQUENTLY ASKED QUESTIONS & DISCLAIMER',
+        faq_subtitle: 'Click any question below for detailed explanations of EA functionality, trading risk, and limitation of liability.',
+        faq1_q: '<span class="text-emerald-400 mr-2.5">🤖</span> What is an MT5 Expert Advisor (EA) and how does it work?',
+        faq1_a: 'An <strong>Expert Advisor (EA)</strong> is an automated algorithmic software installed directly inside MetaTrader 5 (MT5). It operates 24/5 analyzing market price action, calculating position size based on risk parameters, executing orders (Buy/Sell), and managing Take Profit (TP) and Stop Loss (SL) without human emotion.',
+        
+        faq2_q: '<span class="text-amber-400 mr-2.5">⚠️</span> Does this EA always make a profit, and is profit guaranteed?',
+        faq2_a: '<p class="mb-2"><strong>NO. The EA DOES NOT ALWAYS PROFIT in all market conditions, and we DO NOT GUARANTEE ANY PROFIT.</strong></p><p class="text-zinc-400 mb-2">Trading financial markets (Forex, Gold, Stocks) carries significant risk of capital loss. While our software is built on mathematical probabilities and risk management, past performance or backtesting cannot guarantee future results.</p><p class="text-amber-300 font-semibold">Always trade with risk capital that you are prepared to risk.</p>',
+
+        faq3_q: '<span class="text-rose-400 mr-2.5">⚖️</span> What if my trading account experiences a loss or drawdown?',
+        faq3_a: '<p class="mb-2"><strong>Any financial loss, margin call, or drawdown incurred on your trading account is SOLELY YOUR PERSONAL RESPONSIBILITY AS A TRADER.</strong></p><p class="text-zinc-400 mb-2">We act purely as software developers. We are <strong>NOT financial advisors or fund managers, and WE ARE NOT LIABLE</strong> for trading outcomes, account losses, broker/internet disconnects, or lot size misconfigurations.</p><p class="text-zinc-400">By purchasing this software, you acknowledge and accept all risks associated with trading.</p>',
+
+        faq4_q: '<span class="text-purple-400 mr-2.5">📊</span> What is the difference between an EA Robot and a Custom Indicator?',
+        faq4_a: 'An <strong>EA Robot</strong> is a fully automated trading system that places and manages trades automatically. A <strong>Custom Indicator</strong> is a visual analytical tool (such as Order Block zones, Supply & Demand boxes, or signal arrows) designed to assist your manual trading.',
+
+        faq5_q: '<span class="text-blue-400 mr-2.5">🌐</span> Do I need a VPS, and does my PC have to stay on 24/7?',
+        faq5_a: 'For automated EAs, using a <strong>Windows VPS (Virtual Private Server)</strong> is highly recommended so the EA runs 24/5 continuously without requiring your personal computer to stay on. Inexpensive VPS options ($3-$5/month) are covered in our setup guide.',
+
+        box_disclaimer_title: 'OFFICIAL NOTICE ON RISK & LIMITATION OF LIABILITY',
+        box_disclaimer_desc: 'Trading Forex, Commodities (Gold/XAUUSD), and Indices involves significant risk of loss. Our software is provided "as-is" for technical analysis and automation assistance. You assume full responsibility for all trading outcomes and portfolio performance.',
 
         banner_title: "LET'S TRADE<br/>SOMETHING<br/>EXTRAORDINARY ✦",
         banner_subtitle: 'AEMETH MT5 EA & INDICATORS — LIFETIME LICENSE & INSTANT DELIVERY',
