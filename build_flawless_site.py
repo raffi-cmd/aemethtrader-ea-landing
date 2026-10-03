@@ -523,8 +523,8 @@ bundle_html = f'''<!-- ========================================== -->
 </section>
 '''
 
-# 6. STANDALONE EA (13 EA Cards with dynamic p{i}_orig, p{i}_main, p{i}_sub)
-def ea_card(product_id, num, category, price, badge_color, badge_text, title, version, pair, timeframe, pf, wr, dd, modal_cap_key, mayar_url, gumroad_url, tg_text):
+# 6. STANDALONE EA (14 EA Cards with dynamic p{i}_orig, p{i}_main, p{i}_sub)
+def ea_card(product_id, num, category, price, badge_color, badge_text, title, version, pair, timeframe, pf, wr, dd, modal_cap_key, mayar_url, gumroad_url, tg_text, orig_val="Rp 4.000.000", main_val="Rp 2.000.000", sub_val="atau <strong>$135 USD</strong> &middot; Lisensi Seumur Hidup"):
     return f'''
     <!-- EA SATUAN: {product_id} -->
     <div class="product-card bg-cardDark rounded-3xl border-2 border-{badge_color}-500/50 p-6 flex flex-col justify-between hover:border-{badge_color}-400 shadow-glow-{badge_color} relative overflow-hidden group" data-category="{category}" data-product-id="{product_id}" data-price="{price}">
@@ -547,11 +547,11 @@ def ea_card(product_id, num, category, price, badge_color, badge_text, title, ve
       <div>
         <div class="mt-6 pt-4 border-t border-zinc-800/80">
           <div class="flex items-center space-x-2 mb-1 text-xs">
-            <span class="text-zinc-500 line-through font-mono" data-i18n="p{num}_orig">Rp 4.000.000</span>
+            <span class="text-zinc-500 line-through font-mono" data-i18n="p{num}_orig">{orig_val}</span>
             <span class="text-emerald-400 font-bold font-mono text-[10px] bg-emerald-950/60 px-2 py-0.5 rounded-full border border-emerald-800/60" data-i18n="disc_badge">50% Launch Price</span>
           </div>
-          <div class="text-2xl font-black font-mono text-{badge_color}-400 tracking-tight" data-i18n="p{num}_main">Rp 2.000.000</div>
-          <div class="text-[11px] font-mono text-zinc-500 mt-0.5" data-i18n="p{num}_sub">atau <strong>$135 USD</strong> &middot; Lisensi Seumur Hidup</div>
+          <div class="text-2xl font-black font-mono text-{badge_color}-400 tracking-tight" data-i18n="p{num}_main">{main_val}</div>
+          <div class="text-[11px] font-mono text-zinc-500 mt-0.5" data-i18n="p{num}_sub">{sub_val}</div>
         </div>
         <div class="mt-3">
           <button onclick="openModal('{product_id}')" class="w-full py-2 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-white text-xs font-bold tracking-wide transition-all cursor-pointer" data-i18n="btn_detail">LIHAT DETAIL 📄</button>
@@ -570,14 +570,14 @@ ea_html = f'''<!-- ========================================== -->
       <span data-i18n="cat_kicker">STANDALONE ALGORITHMS</span>
     </div>
     <h2 class="text-3xl sm:text-5xl font-black text-white uppercase tracking-tight" data-i18n="cat_title">KATALOG ROBOT EA SATUAN</h2>
-    <p class="text-zinc-400 text-sm sm:text-base mt-3 leading-relaxed" data-i18n="cat_sub">Pilih robot EA satuan sesuai modal dan strategi kamu mulai dari Rp 50.000 dengan screenshot backtest terverifikasi.</p>
+    <p class="text-zinc-400 text-sm sm:text-base mt-3 leading-relaxed" data-i18n="cat_sub">Pilih robot EA satuan sesuai modal dan strategi kamu mulai dari Rp 50.000 hingga Rp 4.000.000 dengan screenshot backtest terverifikasi.</p>
   </div>
 
   <!-- PRICE FILTER -->
   <div class="mb-4">
     <div class="text-xs font-mono text-zinc-400 mb-2 uppercase tracking-widest" data-i18n="lbl_price">FILTER HARGA PRODUK:</div>
     <div class="filter-scroll flex gap-2 pb-1">
-      <button class="price-btn active whitespace-nowrap px-3 py-1.5 rounded-full text-xs font-bold font-mono border border-emerald-500 text-emerald-300 bg-emerald-950/50 transition-all cursor-pointer" onclick="setPrice('all',this)" data-i18n="f_all">SEMUA (13)</button>
+      <button class="price-btn active whitespace-nowrap px-3 py-1.5 rounded-full text-xs font-bold font-mono border border-emerald-500 text-emerald-300 bg-emerald-950/50 transition-all cursor-pointer" onclick="setPrice('all',this)" data-i18n="f_all">SEMUA (14)</button>
       <button class="price-btn whitespace-nowrap px-3 py-1.5 rounded-full text-xs font-mono border border-zinc-700 text-zinc-400 hover:border-zinc-500 transition-all cursor-pointer" onclick="setPrice('100k',this)" data-i18n="f_100k">≤ Rp 100K</button>
       <button class="price-btn whitespace-nowrap px-3 py-1.5 rounded-full text-xs font-mono border border-zinc-700 text-zinc-400 hover:border-zinc-500 transition-all cursor-pointer" onclick="setPrice('500k',this)" data-i18n="f_500k">≤ Rp 500K</button>
       <button class="price-btn whitespace-nowrap px-3 py-1.5 rounded-full text-xs font-mono border border-zinc-700 text-zinc-400 hover:border-zinc-500 transition-all cursor-pointer" onclick="setPrice('1m',this)" data-i18n="f_1m">≤ Rp 1JT</button>
@@ -589,7 +589,7 @@ ea_html = f'''<!-- ========================================== -->
   <div class="mb-8">
     <div class="text-xs font-mono text-zinc-400 mb-2 uppercase tracking-widest" data-i18n="lbl_cat">KATEGORI STRATEGI:</div>
     <div class="filter-scroll flex gap-2 pb-1">
-      <button class="cat-btn active whitespace-nowrap px-3 py-1.5 rounded-full text-xs font-bold font-mono border border-emerald-500 text-emerald-300 bg-emerald-950/50 transition-all cursor-pointer" onclick="setCategory('all',this)" data-i18n="c_all">SEMUA (13)</button>
+      <button class="cat-btn active whitespace-nowrap px-3 py-1.5 rounded-full text-xs font-bold font-mono border border-emerald-500 text-emerald-300 bg-emerald-950/50 transition-all cursor-pointer" onclick="setCategory('all',this)" data-i18n="c_all">SEMUA (14)</button>
       <button class="cat-btn whitespace-nowrap px-3 py-1.5 rounded-full text-xs font-mono border border-zinc-700 text-zinc-400 hover:border-zinc-500 transition-all cursor-pointer" onclick="setCategory('flagship',this)" data-i18n="c_flagship">👑 FLAGSHIP</button>
       <button class="cat-btn whitespace-nowrap px-3 py-1.5 rounded-full text-xs font-mono border border-zinc-700 text-zinc-400 hover:border-zinc-500 transition-all cursor-pointer" onclick="setCategory('hft',this)" data-i18n="c_hft">⚡ HIGH-FREQUENCY</button>
       <button class="cat-btn whitespace-nowrap px-3 py-1.5 rounded-full text-xs font-mono border border-zinc-700 text-zinc-400 hover:border-zinc-500 transition-all cursor-pointer" onclick="setCategory('risk',this)" data-i18n="c_risk">🛡️ RISK MANAGEMENT</button>
@@ -606,6 +606,12 @@ ea_html = f'''<!-- ========================================== -->
       <div class="text-5xl mb-4">🔍</div>
       <div class="text-zinc-400 font-mono" data-i18n="empty_filter">Tidak ada robot EA yang cocok dengan filter ini.</div>
     </div>
+
+{ea_card('apex-titan', 14, 'flagship','4000000','amber','👑 ULTRA INSTITUTIONAL',
+    'AEMETH Apex Neural Titan Ultra','v5.0','XAUUSD / US30 / NAS100','M5 / M15',
+    '6.85','92.40','3.10','cap14',
+    MAYAR+'/apex-titan', GUMROAD+'/l/apex-titan', 'Apex%20Neural%20Titan%20Ultra%204jt',
+    'Rp 8.000.000', 'Rp 4.000.000', 'atau <strong>$265 USD</strong> &middot; Lisensi Seumur Hidup')}
 
 {ea_card('neural-master', 1, 'flagship','2000000','amber','👑 FLAGSHIP',
     'AEMETH Quantum Neural Master','v4.0','XAUUSD','M15',
@@ -1075,11 +1081,11 @@ const T = {
     price_main_b3:"Rp 1.500.000",
     price_sub_b3:"atau <strong>$99 USD</strong> &middot; Akses Seumur Hidup (11 Alat)",
     cat_kicker:"STANDALONE ALGORITHMS", cat_title:"KATALOG ROBOT EA SATUAN",
-    cat_sub:"Pilih robot EA satuan sesuai modal dan strategi kamu mulai dari Rp 50.000 dengan screenshot backtest terverifikasi.",
+    cat_sub:"Pilih robot EA satuan sesuai modal dan strategi kamu mulai dari Rp 50.000 hingga Rp 4.000.000 dengan screenshot backtest terverifikasi.",
     lbl_price:"FILTER HARGA PRODUK:", hint_price:"Filter berdasarkan harga jual software",
-    f_all:"SEMUA (13)", f_100k:"≤ Rp 100K", f_500k:"≤ Rp 500K", f_1m:"≤ Rp 1JT", f_vip:"👑 VIP (> 1JT)",
+    f_all:"SEMUA (14)", f_100k:"≤ Rp 100K", f_500k:"≤ Rp 500K", f_1m:"≤ Rp 1JT", f_vip:"👑 VIP (> 1JT)",
     lbl_cat:"KATEGORI STRATEGI:", hint_cat:"Pilih gaya trading robot",
-    c_all:"SEMUA (13)", c_flagship:"👑 FLAGSHIP", c_hft:"⚡ HIGH-FREQUENCY",
+    c_all:"SEMUA (14)", c_flagship:"👑 FLAGSHIP", c_hft:"⚡ HIGH-FREQUENCY",
     c_risk:"🛡️ RISK MANAGEMENT", c_trend:"📈 TREND SYSTEM", c_gold:"🥇 GOLD SCALPING", c_starter:"🌱 STARTER &amp; CENT", c_budget:"🏷️ BUDGET (≤ 100K)",
     empty_filter:"Tidak ada robot EA yang cocok dengan filter ini.",
     lbl_pf:"Profit Factor", lbl_win:"Win Rate", lbl_dd:"Max DD",
@@ -1091,6 +1097,8 @@ const T = {
     cap1:"Modal $500+ (10JT IDR)", cap2:"Modal $300+ (5JT IDR)", cap3:"Modal $100+ (1JT IDR)", cap4:"Modal $50 (500K IDR)",
     cap5:"$10 Cent/Std (100K IDR)", cap6:"$10 Cent (100K IDR)", cap7:"$5 Cent (50K IDR)", cap8:"$5 Cent (50K IDR)",
     cap9:"Modal $100+ (1JT IDR)", cap10:"Modal $50 (500K IDR)", cap11:"Modal $100+ (1JT IDR)", cap12:"$10 Cent (100K IDR)", cap13:"Modal $300+ (5JT IDR)",
+    cap14:"Modal $1,000+ (15JT IDR) / Prop Firm $50K-$200K",
+    p14_orig:"Rp 8.000.000", p14_main:"Rp 4.000.000", p14_sub:"atau <strong>$265 USD</strong> &middot; Lisensi Seumur Hidup",
     p1_orig:"Rp 4.000.000", p1_main:"Rp 2.000.000", p1_sub:"atau <strong>$135 USD</strong> &middot; Lisensi Seumur Hidup",
     p2_orig:"Rp 3.000.000", p2_main:"Rp 1.500.000", p2_sub:"atau <strong>$99 USD</strong> &middot; Lisensi Seumur Hidup",
     p3_orig:"Rp 1.599.000", p3_main:"Rp 799.000", p3_sub:"atau <strong>$55 USD</strong> &middot; Lisensi Seumur Hidup",
@@ -1233,11 +1241,11 @@ const T = {
     price_main_b3:"$99 USD",
     price_sub_b3:"or ~<strong>Rp 1.500.000 IDR</strong> &middot; Lifetime Permanent Access (11 Tools)",
     cat_kicker:"STANDALONE ALGORITHMS", cat_title:"STANDALONE MT5 ROBOT EA CATALOG",
-    cat_sub:"Select standalone EA robots matching your trading capital and style. 13 verified algorithms starting from $3.50 to Flagship.",
+    cat_sub:"Select standalone EA robots matching your trading capital and style. 14 verified algorithms starting from $3.50 to $265 USD Flagship.",
     lbl_price:"FILTER BY PRODUCT PRICE:", hint_price:"Filter by software retail price",
-    f_all:"ALL (13)", f_100k:"&le; $7 (100K IDR)", f_500k:"&le; $35 (500K IDR)", f_1m:"&le; $70 (1M IDR)", f_vip:"&#x1F451; &gt; $70 (VIP)",
+    f_all:"ALL (14)", f_100k:"&le; $7 (100K IDR)", f_500k:"&le; $35 (500K IDR)", f_1m:"&le; $70 (1M IDR)", f_vip:"&#x1F451; &gt; $70 (VIP)",
     lbl_cat:"STRATEGY CATEGORY:", hint_cat:"Select trading robot style",
-    c_all:"ALL (13)", c_flagship:"&#x1F451; FLAGSHIP", c_hft:"&#x26A1; HIGH-FREQUENCY",
+    c_all:"ALL (14)", c_flagship:"&#x1F451; FLAGSHIP", c_hft:"&#x26A1; HIGH-FREQUENCY",
     c_risk:"&#x1F6E1; RISK MANAGEMENT", c_trend:"&#x1F4C8; TREND SYSTEM", c_gold:"&#x1F947; GOLD SCALPING", c_starter:"&#x1F331; STARTER &amp; CENT", c_budget:"&#x1F3F7; BUDGET (&le; $7)",
     empty_filter:"No trading robots match the selected filters.",
     lbl_pf:"Profit Factor", lbl_win:"Win Rate", lbl_dd:"Max DD",
@@ -1249,6 +1257,8 @@ const T = {
     cap1:"$500+ (10M IDR)", cap2:"$300+ (5M IDR)", cap3:"$100+ (1M IDR)", cap4:"$50 (500K IDR)",
     cap5:"$10 Cent/Std (100K IDR)", cap6:"$10 Cent (100K IDR)", cap7:"$5 Cent (50K IDR)", cap8:"$5 Cent (50K IDR)",
     cap9:"$100+ (1M IDR)", cap10:"$50 (500K IDR)", cap11:"$100+ (1M IDR)", cap12:"$10 Cent (100K IDR)", cap13:"$300+ (5M IDR)",
+    cap14:"$1,000+ ($50K-$200K Prop Firm)",
+    p14_orig:"$530 USD", p14_main:"$265 USD", p14_sub:"or ~<strong>Rp 4.000.000 IDR</strong> &middot; Lifetime License",
     p1_orig:"$270 USD", p1_main:"$135 USD", p1_sub:"or ~<strong>Rp 2.000.000 IDR</strong> &middot; Lifetime License",
     p2_orig:"$198 USD", p2_main:"$99 USD", p2_sub:"or ~<strong>Rp 1.500.000 IDR</strong> &middot; Lifetime License",
     p3_orig:"$110 USD", p3_main:"$55 USD", p3_sub:"or ~<strong>Rp 799.000 IDR</strong> &middot; Lifetime License",
@@ -1374,6 +1384,34 @@ function toggleFaq(btn) {
 }
 
 const products = {
+  "apex-titan": {
+    name: "AEMETH Apex Neural Titan Ultra v5.0",
+    tag: "👑 ULTRA INSTITUTIONAL", color: "#f59e0b",
+    pair: "XAUUSD / US30 / NAS100", tf: "M5 / M15",
+    strategy_id: "Deep Neural Machine Learning + Cross-Asset Arbitrage",
+    strategy_en: "Deep Neural Machine Learning + Cross-Asset Arbitrage",
+    pf: "6.85", wr: "92.40%", dd: "3.10%", trades: "3,840", period: "Jan 2024 – Des 2025",
+    desc_id: "Paket EA satuan kasta tertinggi dari AEMETH TRADER. Algoritma kuantitatif canggih berbasis arsitektur deep neural network yang membaca aliran likuiditas instrumen volatilitas tinggi (Emas & Indeks AS). Dilengkapi manajemen margin otomatis, perlindungan drawdown harian ketat, serta garansi kelayakan evaluasi akun Prop Firm $100k-$200k.",
+    desc_en: "The pinnacle standalone EA package by AEMETH TRADER. Advanced quantitative algorithm built on deep neural network architecture reading high-volatility liquidity flows (Gold & US Indices). Features automated margin management, strict daily drawdown protection, and verified compliance for $100k-$200k Prop Firm accounts.",
+    includes_id: [
+      "File Binary AEMETH Apex Neural Titan Ultra v5.0 (.ex5)",
+      "Setfile Preset Institusional Khusus Prop Firm $100K - $200K",
+      "Prioritas VIP 1-on-1 Remote Setup via AnyDesk / TeamViewer",
+      "Panduan Lengkap Optimalisasi Arsitektur Kuantitatif (PDF)",
+      "Akses Seumur Hidup Grup VIP Telegram & Update Rutin",
+      "Lisensi Permanen Seumur Hidup (Tanpa Iuran Bulanan)"
+    ],
+    includes_en: [
+      "AEMETH Apex Neural Titan Ultra v5.0 Binary (.ex5)",
+      "Institutional Prop Firm Preset Bundle ($100K - $200K)",
+      "Priority 1-on-1 AnyDesk / TeamViewer Remote Installation",
+      "Comprehensive Quantitative Optimization Manual (PDF)",
+      "Lifetime VIP Telegram Group Access & Direct Updates",
+      "Permanent Lifetime License (Zero Monthly Fees)"
+    ],
+    note_id: "Hasil backtest. Performa masa lalu bukan jaminan performa di pasar riil.",
+    note_en: "Simulated backtest data. Past performance does not guarantee future live market results."
+  },
   "neural-master": {
     name: "AEMETH Quantum Neural Master v4.0",
     tag: "👑 FLAGSHIP", color: "#f59e0b",
