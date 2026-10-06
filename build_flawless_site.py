@@ -1,16 +1,69 @@
 import re, sys, io, subprocess
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
-# Read original head css
-with open('index.html', 'r', encoding='utf-8') as f:
-    orig = f.read()
-
-head_css = orig[:orig.find('</head>')] + '''  <style>
+head_css = '''<!DOCTYPE html>
+<html lang="id" class="scroll-smooth dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AEMETH TRADER — Systematic MT5 Trading Algorithms &amp; Custom Indicators</title>
+  <meta name="description" content="Sistem trading kuantitatif MT5 teruji dan indikator custom non-repaint. Rule-based execution, risk management terukur, pembayaran QRIS, PayPal &amp; P2P Crypto, serta pengiriman instan file .ex5 murni." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=JetBrains+Mono:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&amp;display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ["Plus Jakarta Sans", "sans-serif"],
+            mono: ["JetBrains Mono", "monospace"],
+          },
+          colors: {
+            bgDark: "#0B0C10",
+            cardDark: "#12141C",
+          },
+          boxShadow: {
+            "glow-emerald": "0 0 30px -5px rgba(16, 185, 129, 0.25)",
+            "glow-purple": "0 0 30px -5px rgba(139, 92, 246, 0.25)",
+            "glow-blue": "0 0 30px -5px rgba(59, 130, 246, 0.25)",
+            "glow-amber": "0 0 35px -5px rgba(245, 158, 11, 0.35)",
+            "glow-rose": "0 0 35px -5px rgba(244, 63, 94, 0.35)",
+            "glow-sky": "0 0 30px -5px rgba(14, 165, 233, 0.25)",
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { background-color: #0B0C10; color: #E2E8F0; overflow-x: hidden; }
+    .hero-spotlight { background: radial-gradient(circle 750px at 70% 20%, rgba(255,255,255,0.07), rgba(16,185,129,0.05), transparent 70%); }
+    .hero-giant-text { font-family: "Bebas Neue", sans-serif; letter-spacing: 0.02em; line-height: 0.88; }
+    .product-card { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+    .product-card:hover { transform: translateY(-4px); }
+    .product-card.hide-card { display: none !important; }
     .faq-answer { display: none; }
     .faq-answer.open { display: block; animation: faqFadeIn 0.25s ease-out; }
     @keyframes faqFadeIn { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: translateY(0); } }
     .faq-chevron { transition: transform 0.25s ease; display: inline-block; }
     .faq-chevron.rotate { transform: rotate(180deg); }
+    .metallic-shine { background:linear-gradient(135deg,rgba(255,255,255,0.12) 0%,rgba(255,255,255,0.02) 40%,rgba(255,255,255,0.06) 100%),#12141C; }
+    .filter-scroll { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    @media (max-width: 640px) {
+      .hero-giant-text { font-size: 4.5rem !important; line-height: 0.92 !important; }
+      .filter-scroll {
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        padding-bottom: 8px;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: thin;
+      }
+      .filter-scroll::-webkit-scrollbar { height: 4px; }
+      .filter-scroll::-webkit-scrollbar-thumb { background: #3f3f46; border-radius: 4px; }
+    }
   </style>
 </head>
 <body class="antialiased selection:bg-white selection:text-black">
@@ -260,31 +313,31 @@ bundle_html = f'''<!-- ========================================== -->
       <span>🎁</span>
       <span data-i18n="bundle_kicker">PENAWARAN HEMAT ALL-IN-ONE</span>
     </div>
-    <h2 class="text-3xl sm:text-5xl font-black text-white uppercase tracking-tight" data-i18n="bundle_title">PAKET BUNDLE HEMAT MT5</h2>
+    <h2 class="text-2xl sm:text-4xl lg:text-5xl font-black text-white uppercase tracking-tight" data-i18n="bundle_title">PAKET BUNDLE HEMAT MT5</h2>
     <p class="text-zinc-400 text-sm sm:text-base mt-3 leading-relaxed" data-i18n="bundle_sub">Dapatkan kombinasi lengkap Robot EA otomatis multi-strategi + Indikator Pro non-repaint dengan diskon 50%. Solusi terbaik untuk diversifikasi portofolio dan akun challenge.</p>
   </div>
 
   <div id="bundle-grid" class="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 items-stretch">
 
     <!-- BUNDLE 1: Rp 3.000.000 / $199 USD — INSTITUTIONAL FLAGSHIP (ATTENTION MAGNET) -->
-    <div class="bundle-card bg-gradient-to-b from-cardDark via-zinc-950 to-emerald-950/40 rounded-3xl border-2 border-emerald-400 shadow-[0_0_60px_-10px_rgba(16,185,129,0.45)] ring-2 ring-emerald-500/40 p-7 sm:p-8 flex flex-col justify-between relative overflow-hidden group scale-[1.01] hover:scale-[1.02] transition-transform">
+    <div class="bundle-card bg-gradient-to-b from-cardDark via-zinc-950 to-emerald-950/40 rounded-3xl border-2 border-emerald-400 shadow-[0_0_60px_-10px_rgba(16,185,129,0.45)] ring-2 ring-emerald-500/40 p-5 sm:p-8 pt-11 sm:pt-8 flex flex-col justify-between relative overflow-hidden group scale-[1.01] hover:scale-[1.02] transition-transform">
       <!-- Top floating ribbon -->
-      <div class="absolute top-0 right-0 bg-gradient-to-l from-emerald-500 via-teal-400 to-emerald-600 text-black font-mono font-black text-[10px] uppercase tracking-widest px-5 py-2 rounded-bl-2xl shadow-xl flex items-center gap-1.5">
+      <div class="absolute top-0 right-0 bg-gradient-to-l from-emerald-500 via-teal-400 to-emerald-600 text-black font-mono font-black text-[9px] sm:text-[10px] uppercase tracking-widest px-3.5 sm:px-5 py-1.5 sm:py-2 rounded-bl-xl sm:rounded-bl-2xl shadow-xl flex items-center gap-1.5 z-10">
         <span>👑</span>
         <span data-i18n="b1_badge">INSTITUTIONAL FLAGSHIP</span>
       </div>
 
       <div>
         <!-- Header Pill & Badges -->
-        <div class="mb-4 pr-36">
-          <div class="flex flex-wrap gap-1.5 mb-2">
-            <span class="inline-flex items-center space-x-1 px-3 py-1 rounded-full bg-emerald-500/20 border border-emerald-400/50 text-emerald-300 text-xs font-mono font-bold shadow-sm">
-              <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+        <div class="mb-4 pr-0 sm:pr-36">
+          <div class="flex flex-wrap gap-1.5 mb-2.5">
+            <span class="inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-xl bg-emerald-500/20 border border-emerald-400/50 text-emerald-300 text-[11px] sm:text-xs font-mono font-bold shadow-sm">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping shrink-0"></span>
               <span data-i18n="b1_hot_tag">⭐ REKOMENDASI TERBAIK UNTUK AKUN BESAR &amp; PROP FIRM</span>
             </span>
-            <span class="px-2.5 py-1 rounded-full bg-amber-500/20 border border-amber-500/40 text-amber-300 text-[10px] font-mono font-bold" data-i18n="b1_save_tag">HEMAT RP 3.000.000</span>
+            <span class="inline-flex items-center px-2.5 py-1.5 rounded-xl bg-amber-500/20 border border-amber-500/40 text-amber-300 text-[10px] font-mono font-bold" data-i18n="b1_save_tag">HEMAT RP 3.000.000</span>
           </div>
-          <h3 class="text-2xl sm:text-3xl font-black text-white tracking-tight group-hover:text-emerald-400 transition-colors" data-i18n="b1_title">AEMETH MASTER BUNDLE 6 Tools</h3>
+          <h3 class="text-xl sm:text-2xl lg:text-3xl font-black text-white tracking-tight group-hover:text-emerald-400 transition-colors" data-i18n="b1_title">AEMETH MASTER BUNDLE 6 Tools</h3>
           <div class="text-xs font-mono text-zinc-400 mt-1" data-i18n="b1_tools_line">4 Robot EA MT5 + 2 Indikator Pro — Akses Seumur Hidup</div>
         </div>
 
@@ -370,24 +423,24 @@ bundle_html = f'''<!-- ========================================== -->
     </div>
 
     <!-- BUNDLE 2: Rp 2.500.000 / $165 USD — BEST SELLER (MAXIMUM VALUE) -->
-    <div class="bundle-card bg-gradient-to-b from-cardDark via-zinc-950 to-amber-950/40 rounded-3xl border-2 border-amber-400 shadow-[0_0_60px_-10px_rgba(245,158,11,0.45)] ring-2 ring-amber-500/40 p-7 sm:p-8 flex flex-col justify-between hover:border-amber-300 relative overflow-hidden group scale-[1.01] hover:scale-[1.02] transition-transform">
+    <div class="bundle-card bg-gradient-to-b from-cardDark via-zinc-950 to-amber-950/40 rounded-3xl border-2 border-amber-400 shadow-[0_0_60px_-10px_rgba(245,158,11,0.45)] ring-2 ring-amber-500/40 p-5 sm:p-8 pt-11 sm:pt-8 flex flex-col justify-between hover:border-amber-300 relative overflow-hidden group scale-[1.01] hover:scale-[1.02] transition-transform">
       <!-- Best Seller Top Ribbon -->
-      <div class="absolute top-0 right-0 bg-gradient-to-l from-amber-500 via-orange-500 to-amber-600 text-black font-mono font-black text-[10px] uppercase tracking-widest px-5 py-2 rounded-bl-2xl shadow-xl flex items-center gap-1.5">
+      <div class="absolute top-0 right-0 bg-gradient-to-l from-amber-500 via-orange-500 to-amber-600 text-black font-mono font-black text-[9px] sm:text-[10px] uppercase tracking-widest px-3.5 sm:px-5 py-1.5 sm:py-2 rounded-bl-xl sm:rounded-bl-2xl shadow-xl flex items-center gap-1.5 z-10">
         <span>🔥</span>
         <span data-i18n="b2_badge">#1 BEST SELLER — 84+ TOOLS &amp; 3 BONUSES</span>
       </div>
 
       <div>
         <!-- Header Pill & Badges -->
-        <div class="mb-4 pr-36">
-          <div class="flex flex-wrap gap-1.5 mb-2">
-            <span class="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full bg-amber-500/20 border border-amber-500/40 text-amber-300 text-xs font-mono font-bold shadow-sm">
-              <span class="animate-pulse">🔥</span>
+        <div class="mb-4 pr-0 sm:pr-36">
+          <div class="flex flex-wrap gap-1.5 mb-2.5">
+            <span class="inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-xl bg-amber-500/20 border border-amber-500/40 text-amber-300 text-[11px] sm:text-xs font-mono font-bold shadow-sm">
+              <span class="animate-pulse shrink-0">🔥</span>
               <span data-i18n="b2_seller_tag">🏆 PALING BANYAK DIPILIH (50 EA + 34 INDIKATOR + 2 WEB APPS + 10 EBOOK)</span>
             </span>
-            <span class="px-2.5 py-1 rounded-full bg-emerald-500/20 border border-emerald-500/40 text-emerald-300 text-[10px] font-mono font-bold" data-i18n="b2_rate_tag">HANYA RP 29.000 / ALAT! (HEMAT 93%)</span>
+            <span class="inline-flex items-center px-2.5 py-1.5 rounded-xl bg-emerald-500/20 border border-emerald-500/40 text-emerald-300 text-[10px] font-mono font-bold" data-i18n="b2_rate_tag">HANYA RP 29.000 / ALAT! (HEMAT 93%)</span>
           </div>
-          <h3 class="text-2xl sm:text-3xl font-black text-white tracking-tight group-hover:text-amber-400 transition-colors" data-i18n="b2_title">AEMETH MEGA BUNDLE 84+ Tools &amp; Web Apps</h3>
+          <h3 class="text-xl sm:text-2xl lg:text-3xl font-black text-white tracking-tight group-hover:text-amber-400 transition-colors" data-i18n="b2_title">AEMETH MEGA BUNDLE 84+ Tools &amp; Web Apps</h3>
           <div class="text-xs font-mono text-zinc-400 mt-1" data-i18n="b2_tools_line">50 Robot EA MT5 + 34 Indikator Pro + Web Generator EA + Web AI + 10 Ebook — Akses Seumur Hidup</div>
         </div>
 
@@ -508,11 +561,11 @@ bundle_html = f'''<!-- ========================================== -->
     </div>
 
     <!-- BUNDLE 3: Rp 2.000.000 / $130 USD — STARTER BUNDLE -->
-    <div class="bundle-card bg-cardDark rounded-3xl border-2 border-sky-500/70 p-7 sm:p-8 flex flex-col justify-between hover:border-sky-400 shadow-glow-sky relative overflow-hidden group">
-      <div class="absolute top-0 right-0 bg-gradient-to-l from-sky-600 to-sky-800 text-white font-mono font-bold text-[9px] uppercase tracking-widest px-4 py-1.5 rounded-bl-2xl" data-i18n="b4_badge">⚡ STARTER BUNDLE — 11 TOOLS</div>
+    <div class="bundle-card bg-cardDark rounded-3xl border-2 border-sky-500/70 p-5 sm:p-8 pt-11 sm:pt-8 flex flex-col justify-between hover:border-sky-400 shadow-glow-sky relative overflow-hidden group">
+      <div class="absolute top-0 right-0 bg-gradient-to-l from-sky-600 to-sky-800 text-white font-mono font-bold text-[9px] sm:text-[10px] uppercase tracking-widest px-3.5 sm:px-4 py-1.5 rounded-bl-xl sm:rounded-bl-2xl z-10" data-i18n="b4_badge">⚡ STARTER BUNDLE — 11 TOOLS</div>
       <div>
-        <div class="mb-4">
-          <span class="inline-block px-3 py-1 rounded-full bg-sky-500/10 border border-sky-500/30 text-sky-400 text-[11px] font-mono font-bold mb-2">⚡ 5 EA + 6 INDIKATOR</span>
+        <div class="mb-4 pr-0 sm:pr-32">
+          <span class="inline-block px-3 py-1.5 rounded-xl bg-sky-500/10 border border-sky-500/30 text-sky-400 text-[11px] font-mono font-bold mb-2">⚡ 5 EA + 6 INDIKATOR</span>
           <h3 class="text-xl sm:text-2xl font-black text-white tracking-tight group-hover:text-sky-400 transition-colors" data-i18n="b4_title">AEMETH STARTER BUNDLE 5 EA + 6 Ind</h3>
           <div class="text-xs font-mono text-zinc-400 mt-1" data-i18n="b4_tools_line">5 Robot EA MT5 + 6 Indikator Pro — Akses Seumur Hidup</div>
         </div>
@@ -538,11 +591,11 @@ bundle_html = f'''<!-- ========================================== -->
     </div>
 
     <!-- BUNDLE 4: Rp 1.500.000 / $99 USD — HYBRID SUITE -->
-    <div class="bundle-card bg-cardDark rounded-3xl border-2 border-purple-500/70 p-7 sm:p-8 flex flex-col justify-between hover:border-purple-400 shadow-glow-purple relative overflow-hidden group">
-      <div class="absolute top-0 right-0 bg-gradient-to-l from-purple-600 to-purple-800 text-white font-mono font-bold text-[9px] uppercase tracking-widest px-4 py-1.5 rounded-bl-2xl" data-i18n="b3_badge">🔥 HYBRID BUNDLE — 11 TOOLS</div>
+    <div class="bundle-card bg-cardDark rounded-3xl border-2 border-purple-500/70 p-5 sm:p-8 pt-11 sm:pt-8 flex flex-col justify-between hover:border-purple-400 shadow-glow-purple relative overflow-hidden group">
+      <div class="absolute top-0 right-0 bg-gradient-to-l from-purple-600 to-purple-800 text-white font-mono font-bold text-[9px] sm:text-[10px] uppercase tracking-widest px-3.5 sm:px-4 py-1.5 rounded-bl-xl sm:rounded-bl-2xl z-10" data-i18n="b3_badge">🔥 HYBRID BUNDLE — 11 TOOLS</div>
       <div>
-        <div class="mb-4">
-          <span class="inline-block px-3 py-1 rounded-full bg-purple-500/10 border border-purple-500/30 text-purple-400 text-[11px] font-mono font-bold mb-2">🔥 3 EA + 8 INDIKATOR</span>
+        <div class="mb-4 pr-0 sm:pr-32">
+          <span class="inline-block px-3 py-1.5 rounded-xl bg-purple-500/10 border border-purple-500/30 text-purple-400 text-[11px] font-mono font-bold mb-2">🔥 3 EA + 8 INDIKATOR</span>
           <h3 class="text-xl sm:text-2xl font-black text-white tracking-tight group-hover:text-purple-400 transition-colors" data-i18n="b3_title">AEMETH HYBRID SUITE 3 EA + 8 Ind</h3>
           <div class="text-xs font-mono text-zinc-400 mt-1" data-i18n="b3_tools_line">3 Robot EA MT5 + 8 Indikator Pro — Akses Seumur Hidup</div>
         </div>
@@ -575,10 +628,10 @@ bundle_html = f'''<!-- ========================================== -->
 def ea_card(product_id, num, category, price, badge_color, badge_text, title, version, pair, timeframe, pf, wr, dd, modal_cap_key, mayar_url, gumroad_url, tg_text, orig_val="Rp 4.000.000", main_val="Rp 2.000.000", sub_val="atau <strong>$135 USD</strong> &middot; Lisensi Seumur Hidup"):
     return f'''
     <!-- EA SATUAN: {product_id} -->
-    <div class="product-card bg-cardDark rounded-3xl border-2 border-{badge_color}-500/50 p-6 flex flex-col justify-between hover:border-{badge_color}-400 shadow-glow-{badge_color} relative overflow-hidden group" data-category="{category}" data-product-id="{product_id}" data-price="{price}">
-      <div class="absolute top-0 right-0 bg-{badge_color}-600 text-white font-mono font-bold text-[9px] uppercase tracking-widest px-3.5 py-1 rounded-bl-xl">{badge_text}</div>
+    <div class="product-card bg-cardDark rounded-3xl border-2 border-{badge_color}-500/50 p-5 sm:p-6 pt-10 sm:pt-6 flex flex-col justify-between hover:border-{badge_color}-400 shadow-glow-{badge_color} relative overflow-hidden group" data-category="{category}" data-product-id="{product_id}" data-price="{price}">
+      <div class="absolute top-0 right-0 bg-{badge_color}-600 text-white font-mono font-bold text-[9px] uppercase tracking-widest px-3.5 py-1 rounded-bl-xl z-10">{badge_text}</div>
       <div>
-        <h3 class="text-lg font-bold text-white tracking-tight group-hover:text-{badge_color}-400 transition-colors pr-24">{title} <span class="text-xs font-mono text-zinc-500">{version}</span></h3>
+        <h3 class="text-base sm:text-lg font-bold text-white tracking-tight group-hover:text-{badge_color}-400 transition-colors pr-0 sm:pr-24">{title} <span class="text-xs font-mono text-zinc-500">{version}</span></h3>
         <div class="flex gap-2 mt-2 flex-wrap">
           <span class="px-2 py-0.5 rounded-full bg-{badge_color}-500/20 border border-{badge_color}-500/40 text-{badge_color}-300 text-[10px] font-bold font-mono">{pair}</span>
           <span class="px-2 py-0.5 rounded-full bg-zinc-800 text-zinc-400 text-[10px] font-mono">{timeframe}</span>
@@ -617,7 +670,7 @@ ea_html = f'''<!-- ========================================== -->
       <span>🤖</span>
       <span data-i18n="cat_kicker">STANDALONE ALGORITHMS</span>
     </div>
-    <h2 class="text-3xl sm:text-5xl font-black text-white uppercase tracking-tight" data-i18n="cat_title">KATALOG ROBOT EA SATUAN</h2>
+    <h2 class="text-2xl sm:text-4xl lg:text-5xl font-black text-white uppercase tracking-tight" data-i18n="cat_title">KATALOG ROBOT EA SATUAN</h2>
     <p class="text-zinc-400 text-sm sm:text-base mt-3 leading-relaxed" data-i18n="cat_sub">Pilih robot EA satuan sesuai modal dan strategi kamu mulai dari Rp 50.000 hingga Rp 4.000.000 dengan screenshot backtest terverifikasi.</p>
   </div>
 
@@ -733,14 +786,14 @@ ea_html = f'''<!-- ========================================== -->
 def ind_card(num, badge_tag, badge_color, title, desc_key, feat1_label, feat1_val, feat2_label, feat2_val, mayar_url, gumroad_url, tg_text):
     return f'''
     <!-- IND {num} -->
-    <div class="bg-cardDark rounded-3xl border-2 border-{badge_color}-500/50 p-6 flex flex-col justify-between hover:border-{badge_color}-400 shadow-glow-{badge_color} relative overflow-hidden group">
-      <div class="absolute top-0 right-0 bg-{badge_color}-600 text-white font-mono font-bold text-[9px] uppercase tracking-widest px-3.5 py-1 rounded-bl-xl">{badge_tag}</div>
+    <div class="bg-cardDark rounded-3xl border-2 border-{badge_color}-500/50 p-5 sm:p-6 pt-10 sm:pt-6 flex flex-col justify-between hover:border-{badge_color}-400 shadow-glow-{badge_color} relative overflow-hidden group">
+      <div class="absolute top-0 right-0 bg-{badge_color}-600 text-white font-mono font-bold text-[9px] uppercase tracking-widest px-3.5 py-1 rounded-bl-xl z-10">{badge_tag}</div>
       <div>
         <div class="flex items-center justify-between mb-4">
           <span class="px-2 py-0.5 rounded-full bg-{badge_color}-500/20 border border-{badge_color}-500/40 text-{badge_color}-300 text-[10px] font-bold font-mono">Non-Repaint</span>
           <span class="text-[10px] font-mono text-zinc-400">MT5</span>
         </div>
-        <h3 class="text-base font-bold text-white tracking-tight group-hover:text-{badge_color}-400 transition-colors">{title}</h3>
+        <h3 class="text-base font-bold text-white tracking-tight group-hover:text-{badge_color}-400 transition-colors pr-0 sm:pr-24">{title}</h3>
         <p class="text-zinc-400 text-xs leading-relaxed mt-2 font-light" data-i18n="{desc_key}">Loading...</p>
         <div class="grid grid-cols-2 gap-2 mt-4 text-[11px] font-mono text-zinc-400">
           <div class="bg-zinc-950/70 p-2.5 rounded-xl border border-zinc-800">{feat1_label}: <strong class="text-zinc-200">{feat1_val}</strong></div>
@@ -766,7 +819,7 @@ ind_html = f'''<!-- ========================================== -->
 <section id="katalog-indikator" class="my-16 pt-12 border-t border-zinc-800">
   <div class="text-center max-w-2xl mx-auto mb-10">
     <span class="text-xs font-mono uppercase tracking-[0.25em] text-purple-400 font-bold" data-i18n="ind_kicker">PROFESSIONAL MT5 CUSTOM TOOLS</span>
-    <h2 class="text-3xl sm:text-4xl font-black text-white uppercase tracking-tight mt-1" data-i18n="ind_title">KATALOG INDIKATOR MT5 PRO</h2>
+    <h2 class="text-2xl sm:text-4xl font-black text-white uppercase tracking-tight mt-1" data-i18n="ind_title">KATALOG INDIKATOR MT5 PRO</h2>
     <p class="text-zinc-400 text-sm mt-2" data-i18n="ind_sub">Loading...</p>
   </div>
   
