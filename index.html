@@ -85,6 +85,20 @@
     .faq-chevron { transition: transform 0.25s ease; display: inline-block; }
     .faq-chevron.rotate { transform: rotate(180deg); }
   </style>
+  <style>
+    .faq-answer { display: none; }
+    .faq-answer.open { display: block; animation: faqFadeIn 0.25s ease-out; }
+    @keyframes faqFadeIn { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: translateY(0); } }
+    .faq-chevron { transition: transform 0.25s ease; display: inline-block; }
+    .faq-chevron.rotate { transform: rotate(180deg); }
+  </style>
+  <style>
+    .faq-answer { display: none; }
+    .faq-answer.open { display: block; animation: faqFadeIn 0.25s ease-out; }
+    @keyframes faqFadeIn { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: translateY(0); } }
+    .faq-chevron { transition: transform 0.25s ease; display: inline-block; }
+    .faq-chevron.rotate { transform: rotate(180deg); }
+  </style>
 </head>
 <body class="antialiased selection:bg-white selection:text-black">
 <!-- NAV -->
@@ -425,7 +439,7 @@
       <!-- Best Seller Top Ribbon -->
       <div class="absolute top-0 right-0 bg-gradient-to-l from-amber-500 via-orange-500 to-amber-600 text-black font-mono font-black text-[10px] uppercase tracking-widest px-5 py-2 rounded-bl-2xl shadow-xl flex items-center gap-1.5">
         <span>🔥</span>
-        <span data-i18n="b2_badge">#1 BEST SELLER — 14 TOOLS</span>
+        <span data-i18n="b2_badge">#1 BEST SELLER — 84+ TOOLS &amp; 3 BONUSES</span>
       </div>
 
       <div>
@@ -434,26 +448,30 @@
           <div class="flex flex-wrap gap-1.5 mb-2">
             <span class="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full bg-amber-500/20 border border-amber-500/40 text-amber-300 text-xs font-mono font-bold shadow-sm">
               <span class="animate-pulse">🔥</span>
-              <span data-i18n="b2_seller_tag">🏆 PALING BANYAK DIPILIH TRADER (14 TOOLS ALL-IN-ONE)</span>
+              <span data-i18n="b2_seller_tag">🏆 PALING BANYAK DIPILIH (50 EA + 34 INDIKATOR + 2 WEB APPS + 10 EBOOK)</span>
             </span>
-            <span class="px-2.5 py-1 rounded-full bg-emerald-500/20 border border-emerald-500/40 text-emerald-300 text-[10px] font-mono font-bold" data-i18n="b2_rate_tag">HANYA RP 178.000 / TOOL!</span>
+            <span class="px-2.5 py-1 rounded-full bg-emerald-500/20 border border-emerald-500/40 text-emerald-300 text-[10px] font-mono font-bold" data-i18n="b2_rate_tag">HANYA RP 29.000 / ALAT! (HEMAT 93%)</span>
           </div>
-          <h3 class="text-2xl sm:text-3xl font-black text-white tracking-tight group-hover:text-amber-400 transition-colors" data-i18n="b2_title">AEMETH MEGA BUNDLE 14 Tools v2.0</h3>
-          <div class="text-xs font-mono text-zinc-400 mt-1" data-i18n="b2_tools_line">10 Robot EA MT5 + 4 Indikator Pro — Akses Seumur Hidup</div>
+          <h3 class="text-2xl sm:text-3xl font-black text-white tracking-tight group-hover:text-amber-400 transition-colors" data-i18n="b2_title">AEMETH MEGA BUNDLE 84+ Tools &amp; Web Apps</h3>
+          <div class="text-xs font-mono text-zinc-400 mt-1" data-i18n="b2_tools_line">50 Robot EA MT5 + 34 Indikator Pro + Web Generator EA + Web AI + 10 Ebook — Akses Seumur Hidup</div>
         </div>
 
         <p class="text-zinc-300 text-xs sm:text-sm leading-relaxed font-light" data-i18n="bundle2_desc">Loading...</p>
 
-        <!-- Detailed 14 Tools Showcase -->
+        <!-- Detailed Arsenal Breakdown Showcase -->
         <div class="mt-4 p-4 rounded-2xl bg-zinc-950/80 border border-zinc-800">
-          <div class="text-[11px] font-mono font-bold uppercase tracking-wider text-amber-400 mb-2 flex items-center gap-1.5">
+          <div class="text-[11px] font-mono font-bold uppercase tracking-wider text-amber-400 mb-2.5 flex items-center gap-1.5">
             <span>📦</span>
-            <span data-i18n="b2_inc_header">ARSENAL LENGKAP 14 TOOLS MT5:</span>
+            <span data-i18n="b2_inc_header">ARSENAL LENGKAP 84+ TOOLS &amp; 3 BONUS SPESIAL:</span>
           </div>
-          <div class="space-y-2 text-xs font-mono">
+          <div class="space-y-3 text-xs font-mono">
+            <!-- 50 EA Section -->
             <div>
-              <span class="text-zinc-500 text-[10px] block mb-1">🤖 10 ROBOT EA MT5 OTOMATIS:</span>
-              <div class="flex flex-wrap gap-1.5">
+              <div class="flex items-center justify-between mb-1.5">
+                <span class="text-amber-300 text-[11px] font-bold" data-i18n="b2_ea_header">🤖 50 ROBOT EA MT5 OTOMATIS:</span>
+                <span class="text-[10px] bg-amber-500/20 text-amber-300 px-2 py-0.5 rounded font-bold">10 INTI + 40 TAMBAHAN</span>
+              </div>
+              <div class="flex flex-wrap gap-1.5 mb-2">
                 <span class="px-2 py-0.5 rounded bg-amber-950/70 border border-amber-700/60 text-amber-300 text-[10px]">Neural Master</span>
                 <span class="px-2 py-0.5 rounded bg-cyan-950/70 border border-cyan-700/60 text-cyan-300 text-[10px]">HFT Multi</span>
                 <span class="px-2 py-0.5 rounded bg-rose-950/70 border border-rose-700/60 text-rose-300 text-[10px]">Prop Shield</span>
@@ -465,15 +483,59 @@
                 <span class="px-2 py-0.5 rounded bg-orange-950/70 border border-orange-700/60 text-orange-300 text-[10px]">London Breakout</span>
                 <span class="px-2 py-0.5 rounded bg-cyan-950/70 border border-cyan-700/60 text-cyan-300 text-[10px]">Grid Momentum</span>
               </div>
+              <div class="p-2.5 rounded-xl bg-amber-950/30 border border-amber-500/30 text-[10px] text-amber-200" data-i18n="b2_ea_extra">
+                ✨ +40 Robot EA Tambahan Berbagai Strategi: Scalper Emas, Multi-Grid, Breakout News, Asia Range, Arbitrage, Swing Multi-Pair, dan Low DD Prop Firm!
+              </div>
             </div>
-            <div class="pt-1.5 border-t border-zinc-800/80">
-              <span class="text-zinc-500 text-[10px] block mb-1">📊 4 INDIKATOR PRO NON-REPAINT:</span>
-              <div class="flex flex-wrap gap-1.5">
+
+            <!-- 34 Indikator Section -->
+            <div class="pt-2 border-t border-zinc-800/80">
+              <div class="flex items-center justify-between mb-1.5">
+                <span class="text-purple-300 text-[11px] font-bold" data-i18n="b2_ind_header">📊 34 INDIKATOR PRO MT5 NON-REPAINT:</span>
+                <span class="text-[10px] bg-purple-500/20 text-purple-300 px-2 py-0.5 rounded font-bold">4 INTI + 30 TAMBAHAN</span>
+              </div>
+              <div class="flex flex-wrap gap-1.5 mb-2">
                 <span class="px-2 py-0.5 rounded bg-purple-950/70 border border-purple-700/60 text-purple-300 text-[10px]">Order Block SMC</span>
                 <span class="px-2 py-0.5 rounded bg-emerald-950/70 border border-emerald-700/60 text-emerald-300 text-[10px]">Arrow Signal Pro</span>
                 <span class="px-2 py-0.5 rounded bg-rose-950/70 border border-rose-700/60 text-rose-300 text-[10px]">Supply &amp; Demand</span>
                 <span class="px-2 py-0.5 rounded bg-amber-950/70 border border-amber-700/60 text-amber-300 text-[10px]">Divergence Matrix</span>
               </div>
+              <div class="p-2.5 rounded-xl bg-purple-950/30 border border-purple-500/30 text-[10px] text-purple-200" data-i18n="b2_ind_extra">
+                ✨ +30 Indikator Pro Tambahan: Volume Profile, VWAP, FVG Matrix, Smart CPR, Candle Timer, Dynamic SR, Market Killzone, Multi-TF Dashboard, dll.
+              </div>
+            </div>
+
+            <!-- 3 Special Bonuses Section -->
+            <div class="pt-2 border-t border-zinc-800/80">
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-emerald-400 text-[11px] font-bold flex items-center gap-1.5" data-i18n="b2_bonus_header">
+                  <span>🎁</span> 3 BONUS EKSKLUSIF SENILAI RP 25.000.000+:
+                </span>
+                <span class="bg-emerald-500/20 text-emerald-300 px-2 py-0.5 rounded text-[10px] font-bold" data-i18n="b1_free_tag">GRATIS</span>
+              </div>
+              <ul class="space-y-2 text-zinc-300 text-[11px]">
+                <li class="flex items-start gap-2 p-2 rounded-xl bg-zinc-900/60 border border-zinc-800/80">
+                  <span class="text-emerald-400 font-bold shrink-0 mt-0.5">🌐</span>
+                  <div>
+                    <strong class="text-white block" data-i18n="b2_bonus_1_title">Website Generator / Pembuat EA Otomatis:</strong>
+                    <span class="text-zinc-400 text-[10px]" data-i18n="b2_bonus_1_desc">Akses web-app No-Code MQL5 Builder untuk merancang logika robot EA sendiri semudah drag &amp; drop tanpa perlu bisa coding, langsung unduh file .ex5/.mq5 siap pakai.</span>
+                  </div>
+                </li>
+                <li class="flex items-start gap-2 p-2 rounded-xl bg-zinc-900/60 border border-zinc-800/80">
+                  <span class="text-emerald-400 font-bold shrink-0 mt-0.5">🧠</span>
+                  <div>
+                    <strong class="text-white block" data-i18n="b2_bonus_2_title">Website AI Market Analysis:</strong>
+                    <span class="text-zinc-400 text-[10px]" data-i18n="b2_bonus_2_desc">Platform web scanner cerdas berbasis kecerdasan buatan (AI) yang membaca likuiditas, arah tren global, dan sentimen pasar real-time 24/5.</span>
+                  </div>
+                </li>
+                <li class="flex items-start gap-2 p-2 rounded-xl bg-zinc-900/60 border border-zinc-800/80">
+                  <span class="text-emerald-400 font-bold shrink-0 mt-0.5">📚</span>
+                  <div>
+                    <strong class="text-white block" data-i18n="b2_bonus_3_title">10 Ebook Premium Investasi &amp; Trading:</strong>
+                    <span class="text-zinc-400 text-[10px]" data-i18n="b2_bonus_3_desc">Koleksi 10 buku panduan komprehensif tentang psikologi trading, manajemen risiko ketat, strategi Smart Money Concepts (SMC), dan formula investasi jangka panjang.</span>
+                  </div>
+                </li>
+              </ul>
             </div>
           </div>
         </div>
@@ -481,18 +543,18 @@
         <!-- Huge Value Calculation Box -->
         <div class="my-4 p-3.5 rounded-2xl bg-amber-950/30 border border-amber-500/40 text-xs font-mono">
           <div class="flex items-center justify-between text-zinc-400 text-[11px] mb-1">
-            <span data-i18n="b2_val_calc_lbl">Total Harga Beli Satuan (14 Tools):</span>
-            <span class="line-through font-bold text-zinc-500" data-i18n="b2_val_calc_orig">Rp 9.800.000+</span>
+            <span data-i18n="b2_val_calc_lbl">Total Nilai Satuan (84 Tools + 2 Web Apps + 10 Ebook):</span>
+            <span class="line-through font-bold text-zinc-500" data-i18n="b2_val_calc_orig">Rp 35.000.000+</span>
           </div>
           <div class="flex items-center justify-between text-amber-300 font-bold text-xs">
             <span data-i18n="b2_val_save_lbl">Penghematan Bersih Anda:</span>
-            <span class="text-emerald-400 font-black" data-i18n="b2_val_save_val">+Rp 7.300.000 (Hemat 74%)</span>
+            <span class="text-emerald-400 font-black" data-i18n="b2_val_save_val">+Rp 32.500.000 (Hemat 93%)</span>
           </div>
         </div>
 
         <!-- Social Proof Badge -->
         <div class="p-2.5 rounded-xl bg-zinc-950/80 border border-zinc-800 text-[11px] font-mono text-zinc-300 flex items-center justify-between">
-          <span class="flex items-center gap-1.5"><span>⭐</span><span data-i18n="b2_social_proof">98% TRADER MEMILIH PAKET INI KARENA PALING LENGKAP</span></span>
+          <span class="flex items-center gap-1.5"><span>⭐</span><span data-i18n="b2_social_proof">99% TRADER MEMILIH PAKET INI KARENA PALING LENGKAP &amp; DAPAT AKSES WEB APPS</span></span>
           <span class="text-[10px] text-amber-400 font-bold">BEST SELLER</span>
         </div>
       </div>
@@ -504,12 +566,12 @@
             <span class="text-amber-400 font-bold font-mono text-[10px] bg-amber-950/80 px-2.5 py-0.5 rounded-full border border-amber-500/50" data-i18n="bundle2_discount_badge">50% DISKON LAUNCH</span>
           </div>
           <div class="text-4xl sm:text-5xl font-black font-mono text-amber-400 tracking-tight" data-i18n="price_main_b2">Rp 2.500.000</div>
-          <div class="text-[11px] font-mono text-zinc-400 mt-0.5" data-i18n="price_sub_b2">atau <strong>$165 USD</strong> &middot; Akses Seumur Hidup (14 Alat)</div>
+          <div class="text-[11px] font-mono text-zinc-400 mt-0.5" data-i18n="price_sub_b2">atau <strong>$165 USD</strong> &middot; Akses Seumur Hidup (84+ Tools &amp; 3 Bonus)</div>
         </div>
       <div class="mt-5 grid grid-cols-1 gap-2 text-[11px]">
         <a href="https://mayar.id/aemethtrader/mega-bundle" target="_blank" class="flex items-center justify-center gap-2 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold tracking-wide transition-all shadow-md hover:scale-[1.01]"><span>🏦</span><span data-i18n="btn_pay_qris">QRIS / BANK TRANSFER</span></a>
         <a href="https://aemethtrader.gumroad.com/l/mega-bundle" target="_blank" class="flex items-center justify-center gap-2 py-3 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold tracking-wide transition-all shadow-md hover:scale-[1.01]"><span>💳</span><span data-i18n="btn_pay_global">PAYPAL / CARD / CRYPTO</span></a>
-        <a href="https://t.me/aemethtrader?text=Halo%20AEMETH%20TRADER%2C%20saya%20mau%20beli%20MEGA%20BUNDLE%2014%20Tools" target="_blank" class="flex items-center justify-center gap-2 py-3 rounded-xl bg-zinc-700 hover:bg-zinc-600 text-white font-bold tracking-wide transition-all shadow-md hover:scale-[1.01]"><span>📱</span><span data-i18n="btn_pay_tg">P2P CRYPTO (USDT)</span></a>
+        <a href="https://t.me/aemethtrader?text=Halo%20AEMETH%20TRADER%2C%20saya%20mau%20beli%20MEGA%20BUNDLE%2084Tools%202WebApps%2010Ebook" target="_blank" class="flex items-center justify-center gap-2 py-3 rounded-xl bg-zinc-700 hover:bg-zinc-600 text-white font-bold tracking-wide transition-all shadow-md hover:scale-[1.01]"><span>📱</span><span data-i18n="btn_pay_tg">P2P CRYPTO (USDT)</span></a>
       </div>
       </div>
     </div>
@@ -1863,22 +1925,33 @@ const T = {
     price_orig_b1:"Rp 6.000.000",
     price_main_b1:"Rp 3.000.000",
     price_sub_b1:"atau <strong>$199 USD</strong> &middot; Akses Seumur Hidup (6 Alat)",
-    b2_badge:"#1 BEST SELLER — 14 TOOLS",
-    b2_seller_tag:"🏆 PALING BANYAK DIPILIH TRADER (14 TOOLS ALL-IN-ONE)",
-    b2_rate_tag:"HANYA RP 178.000 / TOOL!",
-    b2_title:"AEMETH MEGA BUNDLE 14 Tools v2.0",
-    b2_tools_line:"10 Robot EA MT5 + 4 Indikator Pro — Akses Seumur Hidup",
-    bundle2_desc:"Suite all-inclusive terlengkap dari AEMETH TRADER. Dapatkan 10 Robot EA MT5 otomatis (Gold, Forex, Indeks, Prop Firm, Cent &amp; HFT) plus 4 Indikator MT5 Pro non-repaint untuk trading manual. Termasuk dukungan instalasi remote AnyDesk gratis.",
-    b2_inc_header:"ARSENAL LENGKAP 14 TOOLS MT5:",
-    b2_val_calc_lbl:"Total Harga Beli Satuan (14 Tools):",
-    b2_val_calc_orig:"Rp 9.800.000+",
+    b2_badge:"#1 BEST SELLER — 84+ TOOLS &amp; 3 BONUSES",
+    b2_seller_tag:"🏆 PALING BANYAK DIPILIH (50 EA + 34 INDIKATOR + 2 WEB APPS + 10 EBOOK)",
+    b2_rate_tag:"HANYA RP 29.000 / ALAT! (HEMAT 93%)",
+    b2_title:"AEMETH MEGA BUNDLE 84+ Tools &amp; Web Apps",
+    b2_tools_line:"50 Robot EA MT5 + 34 Indikator Pro + Web Generator EA + Web AI + 10 Ebook — Akses Seumur Hidup",
+    bundle2_desc:"Suite all-inclusive terlengkap dari AEMETH TRADER. Dapatkan 50 Robot EA MT5 otomatis (10 Flagship + 40 EA Algoritmik Tambahan), 34 Indikator MT5 Pro non-repaint (4 Inti + 30 Analisis Pro), plus 3 BONUS EKSKLUSIF: Website Pembuat EA Otomatis (No-Code MQL5 Builder), Website AI Market Analysis real-time, dan 10 Ebook Premium Investasi &amp; Financial Freedom. Termasuk remote AnyDesk setup gratis!",
+    b2_inc_header:"ARSENAL LENGKAP 84+ TOOLS &amp; 3 BONUS SPESIAL:",
+    b2_ea_header:"🤖 50 ROBOT EA MT5 OTOMATIS:",
+    b2_ea_extra:"✨ +40 Robot EA Tambahan Berbagai Strategi: Scalper Emas, Multi-Grid, Breakout News, Asia Range, Arbitrage, Swing Multi-Pair, dan Low DD Prop Firm!",
+    b2_ind_header:"📊 34 INDIKATOR PRO MT5 NON-REPAINT:",
+    b2_ind_extra:"✨ +30 Indikator Pro Tambahan: Volume Profile, VWAP, FVG Matrix, Smart CPR, Candle Timer, Dynamic SR, Market Killzone, Multi-TF Dashboard, dll.",
+    b2_bonus_header:"🎁 3 BONUS EKSKLUSIF SENILAI RP 25.000.000+:",
+    b2_bonus_1_title:"Website Generator / Pembuat EA Otomatis:",
+    b2_bonus_1_desc:"Akses web-app No-Code MQL5 Builder untuk merancang logika robot EA sendiri semudah drag &amp; drop tanpa perlu bisa coding, langsung unduh file .ex5/.mq5 siap pakai.",
+    b2_bonus_2_title:"Website AI Market Analysis:",
+    b2_bonus_2_desc:"Platform web scanner cerdas berbasis kecerdasan buatan (AI) yang membaca likuiditas, arah tren global, dan sentimen pasar real-time 24/5.",
+    b2_bonus_3_title:"10 Ebook Premium Investasi &amp; Trading:",
+    b2_bonus_3_desc:"Koleksi 10 buku panduan komprehensif tentang psikologi trading, manajemen risiko ketat, strategi Smart Money Concepts (SMC), dan formula investasi jangka panjang.",
+    b2_val_calc_lbl:"Total Nilai Satuan (84 Tools + 2 Web Apps + 10 Ebook):",
+    b2_val_calc_orig:"Rp 35.000.000+",
     b2_val_save_lbl:"Penghematan Bersih Anda:",
-    b2_val_save_val:"+Rp 7.300.000 (Hemat 74%)",
-    b2_social_proof:"98% TRADER MEMILIH PAKET INI KARENA PALING LENGKAP",
+    b2_val_save_val:"+Rp 32.500.000 (Hemat 93%)",
+    b2_social_proof:"99% TRADER MEMILIH PAKET INI KARENA PALING LENGKAP &amp; DAPAT AKSES WEB APPS",
     bundle2_discount_badge:"50% DISKON LAUNCH",
     price_orig_b2:"Rp 5.000.000",
     price_main_b2:"Rp 2.500.000",
-    price_sub_b2:"atau <strong>$165 USD</strong> &middot; Akses Seumur Hidup (14 Alat)",
+    price_sub_b2:"atau <strong>$165 USD</strong> &middot; Akses Seumur Hidup (84+ Tools &amp; 3 Bonus)",
     b4_badge:"⚡ STARTER BUNDLE — 11 TOOLS",
     b4_title:"AEMETH STARTER BUNDLE 5 EA + 6 Ind",
     b4_tools_line:"5 Robot EA MT5 + 6 Indikator Pro — Akses Seumur Hidup",
@@ -2023,22 +2096,33 @@ const T = {
     price_orig_b1:"$398 USD",
     price_main_b1:"$199 USD",
     price_sub_b1:"or ~<strong>Rp 3.000.000 IDR</strong> &middot; Lifetime Permanent Access (6 Tools)",
-    b2_badge:"#1 BEST SELLER — 14 TOOLS",
-    b2_seller_tag:"🏆 MOST POPULAR SUITE (14 TOOLS ALL-IN-ONE)",
-    b2_rate_tag:"ONLY $12 / TOOL! (74% SAVINGS)",
-    b2_title:"AEMETH MEGA BUNDLE 14 Tools v2.0",
-    b2_tools_line:"10 MT5 Robot EAs + 4 Pro Indicators — Lifetime Access",
-    bundle2_desc:"The ultimate all-inclusive suite from AEMETH TRADER. Get 10 automated MT5 EAs (Gold, Forex, Indices, Prop Firm, Cent &amp; HFT) plus 4 MT5 Pro non-repaint indicators for manual trading. Includes free remote AnyDesk installation support.",
-    b2_inc_header:"COMPLETE 14 MT5 TOOLS INVENTORY:",
-    b2_val_calc_lbl:"Total Retail Value (14 Tools):",
-    b2_val_calc_orig:"$650 USD+",
+    b2_badge:"#1 BEST SELLER — 84+ TOOLS &amp; 3 BONUSES",
+    b2_seller_tag:"🏆 MOST POPULAR: 50 EAs + 34 INDICATORS + 2 WEB APPS + 10 EBOOKS",
+    b2_rate_tag:"ONLY $1.90 / TOOL! (93% SAVINGS)",
+    b2_title:"AEMETH MEGA BUNDLE 84+ Tools &amp; Web Apps",
+    b2_tools_line:"50 MT5 Robot EAs + 34 Pro Indicators + EA Builder Web App + AI Market Web + 10 Ebooks — Lifetime Access",
+    bundle2_desc:"The ultimate all-inclusive suite from AEMETH TRADER. Get 50 automated MT5 EAs (10 Flagships + 40 Additional Algorithmic EAs), 34 MT5 Pro non-repaint indicators (4 Core + 30 Pro Indicators), plus 3 EXCLUSIVE BONUSES: No-Code EA Builder Web Application, Real-Time AI Market Analysis Web App, and 10 Premium Investment &amp; Trading Ebooks. Includes free remote AnyDesk installation support.",
+    b2_inc_header:"COMPLETE ARSENAL: 84+ TOOLS &amp; 3 EXCLUSIVE BONUSES:",
+    b2_ea_header:"🤖 50 AUTOMATED MT5 ROBOT EAS:",
+    b2_ea_extra:"✨ +40 Extra Algorithmic EAs Across All Strategies: Gold Scalper, Multi-Grid, News Breakout, Asian Range, Arbitrage, Multi-Pair Swing, and Prop Firm Low DD!",
+    b2_ind_header:"📊 34 PRO NON-REPAINT MT5 INDICATORS:",
+    b2_ind_extra:"✨ +30 Extra Pro Indicators: Volume Profile, VWAP, FVG Matrix, Smart CPR, Candle Timer, Dynamic SR, Market Killzone, Multi-TF Dashboard, etc.",
+    b2_bonus_header:"🎁 3 EXCLUSIVE BONUSES (OVER $1,600 VALUE):",
+    b2_bonus_1_title:"No-Code EA Builder Web Application:",
+    b2_bonus_1_desc:"Direct access to no-code MQL5 builder web application to construct custom EA logic via visual drag-and-drop without coding knowledge, with instant .ex5/.mq5 download.",
+    b2_bonus_2_title:"Real-Time AI Market Analysis Web App:",
+    b2_bonus_2_desc:"Intelligent AI-powered web market scanner reading liquidity flows, global trend trajectories, and market sentiment in real time 24/5.",
+    b2_bonus_3_title:"10 Premium Investment &amp; Trading Ebooks:",
+    b2_bonus_3_desc:"Comprehensive 10-ebook library covering trading psychology, institutional risk control, Smart Money Concepts (SMC), and long-term portfolio growth formulas.",
+    b2_val_calc_lbl:"Total Retail Value (84 Tools + 2 Web Apps + 10 Ebooks):",
+    b2_val_calc_orig:"$2,400 USD+",
     b2_val_save_lbl:"Your Net Savings:",
-    b2_val_save_val:"+$485 USD (74% SAVINGS)",
-    b2_social_proof:"98% OF TRADERS CHOOSE THIS BUNDLE FOR FULL ARSENAL",
+    b2_val_save_val:"+$2,235 USD (93% SAVINGS)",
+    b2_social_proof:"99% OF TRADERS CHOOSE THIS BUNDLE FOR UNLIMITED LIFETIME ARSENAL",
     bundle2_discount_badge:"50% DISCOUNT",
     price_orig_b2:"$330 USD",
     price_main_b2:"$165 USD",
-    price_sub_b2:"or ~<strong>Rp 2.500.000 IDR</strong> &middot; Lifetime Permanent Access (14 Tools)",
+    price_sub_b2:"or ~<strong>Rp 2.500.000 IDR</strong> &middot; Lifetime Permanent Access (84+ Tools &amp; 3 Bonuses)",
     b4_badge:"⚡ STARTER BUNDLE — 11 TOOLS",
     b4_title:"AEMETH STARTER BUNDLE 5 EA + 6 Ind",
     b4_tools_line:"5 MT5 Robot EAs + 6 Pro Indicators — Lifetime Access",
